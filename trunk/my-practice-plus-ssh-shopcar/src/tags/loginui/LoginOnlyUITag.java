@@ -76,7 +76,6 @@ public class LoginOnlyUITag extends BodyTagSupport
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return super.doEndTag();

@@ -21,7 +21,6 @@ public class LoginOnlyUITag extends BodyTagSupport
 	@Override
 	public int doEndTag() throws JspException
 	{
-		// TODO Auto-generated method stub
 		JspWriter out = pageContext.getOut();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 		String path = request.getContextPath();

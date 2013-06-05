@@ -14,50 +14,70 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class RegistryCheck extends HttpServlet {
+public class RegistryCheck extends HttpServlet
+{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5392648280450800329L;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public RegistryCheck() {
+	public RegistryCheck()
+	{
 		super();
 	}
 
 	/**
 	 * Destruction of the servlet. <br>
 	 */
-	public void destroy() {
+	@Override
+	public void destroy()
+	{
 		super.destroy(); // Just puts "destroy" string in log
 		// Put your code here
 	}
 
 	/**
 	 * The doGet method of the servlet. <br>
-	 *
+	 * 
 	 * This method is called when a form has its tag value method equals to get.
 	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
+	 * @param request
+	 *            the request send by the client to the server
+	 * @param response
+	 *            the response send by the server to the client
+	 * @throws ServletException
+	 *             if an error occurred
+	 * @throws IOException
+	 *             if an error occurred
 	 */
-	public void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		PrintWriter out=response.getWriter();
+	@Override
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		response.setCharacterEncoding("gb2312");
-		String umail=request.getParameter("umail");
-		String sql="select *  from "+TableInfo.TABLE_UserInfo+" where "+TableInfo.USER_umail+"='"+umail+"'";
-		IDataAccess ida=DataAccessImpl.newInstance();
-		ResultSet rs=ida.queryBySQL(sql);
+		String umail = request.getParameter("umail");
+		String sql = "select *  from " + TableInfo.TABLE_UserInfo + " where " + TableInfo.USER_umail + "='" + umail + "'";
+		IDataAccess ida = DataAccessImpl.newInstance();
+		ResultSet rs = ida.queryBySQL(sql);
 		System.out.println(sql);
-		try{
-			if(rs.next()){
+		try
+		{
+			if (rs.next())
+			{
 				response.setStatus(200);
-			}else{
+			}
+			else
+			{
 				response.setStatus(400);
 			}
-		}catch(SQLException e){
+		}
+		catch (SQLException e)
+		{
 			e.printStackTrace();
 		}
 		out.flush();
@@ -66,10 +86,13 @@ public class RegistryCheck extends HttpServlet {
 
 	/**
 	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occure
+	 * 
+	 * @throws ServletException
+	 *             if an error occure
 	 */
-	public void init() throws ServletException {
+	@Override
+	public void init() throws ServletException
+	{
 		// Put your code here
 	}
 

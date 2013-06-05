@@ -1,0 +1,117 @@
+.shopscontain {
+	WIDTH: 500px;
+	MARGIN: 0px auto;
+}
+#shops {
+	BORDER-RIGHT: #89d4f8 1px solid;
+	BORDER-TOP: #89d4f8 1px solid;
+	BACKGROUND: #fbfdff;
+	BORDER-LEFT: #89d4f8 1px solid;
+	WIDTH: 100%;
+	COLOR: #0075b1;
+	BORDER-BOTTOM: #89d4f8 1px solid;
+	margin-top: 8px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	overflow: hidden;
+}
+#shops H2 {
+	PADDING-RIGHT: 6px;
+	PADDING-LEFT: 6px;
+	BACKGROUND: url(../images/h2_bg.gif) repeat-x;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px 1px;
+	COLOR: #0075b5;
+	LINE-HEIGHT: 25px;
+	PADDING-TOP: 0px;
+	font-size: 14px;
+}
+.productinfo_b {
+	OVERFLOW: hidden;
+	LINE-HEIGHT: 25px;
+	HEIGHT: 25px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #89d4f8;
+	border-bottom-color: #89d4f8;
+	float: left;
+	text-align: center;
+	color: #000000;
+}
+.productinfo_bt {
+	OVERFLOW: hidden;
+	LINE-HEIGHT: 25px;
+	HEIGHT: 25px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #89d4f8;
+	border-bottom-color: #89d4f8;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+	color: #000000;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #89d4f8;
+}
+
+#shops input{
+	height: 14px;
+	width: 30px;
+	border: 1px solid #CCCCCC;
+	line-height: 14px;
+	margin-top: 3px;
+	float: left;
+	margin-left: 4px;
+}
+#shops button{
+	height: 20px;
+	width: 100px;
+	border: 1px solid #CCCCCC;
+	line-height: 18px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+#shops_carts{
+	width: 100%;
+}
+#shops_cart{
+	width: 100%;
+}
+.product_id{
+	width: 100%;
+}
+.product_num{
+	width: 15px;
+	height: 15px;
+	margin-left: 5px;
+	float: left;
+	margin-top: 5px;
+}
+.closepic{
+	margin-top: 5px;
+	margin-left: 420px;
+}
+#shopsWindow {
+	position: absolute;
+	z-index:1000;
+	overflow: visible;
+	left: 299px;
+	top: 102px;
+	height: 200px;
+	width: 320px;
+}
+.moneys {
+	LINE-HEIGHT: 25px;
+	HEIGHT: 25px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #89d4f8;
+	color: #000000;
+	width: 100%;
+}

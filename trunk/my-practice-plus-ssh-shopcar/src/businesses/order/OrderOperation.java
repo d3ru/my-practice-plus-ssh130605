@@ -1,6 +1,8 @@
 /**
- * 文件：order.OrderOperation.java URL：order/order_manager.jsp?orderid=xx 说明：实现对订单的增删修查 订单的增：即购物车中商品的结算
- * 方法：通过判定method=add/delete/update/query,分别对应订单的增/删/修/查 时间：08-05-16
+ * 文件：order.OrderOperation.java URL：order/order_manager.jsp?orderid=xx <br/>
+ * 说明：实现对订单的增删修查 订单的增：即购物车中商品的结算 <br/>
+ * 方法：通过判定method=add/delete/update/query,分别对应订单的增/删/修/查 <br/>
+ * 时间：08-05-16
  */
 package businesses.order;
 
@@ -9,7 +11,6 @@ import global.IDataAccess;
 import global.TableInfo;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 
@@ -25,17 +26,12 @@ import businesses.tools.QueryTools;
 
 public class OrderOperation extends HttpServlet
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4964139044506136949L;
 	private HttpSession session = null;
 	private DataAccessImpl dataAccess = null;
 
 	private HttpServletRequest request;
 	private HttpServletResponse response;
-	private PrintWriter out;
 
 	public OrderOperation()
 	{
@@ -51,7 +47,6 @@ public class OrderOperation extends HttpServlet
 		session = request.getSession();
 		dataAccess = DataAccessImpl.newInstance();
 		response.setContentType("text/html;charset=gb2312");
-		out = response.getWriter();
 		String method = request.getParameter("method");
 
 		if (method == null)
@@ -70,10 +65,6 @@ public class OrderOperation extends HttpServlet
 			orderUpdate();
 		else
 			CommonTools.Error(request, response, session);
-
-		// out.println("hello");
-		// out.flush();
-		// out.close();
 
 	}
 
@@ -123,9 +114,6 @@ public class OrderOperation extends HttpServlet
 					// System.out.println("用户ip为"+request.getLocalAddr()+" cookie中存在非法id");
 				}
 
-				// 清空cookie中的数据//等显示选购清单后清空
-				// cookie.setMaxAge(0);
-				// response.addCookie(cookie);
 			}
 
 			// 生成临时定单信息
@@ -156,7 +144,6 @@ public class OrderOperation extends HttpServlet
 		}
 		catch (Exception e)
 		{
-			// TODO 自动生成 catch 块
 			e.printStackTrace();
 		}
 	}
@@ -261,7 +248,6 @@ public class OrderOperation extends HttpServlet
 		}
 		catch (IOException e)
 		{
-			// TODO 自动生成 catch 块
 			e.printStackTrace();
 		}
 

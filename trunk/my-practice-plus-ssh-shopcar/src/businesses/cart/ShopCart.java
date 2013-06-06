@@ -32,10 +32,10 @@ public class ShopCart extends HttpServlet
 		int pid;
 		int pronum;
 		double totalmoney = 0;
-		// out.print("<table>");
-		//
+
+		// 循环解析Cookie中的选购商品信息。
 		for (Cookie cook : cartproducts)
-		{// 循环解析Cookie中的选购商品信息。
+		{
 			cpid = cook.getName();// Ｃookie名，选购商品以pro开头。
 			if (cpid.startsWith("pro_"))
 			{
@@ -75,20 +75,4 @@ public class ShopCart extends HttpServlet
 		out.close();
 	}
 
-	public int StringToInt(String id)
-	{
-		int n = 0;
-		try
-		{
-			n = Integer.parseInt(id);
-		}
-		catch (NumberFormatException e)
-		{
-			System.out.println("id转换时发生错误");
-			e.printStackTrace();
-			n = -1;
-			// throw e;
-		}
-		return n;
-	}
 }

@@ -5,7 +5,6 @@ import global.IDataAccess;
 import global.TableInfo;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -27,28 +26,23 @@ public class LoginServ extends HttpServlet
 
 	public LoginServ()
 	{
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void destroy()
 	{
-		// TODO Auto-generated method stub
 		super.destroy();
 	}
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
 		// BufferedReader reader=request.getReader();
-		// System.out.println("come");
 		response.setContentType("text/html;charset=gb2312");
-		PrintWriter out = response.getWriter();
 		String user = request.getParameter("username");
 		String pass = request.getParameter("password");
 		Object url = request.getSession().getAttribute("urlstr");
-		// ½âÂëÏÈ
+
 		user = user == null ? "" : user;
 		pass = pass == null ? "" : pass;
 		String code = request.getParameter("img");
@@ -101,13 +95,9 @@ public class LoginServ extends HttpServlet
 		}
 		else
 		{
-			//
 			request.setAttribute("notlogin", "µÇÂ¼Ê§°Ü");
 			RequestDispatcher rd = request.getRequestDispatcher("/login/userlogin.jsp");
 			rd.forward(request, response);
-
-			// out.print("<font color=red>µÇÂ¼Ê§°Ü</font><br/>");
-			// out.print("<a href='"+request.getContextPath()+"//index.jsp'>·µ»Ø</a>");
 		}
 
 	}
@@ -115,7 +105,6 @@ public class LoginServ extends HttpServlet
 	@Override
 	public void init(ServletConfig config) throws ServletException
 	{
-		// TODO Auto-generated method stub
 		this.config = config;
 	}
 

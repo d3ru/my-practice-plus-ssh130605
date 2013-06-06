@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50610
 File Encoding         : 65001
 
-Date: 2013-06-06 09:55:23
+Date: 2013-06-06 10:45:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,11 +34,12 @@ CREATE TABLE `products` (
   PRIMARY KEY (`pid`),
   KEY `ptypeid` (`ptypeid`),
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`ptypeid`) REFERENCES `producttype` (`ptid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
+INSERT INTO `products` VALUES ('1', 'jquery高级编程', '真的很好的', '2013-06-06', '22', null, '1', null, null, '100', '1');
 
 -- ----------------------------
 -- Table structure for `producttype`
@@ -49,11 +50,12 @@ CREATE TABLE `producttype` (
   `ptname` varchar(30) NOT NULL,
   `ptnote` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ptid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of producttype
 -- ----------------------------
+INSERT INTO `producttype` VALUES ('1', '书籍', '中国IT书籍');
 
 -- ----------------------------
 -- Table structure for `transactions`
@@ -74,11 +76,12 @@ CREATE TABLE `transactions` (
   KEY `tpid_fk` (`tpid`),
   CONSTRAINT `tpid_fk` FOREIGN KEY (`tpid`) REFERENCES `products` (`pid`),
   CONSTRAINT `tuid_fk` FOREIGN KEY (`tuid`) REFERENCES `userinfo` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of transactions
 -- ----------------------------
+INSERT INTO `transactions` VALUES ('1', '1', '1', '2013-06-06', '10:44:45', '0', null, null, '1');
 
 -- ----------------------------
 -- Table structure for `userinfo`
@@ -99,3 +102,5 @@ CREATE TABLE `userinfo` (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
+INSERT INTO `userinfo` VALUES ('admin', '1', 'admin', 'admin', null, null, null, null);
+INSERT INTO `userinfo` VALUES ('root', '3506402', '', 'root', '', '', '', '');

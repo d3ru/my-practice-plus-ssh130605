@@ -130,7 +130,7 @@ function load(){
   		<tr>
   		<td width="100%" colspan="2">
   		<div id="main" style="height:330;overflow:none;">
-  		<login:listproductbytype typeid="<%=request.getParameter("typeid")%>"></login:listproductbytype>
+  		<login:listproductbytype typeid="<%=request.getParameter(\"typeid\")%>"></login:listproductbytype>
   		</div>
   		</td>
   		</tr>

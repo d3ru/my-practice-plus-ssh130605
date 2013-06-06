@@ -1,8 +1,8 @@
 
-drop database if exists tarena_shopcart;
-create database tarena_shopcart default character set utf8;
+drop database if exists shopcart;
+create database shopcart default character set utf8;
 
-use tarena_shopcart
+use shopcart
 
 drop table if exists UserInfo;
 drop table if exists ProductType;

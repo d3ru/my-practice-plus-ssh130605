@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-cn"/>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
-<title>Tarena_IT网络商城-主页</title>
+<title>IT网络商城-主页</title>
 <SCRIPT language=javascript src="js/ajax.js" 
 type=text/javascript></SCRIPT>
 <SCRIPT language=javascript src="js/cart.js" 

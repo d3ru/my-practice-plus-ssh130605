@@ -59,14 +59,14 @@ public class LoginOnlyUITag extends BodyTagSupport
 			out.println("<tr>");
 			if (isajax)
 			{
-				out.println("<td style='margin-top:-2px;padding-top:-2px;' colspan='3'><button class='bstyle'" + " onclick=\"" + submitevent + ";\">µÇÂ¼</button>&nbsp;&nbsp;&nbsp;&nbsp"
-						+ ";&nbsp;<button onclick='cancel()' class='bstyle'>È¡Ïû</button>&nbsp;&nbsp;&nbsp;&nbsp;" + "&nbsp;<button class='bstyle' onclick=\"location.href('" + registryurl + "');\">×¢²á</button>");
+				out.println("<td style='margin-top:-2px;padding-top:-2px;' colspan='3'><button class='bstyle'" + " onclick=\"" + submitevent + ";\">µÇÂ¼</button>&nbsp;" + ";&nbsp;<button onclick='cancel()' class='bstyle'>È¡Ïû</button>&nbsp;"
+						+ "<button class='bstyle' onclick=\"location.href('" + registryurl + "');\">×¢²á</button>");
 				out.println("</td>");
 			}
 			else
 			{
-				out.println("<td colspan='3'><button class='bstyle'" + " onclick='document.all.loginform.submit();'>µÇÂ¼</button>&nbsp;&nbsp;&nbsp;&nbsp" + ";&nbsp;<button onclick='cancel()'  class='bstyle'>È¡Ïû</button>&nbsp;&nbsp;&nbsp;&nbsp;"
-						+ "&nbsp;<button class='bstyle' onclick=\"location.href('" + registryurl + "');\">×¢²á</button>");
+				out.println("<td colspan='3'><button class='bstyle'" + " onclick='document.all.loginform.submit();'>µÇÂ¼</button>&nbsp;" + ";&nbsp;<button onclick='cancel()'  class='bstyle'>È¡Ïû</button>&nbsp;"
+						+ "<button class='bstyle' onclick=\"location.href('" + registryurl + "');\">×¢²á</button>");
 				out.println("</td>");
 			}
 			out.println("</tr>");

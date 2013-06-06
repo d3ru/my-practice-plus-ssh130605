@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
 		version="2.4">
   <servlet>
-    <javaee:description>Connect to Database</javaee:description>
+    <description>Connect to Database</description>
     <javaee:display-name>InitWEB</javaee:display-name>
     <servlet-name>InitWEB</servlet-name>
     <servlet-class>global.InitWEB</servlet-class>
@@ -124,24 +124,24 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-    <javaee:description>Driver Class Name</javaee:description>
-    <javaee:param-name>driver</javaee:param-name>
-    <javaee:param-value>com.mysql.jdbc.Driver</javaee:param-value>
+  	<description>Driver Class Name</description>
+  	<param-name>driver</param-name>
+  	<param-value>com.mysql.jdbc.Driver</param-value>
   </context-param>
   <context-param>
-    <javaee:description>Connection URL</javaee:description>
-    <javaee:param-name>url</javaee:param-name>
-    <javaee:param-value>jdbc:mysql://127.0.0.1:3306/shopcart?characterEncoding=utf-8</javaee:param-value>
+    <description>Connection URL</description>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://127.0.0.1:3306/shopcart?characterEncoding=utf-8</param-value>
   </context-param>
   <context-param>
-    <javaee:description>Connection User</javaee:description>
-    <javaee:param-name>user</javaee:param-name>
-    <javaee:param-value>root</javaee:param-value>
+    <description>Connection User</description>
+    <param-name>user</param-name>
+    <param-value>root</param-value>
   </context-param>
   <context-param>
-    <javaee:description>Connection Password</javaee:description>
-    <javaee:param-name>password</javaee:param-name>
-    <javaee:param-value>root</javaee:param-value>
+    <description>Connection Password</description>
+    <param-name>password</param-name>
+    <param-value>root</param-value>
   </context-param>
   <filter>
     <filter-name>encoding</filter-name>

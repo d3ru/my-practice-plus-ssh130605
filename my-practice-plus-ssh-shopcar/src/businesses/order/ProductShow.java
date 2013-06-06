@@ -21,9 +21,6 @@ import businesses.tools.QueryTools;
 public class ProductShow extends HttpServlet
 {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4785292953943164850L;
 
 	public ProductShow()
@@ -34,7 +31,6 @@ public class ProductShow extends HttpServlet
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-
 		DataAccessImpl dataAccess = DataAccessImpl.newInstance();
 		HttpSession session = request.getSession();
 
@@ -65,7 +61,6 @@ public class ProductShow extends HttpServlet
 				}
 				catch (SQLException e)
 				{
-					// TODO 自动生成 catch 块
 					e.printStackTrace();
 				}
 			}

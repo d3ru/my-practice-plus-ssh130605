@@ -2,17 +2,17 @@
 <%@taglib prefix="login" uri="/WEB-INF/tlds/ui.tld"%>
 <html>
 <head>
-<meta http-equiv="Content-Language" content="zh-cn" />
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>Tarena_IT网络商城-主页</title>
-<SCRIPT language=javascript src="js/ajax.js" type=text/javascript></SCRIPT>
-<script type="text/javascript" src="../js/common.js"></script>
-<link rel="stylesheet" style="text/css" href="css/cm.css">
-<script type="text/javascript">
-function load(){
-	document.all.a.onfocus;
-}
-</script>
+	<meta http-equiv="Content-Language" content="zh-cn" />
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<title>涓浗鈥擨T缃戠粶鍟嗗煄-涓婚〉</title>
+	<SCRIPT language=javascript src="js/ajax.js" type=text/javascript></SCRIPT>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<link rel="stylesheet" style="text/css" href="css/cm.css">
+	<script type="text/javascript">
+		function load(){
+			document.all.a.onfocus;
+		}
+	</script>
 </head>
 <body topmargin="0" bgcolor="#dce0e1" onLoad="load();">
 	<table align="center" border="0" width="778" cellspacing="0" cellpadding="0">
@@ -66,7 +66,7 @@ function load(){
 																<tr>
 																	<td colspan="3"><table border="1" width="100%" cellspacing="0" cellpadding="0">
 																			<tr>
-																				<td id="cata" width="100%" background="images/2.gif"><p align="center">::商品种类::
+																				<td id="cata" width="100%" background="images/2.gif"><p align="center">::鍟嗗搧绉嶇被::
 																				</td>
 																			</tr>
 																			<tr valign="top" style="height: 160px;margin-bottom: 0px;padding-bottom: 4px;">

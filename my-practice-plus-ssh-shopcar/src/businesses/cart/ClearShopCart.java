@@ -27,7 +27,6 @@ public class ClearShopCart extends HttpServlet
 	{
 
 		response.setContentType("text/html;charset=gb2312");
-
 		Cookie[] cookies = request.getCookies();
 		for (Cookie cookie : cookies)
 		{

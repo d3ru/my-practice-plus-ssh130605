@@ -2,8 +2,8 @@
 <taglib xmlns="http://java.sun.com/xml/ns/j2ee"
 	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	      xsi:schemaLocation="..."
-	      version="2.0">
-	<tlib-version>2.0</tlib-version>
+	      version="2.1">
+	<tlib-version>2.1</tlib-version>
 	<jsp-version>2.0</jsp-version>
 	<short-name>用于购物车的所有标记库</short-name>
 	<tag>

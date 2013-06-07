@@ -18,10 +18,6 @@ import businesses.tools.CommonTools;
 
 public class UserInfoUpdate extends HttpServlet
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4997657162838540591L;
 
 	public UserInfoUpdate()

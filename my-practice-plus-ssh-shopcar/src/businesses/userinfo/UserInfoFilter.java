@@ -21,13 +21,10 @@ public class UserInfoFilter implements Filter
 
 	public void destroy()
 	{
-		// TODO 自动生成方法存根
-
 	}
 
 	public void doFilter(ServletRequest res, ServletResponse rep, FilterChain chain) throws IOException, ServletException
 	{
-		// TODO 自动生成方法存根
 		HttpServletRequest request = (HttpServletRequest) res;
 		HttpServletResponse reponse = (HttpServletResponse) rep;
 		HttpSession session = request.getSession();

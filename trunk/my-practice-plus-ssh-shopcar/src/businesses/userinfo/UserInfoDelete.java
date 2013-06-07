@@ -20,10 +20,6 @@ import businesses.tools.QueryTools;
 
 public class UserInfoDelete extends HttpServlet
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6596567078797193056L;
 	private HttpSession session = null;
 	private DataAccessImpl dataAccess = null;

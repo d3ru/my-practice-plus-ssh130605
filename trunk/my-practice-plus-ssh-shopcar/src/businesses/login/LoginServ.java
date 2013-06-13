@@ -57,13 +57,13 @@ public class LoginServ extends HttpServlet
 			{
 				if (rs.next())
 				{
-					// µÇÂ¼³É¹¦ºóµÄsession±ê¼Ç¡£
-					session.setAttribute("loginsuccess", "µÇÂ¼³É¹¦£¡");
+					// ç™»å½•æˆåŠŸåçš„sessionæ ‡è®°ã€‚
+					session.setAttribute("loginsuccess", "ç™»å½•æˆåŠŸï¼");
 					String uname = rs.getString(3);
 					session.setAttribute("uname", uname);
 					session.setAttribute("sc_user", rs.getString(2));
-					// Èç¹û±»À¹½Øµ½µÇÂ¼µÄ£¬ÔòÖØĞÂ¶¨Ïòµ½±»À¹½ØÇ°µÄ£Õ£Ò£Ì
-					// System.out.println("ĞèÒªÖØ¶¨ÏòµÄurl:"+url);
+					// å¦‚æœè¢«æ‹¦æˆªåˆ°ç™»å½•çš„ï¼Œåˆ™é‡æ–°å®šå‘åˆ°è¢«æ‹¦æˆªå‰çš„ï¼µï¼²ï¼¬
+					// System.out.println("éœ€è¦é‡å®šå‘çš„url:"+url);
 					if (url != null)
 					{
 						// response.setHeader("refresh", "0;url='"+request.getContextPath()+"'/index.jsp");
@@ -76,14 +76,14 @@ public class LoginServ extends HttpServlet
 					{
 						// RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
 						// rd.forward(request, response);
-						// Èç¹ûÃ»ÓĞ¶¨ÏòURL£¬ÔòÖ±½Ó¶¨Ïòµ½Ö÷Ò³
+						// å¦‚æœæ²¡æœ‰å®šå‘URLï¼Œåˆ™ç›´æ¥å®šå‘åˆ°ä¸»é¡µ
 						response.sendRedirect(request.getContextPath() + "/index.jsp");
 					}
 
 				}
 				else
 				{
-					request.setAttribute("notlogin", "µÇÂ¼Ê§°Ü");
+					request.setAttribute("notlogin", "ç™»å½•å¤±è´¥");
 					RequestDispatcher rd = request.getRequestDispatcher("/login/userlogin.jsp");
 					rd.forward(request, response);
 				}
@@ -95,7 +95,7 @@ public class LoginServ extends HttpServlet
 		}
 		else
 		{
-			request.setAttribute("notlogin", "µÇÂ¼Ê§°Ü");
+			request.setAttribute("notlogin", "ç™»å½•å¤±è´¥");
 			RequestDispatcher rd = request.getRequestDispatcher("/login/userlogin.jsp");
 			rd.forward(request, response);
 		}

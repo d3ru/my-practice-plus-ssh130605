@@ -1,5 +1,5 @@
 /**
- * ËµÃ÷£º²éÑ¯µÄ³£ÓÃ¹¤¾ßÀà ÎÄ¼ş£ºqueryTools.java Ê±¼ä£º08-05-17 ±àĞ´£ºtarena
+ * è¯´æ˜ï¼šæŸ¥è¯¢çš„å¸¸ç”¨å·¥å…·ç±» æ–‡ä»¶ï¼šqueryTools.java æ—¶é—´ï¼š08-05-17 ç¼–å†™ï¼štarena
  */
 
 package businesses.tools;
@@ -12,12 +12,12 @@ import java.sql.SQLException;
 public class QueryTools
 {
 
-	// ËµÃ÷£º·µ»Ø·ûºÏÄ³¸öÌõ¼şÄ³±íÖĞÄ³¸ö×Ö¶ÎµÄÖµ
-	// Ìõ¼ş£ºÖ»ÄÜ·µ»Ø²éÑ¯µÄµÚÒ»¸ö×Ö¶ÎÖµ
-	// Ê¹ÓÃ£º dataAcess£ºÊı¾İ¿â·ÃÎÊÍ¨ÓÃÀà
-	// columnName£ºÓû²éÑ¯µÄÁĞÃû
-	// tableName£º±íÃû
-	// queryFactor£º²éÑ¯Ìõ¼ş
+	// è¯´æ˜ï¼šè¿”å›ç¬¦åˆæŸä¸ªæ¡ä»¶æŸè¡¨ä¸­æŸä¸ªå­—æ®µçš„å€¼
+	// æ¡ä»¶ï¼šåªèƒ½è¿”å›æŸ¥è¯¢çš„ç¬¬ä¸€ä¸ªå­—æ®µå€¼
+	// ä½¿ç”¨ï¼š dataAcessï¼šæ•°æ®åº“è®¿é—®é€šç”¨ç±»
+	// columnNameï¼šæ¬²æŸ¥è¯¢çš„åˆ—å
+	// tableNameï¼šè¡¨å
+	// queryFactorï¼šæŸ¥è¯¢æ¡ä»¶
 	public static String getColumnValue(DataAccessImpl dataAccess, String columnName, String tableName, String queryFactor)
 	{
 		String sql = "select " + columnName + " from " + tableName + " where " + queryFactor;
@@ -32,17 +32,17 @@ public class QueryTools
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Ö´ĞĞÓï¾ä:\n" + sql + "\nÊ±·¢Éú´íÎó,Çë¼ì²é!");
+			System.out.println("æ‰§è¡Œè¯­å¥:\n" + sql + "\næ—¶å‘ç”Ÿé”™è¯¯,è¯·æ£€æŸ¥!");
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	// ËµÃ÷£º²éÑ¯·ûºÏÄ³¸öÌõ¼şµÄÄ³±íÖĞµÄÄ³Ğ©×Ö¶ÎÊÇ·ñÓĞ¼ÇÂ¼¼¯
-	// Ê¹ÓÃ£º dataAcess£ºÊı¾İ¿â·ÃÎÊÍ¨ÓÃÀà
-	// columnName£ºÓû²éÑ¯µÄÁĞÃû
-	// tableName£º±íÃû
-	// queryFactor£º²éÑ¯Ìõ¼ş
+	// è¯´æ˜ï¼šæŸ¥è¯¢ç¬¦åˆæŸä¸ªæ¡ä»¶çš„æŸè¡¨ä¸­çš„æŸäº›å­—æ®µæ˜¯å¦æœ‰è®°å½•é›†
+	// ä½¿ç”¨ï¼š dataAcessï¼šæ•°æ®åº“è®¿é—®é€šç”¨ç±»
+	// columnNameï¼šæ¬²æŸ¥è¯¢çš„åˆ—å
+	// tableNameï¼šè¡¨å
+	// queryFactorï¼šæŸ¥è¯¢æ¡ä»¶
 	public static boolean isExistColumn(DataAccessImpl dataAccess, String columnName, String tableName, String queryFactor)
 	{
 		String sql = "select " + columnName + " from " + tableName + " where " + queryFactor;
@@ -54,7 +54,7 @@ public class QueryTools
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Ö´ĞĞÓï¾ä:\n" + sql + "\nÊ±·¢Éú´íÎó,Çë¼ì²é!");
+			System.out.println("æ‰§è¡Œè¯­å¥:\n" + sql + "\næ—¶å‘ç”Ÿé”™è¯¯,è¯·æ£€æŸ¥!");
 			e.printStackTrace();
 			return false;
 		}

@@ -27,22 +27,22 @@ public class ShopCart extends HttpServlet
 		response.setContentType("text/html;charset=gb2312");
 		PrintWriter out = response.getWriter();
 		IDataAccess ida = DataAccessImpl.newInstance();
-		Cookie cartproducts[] = request.getCookies();// Í¨¹ı£Ãookie´Ó¿Í»§»ñÈ¡Ñ¡¹ºÉÌÆ·ĞÅÏ¢.
+		Cookie cartproducts[] = request.getCookies();// é€šè¿‡ï¼£ookieä»å®¢æˆ·è·å–é€‰è´­å•†å“ä¿¡æ¯.
 		String cpid = "";
 		int pid;
 		int pronum;
 		double totalmoney = 0;
 
-		// Ñ­»·½âÎöCookieÖĞµÄÑ¡¹ºÉÌÆ·ĞÅÏ¢¡£
+		// å¾ªç¯è§£æCookieä¸­çš„é€‰è´­å•†å“ä¿¡æ¯ã€‚
 		for (Cookie cook : cartproducts)
 		{
-			cpid = cook.getName();// £ÃookieÃû£¬Ñ¡¹ºÉÌÆ·ÒÔpro¿ªÍ·¡£
+			cpid = cook.getName();// ï¼£ookieåï¼Œé€‰è´­å•†å“ä»¥proå¼€å¤´ã€‚
 			if (cpid.startsWith("pro_"))
 			{
 				try
 				{
-					pid = Integer.parseInt(cpid.substring(4));// ÉÌÆ·£É£Ä
-					pronum = Integer.parseInt(cook.getValue());// ÉÌÆ·ÊıÁ¿
+					pid = Integer.parseInt(cpid.substring(4));// å•†å“ï¼©ï¼¤
+					pronum = Integer.parseInt(cook.getValue());// å•†å“æ•°é‡
 					String sql = "select * from " + TableInfo.TABLE_Products + " where pid=" + pid;
 					ResultSet rs = ida.queryBySQL(sql);
 					while (rs.next())
@@ -52,9 +52,9 @@ public class ShopCart extends HttpServlet
 						double pprice = rs.getDouble("pprice");
 
 						out.println("<div id='shops_cart'>");
-						out.println("<div class='productinfo_b' style='width: 40%'>" + pname + "</div>");// ÉÌÆ·Ãû³Æ
-						out.println("<div class='productinfo_b' style='width: 12%'>" + pprice + "</div>");// ÏúÊÛ¼Û
-						out.println("<div class='productinfo_b' style='width: 10%'>" + pamount + "</div>");// ¿â´æÁ¿
+						out.println("<div class='productinfo_b' style='width: 40%'>" + pname + "</div>");// å•†å“åç§°
+						out.println("<div class='productinfo_b' style='width: 12%'>" + pprice + "</div>");// é”€å”®ä»·
+						out.println("<div class='productinfo_b' style='width: 10%'>" + pamount + "</div>");// åº“å­˜é‡
 						out.print("<div class='productinfo_b' style='width: 15%;'>" + pronum + "</div>");
 						out.println("<div class='productinfo_b' style='width: 12%'>" + pronum * pprice + "</div>");
 						out.print("<div class='productinfo_b' style='width: 10%; border-right: 0px;'>");
@@ -70,7 +70,7 @@ public class ShopCart extends HttpServlet
 				}
 			}
 		}
-		out.print("<div class='moneys'><div style='float:left; width:50%; text-align:right;'>×Ü½ğ¶î[&yen;]£º</div><div id='allmoney' style='float:left'>" + totalmoney + "</div></div>");
+		out.print("<div class='moneys'><div style='float:left; width:50%; text-align:right;'>æ€»é‡‘é¢[&yen;]ï¼š</div><div id='allmoney' style='float:left'>" + totalmoney + "</div></div>");
 		out.flush();
 		out.close();
 	}

@@ -1,8 +1,8 @@
 /**
- *  ÎÄ¼ş£ºqueryProduct.java
- *  ËµÃ÷£ºÊµÏÖ²éÑ¯¼°¸ß¼¶²éÑ¯
- *  Ê±¼ä£º08-05-20
- *  ±àĞ´£ºTarena
+ *  æ–‡ä»¶ï¼šqueryProduct.java
+ *  è¯´æ˜ï¼šå®ç°æŸ¥è¯¢åŠé«˜çº§æŸ¥è¯¢
+ *  æ—¶é—´ï¼š08-05-20
+ *  ç¼–å†™ï¼šTarena
  */
 package tags.pageui;
 import javax.servlet.jsp.JspException;
@@ -35,12 +35,12 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 	private String pDiscount1,pDiscount2;
 	
 	/**
-	 * Ò»Ğ©Ô¼¶¨£º
-	 * pageResult:Ã¿Ò³ÏÔÊ¾µÄ¼ÇÂ¼ÌõÊı,Ä¬ÈÏ10
-	 * currPage:µ±Ç°Ò³,Ä¬ÈÏ1
-	 * totalPage:È«²¿µÄÒ³Êı
-	 * totalResult:×Ü¼ÇÂ¼Êı
-	 * urlAddress:ÏÔÊ¾·ÖÒ³Ê±Á¬½ÓµÄÒ³Ãæ
+	 * ä¸€äº›çº¦å®šï¼š
+	 * pageResult:æ¯é¡µæ˜¾ç¤ºçš„è®°å½•æ¡æ•°,é»˜è®¤10
+	 * currPage:å½“å‰é¡µ,é»˜è®¤1
+	 * totalPage:å…¨éƒ¨çš„é¡µæ•°
+	 * totalResult:æ€»è®°å½•æ•°
+	 * urlAddress:æ˜¾ç¤ºåˆ†é¡µæ—¶è¿æ¥çš„é¡µé¢
 	 */
 	private int pageResult=3;
 	private int currPage = 1;
@@ -60,19 +60,19 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 			//response.setContentType("text/html;charset=gb2312");
 			JspWriter out=pageContext.getOut();
 			
-			//querytype   	²éÑ¯ÀàĞÍ  0  ¸ù¾İÉÌÆ·Ãû²éÑ¯   1  ÏêÏ¸²éÑ¯
-			//productype	²éÑ¯µÄÉÌÆ·Àà±ğ
-			//querycondition²éÑ¯Ìõ¼ş//		pname	ÉÌÆ·Ãû³Æ
-			//ÆäËû			¸ù¾İ²»Í¬ÀàĞÍµÄ²éÑ¯×Ö¶ÎÓëÊı¾İ±í×Ö¶ÎÍ¬
-			//pdate	ÉÌÆ·Éú²úÈÕÆÚ --
-			//pprice	ÉÌÆ·¼Û¸ñ --
-			//pdiscount	ÕÛ¿ÛÂÊ 0-100
-			//ptypeid	ÉÌÆ·Àà±ğ
-			//Ò³Êı
+			//querytype   	æŸ¥è¯¢ç±»å‹  0  æ ¹æ®å•†å“åæŸ¥è¯¢   1  è¯¦ç»†æŸ¥è¯¢
+			//productype	æŸ¥è¯¢çš„å•†å“ç±»åˆ«
+			//queryconditionæŸ¥è¯¢æ¡ä»¶//		pname	å•†å“åç§°
+			//å…¶ä»–			æ ¹æ®ä¸åŒç±»å‹çš„æŸ¥è¯¢å­—æ®µä¸æ•°æ®è¡¨å­—æ®µåŒ
+			//pdate	å•†å“ç”Ÿäº§æ—¥æœŸ --
+			//pprice	å•†å“ä»·æ ¼ --
+			//pdiscount	æŠ˜æ‰£ç‡ 0-100
+			//ptypeid	å•†å“ç±»åˆ«
+			//é¡µæ•°
 			page = request.getParameter("page");
 			queryType = request.getParameter("querytype");
 			productType = request.getParameter("productype");
-			queryCondition = request.getParameter("querycondition");//ÓĞ¿ÉÄÜ³öÏÖºº×Ö£¬ĞèÒª½âÂë¡£
+			queryCondition = request.getParameter("querycondition");//æœ‰å¯èƒ½å‡ºç°æ±‰å­—ï¼Œéœ€è¦è§£ç ã€‚
 			
 			pDate1 = request.getParameter("pdate1");
 			pDate2 = request.getParameter("pdate2");
@@ -80,13 +80,13 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 			pPrice2 = request.getParameter("price2");
 			pDiscount1 = request.getParameter("pdiscount1");
 			pDiscount2 = request.getParameter("pdiscount2");
-			//ÅĞ¶¨¸÷²éÑ¯Ìõ¼şÏîÊÇ·ñÊäÈë
+			//åˆ¤å®šå„æŸ¥è¯¢æ¡ä»¶é¡¹æ˜¯å¦è¾“å…¥
 			if(queryType!=null && queryType.equals(""))
 				queryType = null;
-			//Èç¹ûÃ»ÓĞÊäÈë¿ªÊ¼ÈÕÆÚ£¬Ôò´Ó1970-01-01¿ªÊ¼ËãÆğ.
+			//å¦‚æœæ²¡æœ‰è¾“å…¥å¼€å§‹æ—¥æœŸï¼Œåˆ™ä»1970-01-01å¼€å§‹ç®—èµ·.
 			if(pDate1==null || pDate1.equals(""))
 				pDate1 =  null;
-			//Èç¹ûÃ»ÓĞÊäÈë½áÊøÈÕÆÚ£¬ÔòÉÌÆ·ÈÕÆÚ²éÑ¯µ½µ±Ç°ÈÕÆÚÎª×¼¡£
+			//å¦‚æœæ²¡æœ‰è¾“å…¥ç»“æŸæ—¥æœŸï¼Œåˆ™å•†å“æ—¥æœŸæŸ¥è¯¢åˆ°å½“å‰æ—¥æœŸä¸ºå‡†ã€‚
 			if(pDate2==null || pDate2.equals(""))
 				pDate2 =null;			
 			if(pPrice1!=null && pPrice1.equals(""))
@@ -105,10 +105,10 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 				queryCondition=null;
 			}
 			//else{
-			if(queryCondition != null && !queryCondition.equals("")){//½âÂë
+			if(queryCondition != null && !queryCondition.equals("")){//è§£ç 
 				queryCondition=new String(queryCondition.getBytes("iso-8859-1"),"gb2312");
 			}
-			//¹¹½¨²éÑ¯Óï¾äÓëÏÔÊ¾·ÖÒ³Ê±²éÑ¯µÄÁ¬½ÓµØÖ·
+			//æ„å»ºæŸ¥è¯¢è¯­å¥ä¸æ˜¾ç¤ºåˆ†é¡µæ—¶æŸ¥è¯¢çš„è¿æ¥åœ°å€
 			String urlAddress ="query.jsp";
 			String[] sql = returnQuerySQL(1);
 			urlAddress += sql[1];
@@ -117,16 +117,16 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 			if(rss.next()){
 				totalResult = rss.getInt("total");
 				totalPage = totalResult%pageResult==0?totalResult/pageResult:totalResult/pageResult+1;
-				//ÊäÈëµÄÒ³Êı´óÓÚ×ÜÒ³ÊıÊ±,ÏÔÊ¾µÚ1Ò³
+				//è¾“å…¥çš„é¡µæ•°å¤§äºæ€»é¡µæ•°æ—¶,æ˜¾ç¤ºç¬¬1é¡µ
 				if(currPage>totalPage)
 					currPage = 1;
 				sql = returnQuerySQL(2);
-				//System.out.println("²éÑ¯£Ó£Ñ£Ì£º"+sql[0]);				
+				//System.out.println("æŸ¥è¯¢ï¼³ï¼±ï¼¬ï¼š"+sql[0]);				
 				ResultSet rs = dataAccess.queryBySQL(sql[0]);
 				out.println("<div style='overflow:auto;height:350px;'>");
 				out.println("<table>");
 				if(totalResult == 0){
-					out.println("<tr><td height='20' align='center' valign='middle'>ÔİÎŞ·ûºÏÄú²éÑ¯µÄÉÌÆ·!</td></tr>");
+					out.println("<tr><td height='20' align='center' valign='middle'>æš‚æ— ç¬¦åˆæ‚¨æŸ¥è¯¢çš„å•†å“!</td></tr>");
 				}
 				while(rs.next()){
 					int id=rs.getInt("pid");
@@ -137,30 +137,30 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 					out.println("<table width='100%' height='100%' border='0'>");
 					out.println("<tr>");
 					out.println("<td width='156' rowspan='4'><img src='displaypphoto.do?pid="+rs.getInt(1)+"' width='70' height='90' border='0'/></td>");
-					out.println("<td width='76' height='25'>²úÆ·id£º</td>");
+					out.println("<td width='76' height='25'>äº§å“idï¼š</td>");
 					out.println("<td width='169'>"+id+"</td>");
-					out.println("<td width='57'>²úÆ·Ãû£º</td>");
+					out.println("<td width='57'>äº§å“åï¼š</td>");
 					out.println("<td width='192'>"+rs.getString("pname"));
 					out.println("</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td height='25'>³ö³§ÈÕÆÚ£º</td>");
+					out.println("<td height='25'>å‡ºå‚æ—¥æœŸï¼š</td>");
 					out.println("<td>"+date+"</td>");
-					out.println("<td>¿â´æ£º</td>");
+					out.println("<td>åº“å­˜ï¼š</td>");
 					out.println("<td>"+rs.getInt("pamount")+"</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td height='25'>µ¥¼Û£º</td>");
+					out.println("<td height='25'>å•ä»·ï¼š</td>");
 					out.println("<td>"+rs.getDouble("pprice")+"</td>");
-					out.println("<td>ÉÌÆ·±¸×¢:</td>");
+					out.println("<td>å•†å“å¤‡æ³¨:</td>");
 					out.println("<td>"+rs.getString("pnotes")+"</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td>ÏêÏ¸ÃèÊö£º</td>");
+					out.println("<td>è¯¦ç»†æè¿°ï¼š</td>");
 					out.println("<td colspan='2'>"+rs.getString("pdescription")+"</td>");
 					//out.println("</tr>");
 					//out.println("<tr>");
-					out.println("<td><button class='bstyle' onclick=\"ShopCarts("+id+",1);\" />¼ÓÈë¹ºÎï³µ</button></td>");
+					out.println("<td><button class='bstyle' onclick=\"ShopCarts("+id+",1);\" />åŠ å…¥è´­ç‰©è½¦</button></td>");
 					out.println("</tr>");
 					out.println("<hr color='white' style='width:576px;'>");
 					out.println("</table>");
@@ -170,11 +170,11 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 				out.println("</table>");
 				
 				out.println("</div>");
-				//µ÷ÓÃÏÔÊ¾·ÖÒ³
+				//è°ƒç”¨æ˜¾ç¤ºåˆ†é¡µ
 				out.println("<hr color='blue' style='width:576px;'>");
 				ShowPage.printPage(out, currPage, totalPage, urlAddress);
 			}else{
-				CommonTools.Error(request,response,session,"·¢Éú´íÎó,ÇëÁªÏµ¹ÜÀíÔ±!");
+				CommonTools.Error(request,response,session,"å‘ç”Ÿé”™è¯¯,è¯·è”ç³»ç®¡ç†å‘˜!");
 				return super.doEndTag();
 			}
 
@@ -185,9 +185,9 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 		}
 		return super.doEndTag();
 	}
-	//¸ù¾İ²éÑ¯Ìõ¼şÉú³É²éÑ¯SQLÓï¾äÓë·ÖÒ³²éÑ¯µÄÁ¬½ÓµØÖ·¡£
+	//æ ¹æ®æŸ¥è¯¢æ¡ä»¶ç”ŸæˆæŸ¥è¯¢SQLè¯­å¥ä¸åˆ†é¡µæŸ¥è¯¢çš„è¿æ¥åœ°å€ã€‚
 	private String[] returnQuerySQL(int n){
-		//²éÑ¯ÀàĞÍ£¬1ÎªÍ³¼Æ²éÑ¯£¬2ÎªÏêÏ¸²éÑ¯¡£
+		//æŸ¥è¯¢ç±»å‹ï¼Œ1ä¸ºç»Ÿè®¡æŸ¥è¯¢ï¼Œ2ä¸ºè¯¦ç»†æŸ¥è¯¢ã€‚
 		String sql = "";
 		String urlAddress = "?";
 		if(n==1)
@@ -202,127 +202,127 @@ public class AdvancedQueryResultTag extends BodyTagSupport {
 			urlAddress += "querycondition=";
 			sql += TableInfo.PROT_pname+" like '%%' ";
 		}
-		//queryType²éÑ¯ÀàĞÍ·Ö£º¸ß¼¶²éÑ¯Óë¼òµ¥²éÑ¯
-		//1Îª¸ß¼¶²éÑ¯£¬0£¬»ò¿ÕÎª¼òµ¥²éÑ¯
+		//queryTypeæŸ¥è¯¢ç±»å‹åˆ†ï¼šé«˜çº§æŸ¥è¯¢ä¸ç®€å•æŸ¥è¯¢
+		//1ä¸ºé«˜çº§æŸ¥è¯¢ï¼Œ0ï¼Œæˆ–ç©ºä¸ºç®€å•æŸ¥è¯¢
 		if(queryType!=null && queryType.equals("1")){
 			urlAddress += "&querytype="+queryType;
 			
-			//½»Ò×ÈÕÆÚ
+			//äº¤æ˜“æ—¥æœŸ
 			if(pDate1!=null){
-				//ÊÇ·ñÊÇÈÕÆÚ£¿
+				//æ˜¯å¦æ˜¯æ—¥æœŸï¼Ÿ
 				try{
 					new SimpleDateFormat("yyyy-MM-dd").parse(pDate1);
-					//ÊÇÈÕÆÚ
+					//æ˜¯æ—¥æœŸ
 					urlAddress += "&pdate1="+pDate1;
 					sql += " and "+TableInfo.PROT_pdate+" >='"+pDate1+"' ";
 				}
 				catch(Exception err){
-					//²»ÊÇÈÕÆÚ
-					CommonTools.Error(request,response,session,"ÇëÈ·±£ÊäÈëµÄÉÌÆ·Éú²úÈÕÆÚ¿ªÊ¼·¶Î§µÄÕıÈ·,¸ñÊ½(yyyy-MM-dd)!");
+					//ä¸æ˜¯æ—¥æœŸ
+					CommonTools.Error(request,response,session,"è¯·ç¡®ä¿è¾“å…¥çš„å•†å“ç”Ÿäº§æ—¥æœŸå¼€å§‹èŒƒå›´çš„æ­£ç¡®,æ ¼å¼(yyyy-MM-dd)!");
 				}
 			}
 			else{
-				//Ã»ÓĞÊäÈëÈÕÆÚ,Ôò´Ó1970-01-01¿ªÊ¼²éÑ¯
+				//æ²¡æœ‰è¾“å…¥æ—¥æœŸ,åˆ™ä»1970-01-01å¼€å§‹æŸ¥è¯¢
 				sql += " and "+TableInfo.PROT_pdate+" >='1970-01-01' ";
 			}
 			
 			if(pDate2!=null){
-				//ÊÇ·ñÊÇÈÕÆÚ
+				//æ˜¯å¦æ˜¯æ—¥æœŸ
 				try{
-					//ÊÇÈÕÆÚ£¬¾ÍÕı³£²éÑ¯¡£
-					urlAddress += "&pdate£²="+pDate2;
+					//æ˜¯æ—¥æœŸï¼Œå°±æ­£å¸¸æŸ¥è¯¢ã€‚
+					urlAddress += "&pdateï¼’="+pDate2;
 					sql += " and "+TableInfo.PROT_pdate+" <='"+pDate2+"' ";
 				}catch(Exception err){
-					//²»ÊÇÈÕÆÚ£¬ÔòÌø×ª¡£
-					CommonTools.Error(request,response,session,"ÇëÈ·±£ÊäÈëµÄÉÌÆ·Éú²úÈÕÆÚ½áÊø·¶Î§µÄÕıÈ·,¸ñÊ½(yyyy-MM-dd)!");
+					//ä¸æ˜¯æ—¥æœŸï¼Œåˆ™è·³è½¬ã€‚
+					CommonTools.Error(request,response,session,"è¯·ç¡®ä¿è¾“å…¥çš„å•†å“ç”Ÿäº§æ—¥æœŸç»“æŸèŒƒå›´çš„æ­£ç¡®,æ ¼å¼(yyyy-MM-dd)!");
 				}
 			}
 			else{
-				//Ã»ÓĞÊäÈëÈÕÆÚ,½áÊøÈÕÆÚÒÔµ±Ç°ÈÕÆÚÎª½áÊøÈÕÆÚ¡£
+				//æ²¡æœ‰è¾“å…¥æ—¥æœŸ,ç»“æŸæ—¥æœŸä»¥å½“å‰æ—¥æœŸä¸ºç»“æŸæ—¥æœŸã€‚
 				sql += " and "+TableInfo.PROT_pdate+" <='"+new SimpleDateFormat("yyyy-MM-dd").format(new Date())+"' ";
 			}
 			
 			
 			
-			//¼Û¸ñ·¶Î§,¿¼ÂÇÖ»ÊäÈëÒ»¸öµÄÇé¿öºÍ2¸ö¶¼ÊäÈëµÄÇé¿ö	
-			//×îĞ¡¼Û¸ñµÄ¿¼ÂÇ
+			//ä»·æ ¼èŒƒå›´,è€ƒè™‘åªè¾“å…¥ä¸€ä¸ªçš„æƒ…å†µå’Œ2ä¸ªéƒ½è¾“å…¥çš„æƒ…å†µ	
+			//æœ€å°ä»·æ ¼çš„è€ƒè™‘
 			if(pPrice1!=null){
-				//ÊÇ·ñÊÇ·ñµãÊé
+				//æ˜¯å¦æ˜¯å¦ç‚¹ä¹¦
 				try{
-					//ÊÇ¸¡µãÊı¡£
+					//æ˜¯æµ®ç‚¹æ•°ã€‚
 					Double.parseDouble(pPrice1);
 					urlAddress += "&price1="+pPrice1;
 					sql += " and "+TableInfo.PROT_pprice+" >= "+pPrice1+" ";
 				}
 				catch(Exception err){
-					//²»ÊÇ¸¡µãÊıÔòÌø×ª
-					CommonTools.Error(request,response,session,"ÇëÈ·±£ÊäÈëµÄÉÌÆ·½ğ¶î¿ªÊ¼·¶Î§ÕıÈ·!");
+					//ä¸æ˜¯æµ®ç‚¹æ•°åˆ™è·³è½¬
+					CommonTools.Error(request,response,session,"è¯·ç¡®ä¿è¾“å…¥çš„å•†å“é‡‘é¢å¼€å§‹èŒƒå›´æ­£ç¡®!");
 				}
 			}
 			else{
-				//Ã»ÓĞÊäÈë×îĞ¡½»¸î£¬ÒÔ£°×÷Îª×îĞ¡¼Û¸ñ
-				sql += " and "+TableInfo.PROT_pprice+" >=0 ";//ÆäÊµ¿ÉÒÔÈ¡ÏûµÄ.
+				//æ²¡æœ‰è¾“å…¥æœ€å°äº¤å‰²ï¼Œä»¥ï¼ä½œä¸ºæœ€å°ä»·æ ¼
+				sql += " and "+TableInfo.PROT_pprice+" >=0 ";//å…¶å®å¯ä»¥å–æ¶ˆçš„.
 			}
-			//×î´ó¼Û¸ñµÄ¿¼ÂÇ
+			//æœ€å¤§ä»·æ ¼çš„è€ƒè™‘
 			if(pPrice2!=null){
-				//ÊÇ·ñÊÇ·ñµãÊé
+				//æ˜¯å¦æ˜¯å¦ç‚¹ä¹¦
 				try{
-					//ÊÇ¸¡µãÊı¡£
+					//æ˜¯æµ®ç‚¹æ•°ã€‚
 					Double.parseDouble(pPrice2);
 					urlAddress += "&price2="+pPrice2;
 					sql += " and "+TableInfo.PROT_pprice+" <= "+pPrice2+" ";
 				}
 				catch(Exception err){
-					//²»ÊÇ¸¡µãÊıÔòÌø×ª
-					CommonTools.Error(request,response,session,"ÇëÈ·±£ÊäÈëµÄÉÌÆ·½ğ¶î½áÊø·¶Î§ÕıÈ·!");
+					//ä¸æ˜¯æµ®ç‚¹æ•°åˆ™è·³è½¬
+					CommonTools.Error(request,response,session,"è¯·ç¡®ä¿è¾“å…¥çš„å•†å“é‡‘é¢ç»“æŸèŒƒå›´æ­£ç¡®!");
 				}
 			}
 			else{
-				//Ã»ÓĞÊäÈë×îĞ¡½»¸î£¬ÒÔ£°×÷Îª×îĞ¡¼Û¸ñ
-				//sql += " and "+TableInfo.PROT_pprice+" <=??? ";//ÆäÊµ¿ÉÒÔÈ¡ÏûµÄ.
+				//æ²¡æœ‰è¾“å…¥æœ€å°äº¤å‰²ï¼Œä»¥ï¼ä½œä¸ºæœ€å°ä»·æ ¼
+				//sql += " and "+TableInfo.PROT_pprice+" <=??? ";//å…¶å®å¯ä»¥å–æ¶ˆçš„.
 			}
 			
-			//×îĞ¡ÕÛ¿ÛÂÊ
+			//æœ€å°æŠ˜æ‰£ç‡
 			if(pDiscount1!=null){
-				//ÊÇ·ñÊÇÕûÊı£¬ÕâÀïÒªÇóÕÛ¿ÛÂÊÎª0-100µÄÕûÊı,¿ÉÒÔ¿¼ÂÇÓÃ»§ÊäÈëµÄÊÇ0-1µÄĞ¡Êı¡£ÆäËû½á¹¹²»¸Ä±ä
+				//æ˜¯å¦æ˜¯æ•´æ•°ï¼Œè¿™é‡Œè¦æ±‚æŠ˜æ‰£ç‡ä¸º0-100çš„æ•´æ•°,å¯ä»¥è€ƒè™‘ç”¨æˆ·è¾“å…¥çš„æ˜¯0-1çš„å°æ•°ã€‚å…¶ä»–ç»“æ„ä¸æ”¹å˜
 				try{
 					Integer.parseInt(pDiscount1);
 					urlAddress +="&pdiscount1="+pDiscount1;
 					sql += " and "+TableInfo.PROT_pdiscount+" <= "+pDiscount1+" ";
 				}
 				catch(Exception err){
-					//²»ÊÇ¸¡µãÊı
-					CommonTools.Error(request,response,session,"ÇëÈ·±£ÊäÈëµÄÕÛ¿ÛÂÊ¿ªÊ¼·¶Î§ÕıÈ·!(0-100)");
+					//ä¸æ˜¯æµ®ç‚¹æ•°
+					CommonTools.Error(request,response,session,"è¯·ç¡®ä¿è¾“å…¥çš„æŠ˜æ‰£ç‡å¼€å§‹èŒƒå›´æ­£ç¡®!(0-100)");
 				}
 			}
 			else{
-				//Ã»ÓĞÊäÈëÕÛ¿ÛÂÊ£¬Ôò²»×÷Îª²éÑ¯Ìõ¼ş
+				//æ²¡æœ‰è¾“å…¥æŠ˜æ‰£ç‡ï¼Œåˆ™ä¸ä½œä¸ºæŸ¥è¯¢æ¡ä»¶
 			}
-			//×î´óÕÛ¿ÛÂÊ
+			//æœ€å¤§æŠ˜æ‰£ç‡
 			if(pDiscount2!=null){
-				//ÊÇ·ñÊÇÕûÊı£¬ÕâÀïÒªÇóÕÛ¿ÛÂÊÎª0-100µÄÕûÊı,¿ÉÒÔ¿¼ÂÇÓÃ»§ÊäÈëµÄÊÇ0-1µÄĞ¡Êı¡£ÆäËû½á¹¹²»¸Ä±ä
+				//æ˜¯å¦æ˜¯æ•´æ•°ï¼Œè¿™é‡Œè¦æ±‚æŠ˜æ‰£ç‡ä¸º0-100çš„æ•´æ•°,å¯ä»¥è€ƒè™‘ç”¨æˆ·è¾“å…¥çš„æ˜¯0-1çš„å°æ•°ã€‚å…¶ä»–ç»“æ„ä¸æ”¹å˜
 				try{
 					Integer.parseInt(pDiscount2);
 					urlAddress +="&pdiscount2="+pDiscount2;
 					sql += " and "+TableInfo.PROT_pdiscount+" <= "+pDiscount2+" ";
 				}
 				catch(Exception err){
-					//²»ÊÇ¸¡µãÊı
-					CommonTools.Error(request,response,session,"ÇëÈ·±£ÊäÈëµÄÕÛ¿ÛÂÊ¿ªÊ¼·¶Î§ÕıÈ·!(0-100)");
+					//ä¸æ˜¯æµ®ç‚¹æ•°
+					CommonTools.Error(request,response,session,"è¯·ç¡®ä¿è¾“å…¥çš„æŠ˜æ‰£ç‡å¼€å§‹èŒƒå›´æ­£ç¡®!(0-100)");
 				}
 			}
 			else{
-				//Ã»ÓĞÊäÈëÕÛ¿ÛÂÊ£¬Ôò²»×÷Îª²éÑ¯Ìõ¼ş
+				//æ²¡æœ‰è¾“å…¥æŠ˜æ‰£ç‡ï¼Œåˆ™ä¸ä½œä¸ºæŸ¥è¯¢æ¡ä»¶
 			}
 			
 			
 		}
-		//ÉÌÆ·Àà±ğ
+		//å•†å“ç±»åˆ«
 		if(productType!=null){
 			int typeid = CommonTools.StringToInt(productType);
 			if(typeid==-1)
-				CommonTools.Error(request, response, session,"ÇëÈ·±£ÊäÈëµÄÉÌÆ·Àà±ğÕıÈ·!");
-			//Ô¼¶¨999ÎªËùÓĞÉÌÆ·ÀàĞÍ
+				CommonTools.Error(request, response, session,"è¯·ç¡®ä¿è¾“å…¥çš„å•†å“ç±»åˆ«æ­£ç¡®!");
+			//çº¦å®š999ä¸ºæ‰€æœ‰å•†å“ç±»å‹
 			if(typeid!=999){
 				urlAddress += "&productype="+productType;
 				sql += " and "+TableInfo.PROT_ptypeid+"="+typeid;

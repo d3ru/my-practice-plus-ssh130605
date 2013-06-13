@@ -1,12 +1,10 @@
 /**
- * ÎÄ¼ş£ºTableInfo.java
- * ËµÃ÷£º¶¨ÒåÕâĞ©¾²Ì¬±äÁ¿---±íÃûºÍ±í×Ö¶ÎÃû£¬ÔÚ·ÃÎÊÊı¾İ¿âÊ±Ê¹ÓÃ
- * Ê±¼ä£º2008-08-16
- * ±àĞ´£ºtarena
+ * æ–‡ä»¶ï¼šTableInfo.java è¯´æ˜ï¼šå®šä¹‰è¿™äº›é™æ€å˜é‡---è¡¨åå’Œè¡¨å­—æ®µåï¼Œåœ¨è®¿é—®æ•°æ®åº“æ—¶ä½¿ç”¨ æ—¶é—´ï¼š2008-08-16 ç¼–å†™ï¼štarena
  */
 package global;
 
-public class TableInfo {
+public class TableInfo
+{
 
 	public static final String TABLE_Products = "Products";
 	public static final String PROT_pid = "pid";
@@ -20,7 +18,7 @@ public class TableInfo {
 	public static final String PROT_pprority = "pprority";
 	public static final String PROT_pdiscount = "pdiscount";
 	public static final String PROT_ptypeid = "ptypeid";
-	
+
 	public static final String TABLE_UserInfo = "UserInfo";
 	public static final String USER_umail = "umail";
 	public static final String USER_uid = "uid";
@@ -30,12 +28,12 @@ public class TableInfo {
 	public static final String USER_utele = "utele";
 	public static final String USER_umobile = "umobile";
 	public static final String USER_uzip = "uzip";
-	
+
 	public static final String TABLE_ProductType = "ProductType";
 	public static final String TYPE_ptid = "ptid";
 	public static final String TYPE_ptname = "ptname";
 	public static final String TYPE_ptnote = "ptnote";
-	
+
 	public static final String TABLE_Transactions = "Transactions";
 	public static final String TRAN_tid = "tid";
 	public static final String TRAN_tuid = "tuid";
@@ -46,9 +44,8 @@ public class TableInfo {
 	public static final String TRAN_tshipdate = "tshipdate";
 	public static final String TRAN_tshiptime = "tshiptime";
 	public static final String TRAN_tamount = "tamount";
-	
-	public static final String SC_User="sc_user";
-	public static final String SC_Error="sc_error";
-	
-	
+
+	public static final String SC_User = "sc_user";
+	public static final String SC_Error = "sc_error";
+
 }

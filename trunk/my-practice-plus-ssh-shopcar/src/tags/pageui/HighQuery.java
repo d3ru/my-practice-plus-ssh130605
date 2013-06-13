@@ -20,10 +20,10 @@ public class HighQuery extends BodyTagSupport {
 	public int doEndTag() throws JspException {
 		ServletRequest request=pageContext.getRequest();
 		// TODO Auto-generated method stub
-		//»ñÈ¡Ô­À´ÊÇ·ñ´æÔÚµÄ²éÑ¯Ìõ¼ş
+		//è·å–åŸæ¥æ˜¯å¦å­˜åœ¨çš„æŸ¥è¯¢æ¡ä»¶
 		String queryType = request.getParameter("querytype");
 		String productType = request.getParameter("productype");
-		String queryCondition = request.getParameter("querycondition");//ÓĞ¿ÉÄÜ³öÏÖºº×Ö£¬ĞèÒª½âÂë¡£
+		String queryCondition = request.getParameter("querycondition");//æœ‰å¯èƒ½å‡ºç°æ±‰å­—ï¼Œéœ€è¦è§£ç ã€‚
 		
 		String pDate1 = request.getParameter("pdate1");
 		String pDate2 = request.getParameter("pdate2");
@@ -51,11 +51,11 @@ public class HighQuery extends BodyTagSupport {
 		
 		JspWriter out=pageContext.getOut();
 		try {
-			out.println("<label style='text-align:center; font-weight:bold'>ÉÌÆ·¸ß¼¶ËÑË÷</label>");  
+			out.println("<label style='text-align:center; font-weight:bold'>å•†å“é«˜çº§æœç´¢</label>");  
 			out.println("</label><br>");
-			out.println("<label>ÉÌÆ·Ãû³Æ:&nbsp;&nbsp;<input name='querycondition' style='width:116px;' type='text' value='"+queryCondition+"'/>");  
+			out.println("<label>å•†å“åç§°:&nbsp;&nbsp;<input name='querycondition' style='width:116px;' type='text' value='"+queryCondition+"'/>");  
 			out.println("</label><br>");
-			out.println("<label>ÉÌÆ·ÀàĞÍ:");
+			out.println("<label>å•†å“ç±»å‹:");
 			out.println("&nbsp;<select name='productype' style='width:116px;'>");
 			String sql="select * from "+TableInfo.TABLE_ProductType;
 			IDataAccess ida=DataAccessImpl.newInstance();
@@ -76,16 +76,16 @@ public class HighQuery extends BodyTagSupport {
 			}
 			out.println("</select>");
 			out.println("</label><br>");
-			out.println("<label>Éú²úÈÕÆÚ:&nbsp;&nbsp;<input name='pdate1' type='text' style='width:48px;' value='"+pDate1+"'/> -");
+			out.println("<label>ç”Ÿäº§æ—¥æœŸ:&nbsp;&nbsp;<input name='pdate1' type='text' style='width:48px;' value='"+pDate1+"'/> -");
 			out.println("<input name='pdate2' type='text' style='width:50px;' value='"+pDate2+"'/>");
 			out.println("</label><br>");
-			out.println("<label>¼Û¸ñ·¶Î§:&nbsp;&nbsp;<input name='price1' type='text' style='width:48px;' value='"+pPrice1+"'/> -");
+			out.println("<label>ä»·æ ¼èŒƒå›´:&nbsp;&nbsp;<input name='price1' type='text' style='width:48px;' value='"+pPrice1+"'/> -");
 			out.println("<input name='price2' type='text' style='width:50px;' value='"+pPrice2+"'/></label><br>");
-			out.println("<label>ÕÛ&nbsp;¿Û&nbsp;ÂÊ:&nbsp;&nbsp;<input name='pdiscount1' type='text'  style='width:48px;' value='"+pDiscount1+"'/> -");
+			out.println("<label>æŠ˜&nbsp;æ‰£&nbsp;ç‡:&nbsp;&nbsp;<input name='pdiscount1' type='text'  style='width:48px;' value='"+pDiscount1+"'/> -");
 			out.println("<input name='pdiscount2' type='text' style='width:50px;' value='"+pDiscount2+"'/>");
 			out.println("</label><br/><br/>");  
-			out.println("<label>&nbsp;&nbsp;&nbsp;<input type='hidden' name='querytype'  value='1'/><input type='button' onclick='highquery();' value='Ìá½»' />");
-			out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='reset' name='Submit3' value='ÖØÖÃ' /></label>");
+			out.println("<label>&nbsp;&nbsp;&nbsp;<input type='hidden' name='querytype'  value='1'/><input type='button' onclick='highquery();' value='æäº¤' />");
+			out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='reset' name='Submit3' value='é‡ç½®' /></label>");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

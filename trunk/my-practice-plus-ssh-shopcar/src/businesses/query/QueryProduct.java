@@ -1,5 +1,5 @@
 /**
- * ÎÄ¼ş£ºqueryProduct.java ËµÃ÷£ºÊµÏÖ²éÑ¯¼°¸ß¼¶²éÑ¯ Ê±¼ä£º08-05-20 ±àĞ´£ºtarena
+ * æ–‡ä»¶ï¼šqueryProduct.java è¯´æ˜ï¼šå®ç°æŸ¥è¯¢åŠé«˜çº§æŸ¥è¯¢ æ—¶é—´ï¼š08-05-20 ç¼–å†™ï¼štarena
  */
 package businesses.query;
 
@@ -45,7 +45,7 @@ public class QueryProduct extends HttpServlet
 	private String pDiscount;
 
 	/**
-	 * Ò»Ğ©Ô¼¶¨£º pageResult:Ã¿Ò³ÏÔÊ¾µÄ¼ÇÂ¼ÌõÊı,Ä¬ÈÏ10 currPage:µ±Ç°Ò³,Ä¬ÈÏ1 totalPage:È«²¿µÄÒ³Êı totalResult:×Ü¼ÇÂ¼Êı urlAddress:ÏÔÊ¾·ÖÒ³Ê±Á¬½ÓµÄÒ³Ãæ
+	 * ä¸€äº›çº¦å®šï¼š pageResult:æ¯é¡µæ˜¾ç¤ºçš„è®°å½•æ¡æ•°,é»˜è®¤10 currPage:å½“å‰é¡µ,é»˜è®¤1 totalPage:å…¨éƒ¨çš„é¡µæ•° totalResult:æ€»è®°å½•æ•° urlAddress:æ˜¾ç¤ºåˆ†é¡µæ—¶è¿æ¥çš„é¡µé¢
 	 */
 	private final int pageResult = 1;
 	private int currPage = 1;
@@ -70,15 +70,15 @@ public class QueryProduct extends HttpServlet
 			response.setContentType("text/html;charset=gb2312");
 			PrintWriter out = response.getWriter();
 
-			// querytype ²éÑ¯ÀàĞÍ 0 ¸ù¾İÉÌÆ·Ãû²éÑ¯ 1 ÏêÏ¸²éÑ¯
-			// productype ²éÑ¯µÄÉÌÆ·Àà±ğ
-			// querycondition²éÑ¯Ìõ¼ş// pname ÉÌÆ·Ãû³Æ
-			// ÆäËû ¸ù¾İ²»Í¬ÀàĞÍµÄ²éÑ¯×Ö¶ÎÓëÊı¾İ±í×Ö¶ÎÍ¬
-			// pdate ÉÌÆ·Éú²úÈÕÆÚ --
-			// pprice ÉÌÆ·¼Û¸ñ --
-			// pdiscount ÕÛ¿ÛÂÊ 0-100
-			// ptypeid ÉÌÆ·Àà±ğ
-			// Ò³Êı
+			// querytype æŸ¥è¯¢ç±»å‹ 0 æ ¹æ®å•†å“åæŸ¥è¯¢ 1 è¯¦ç»†æŸ¥è¯¢
+			// productype æŸ¥è¯¢çš„å•†å“ç±»åˆ«
+			// queryconditionæŸ¥è¯¢æ¡ä»¶// pname å•†å“åç§°
+			// å…¶ä»– æ ¹æ®ä¸åŒç±»å‹çš„æŸ¥è¯¢å­—æ®µä¸æ•°æ®è¡¨å­—æ®µåŒ
+			// pdate å•†å“ç”Ÿäº§æ—¥æœŸ --
+			// pprice å•†å“ä»·æ ¼ --
+			// pdiscount æŠ˜æ‰£ç‡ 0-100
+			// ptypeid å•†å“ç±»åˆ«
+			// é¡µæ•°
 			page = request.getParameter("page");
 			queryType = request.getParameter("querytype");
 			productType = request.getParameter("productype");
@@ -104,14 +104,14 @@ public class QueryProduct extends HttpServlet
 
 			if (queryCondition == null || (queryCondition != null && queryCondition.equals("")))
 			{
-				CommonTools.Error(request, response, session, "ÇëÊäÈë²éÑ¯¹Ø¼ü×Ö!");
+				CommonTools.Error(request, response, session, "è¯·è¾“å…¥æŸ¥è¯¢å…³é”®å­—!");
 				return;
 			}
 			else
 			{
 				queryCondition = new String(queryCondition.getBytes("iso-8859-1"), "gb2312");
 			}
-			// ¹¹½¨²éÑ¯Óï¾äÓëÏÔÊ¾·ÖÒ³Ê±²éÑ¯µÄÁ¬½ÓµØÖ·
+			// æ„å»ºæŸ¥è¯¢è¯­å¥ä¸æ˜¾ç¤ºåˆ†é¡µæ—¶æŸ¥è¯¢çš„è¿æ¥åœ°å€
 			String urlAddress = "query.jsp";
 			String[] sql = returnQuerySQL(1);
 			urlAddress += sql[1];
@@ -120,32 +120,32 @@ public class QueryProduct extends HttpServlet
 			{
 				totalResult = rss.getInt("total");
 				totalPage = totalResult % pageResult == 0 ? totalResult / pageResult : totalResult / pageResult + 1;
-				// ÊäÈëµÄÒ³Êı´óÓÚ×ÜÒ³ÊıÊ±,ÏÔÊ¾µÚ1Ò³
+				// è¾“å…¥çš„é¡µæ•°å¤§äºæ€»é¡µæ•°æ—¶,æ˜¾ç¤ºç¬¬1é¡µ
 				if (currPage > totalPage)
 					currPage = 1;
 				sql = returnQuerySQL(2);
 				ResultSet rs = dataAccess.queryBySQL(sql[0]);
 				// out.println("<table width='90%' border='1' cellspacing='0' cellpadding='0' style='font-size:12px'>");
 				// out.println("<tr>");
-				// out.println("<td width='5%' height='24' align='center' valign='middle'>ÉÌÆ·id</td>");
-				// out.println("<td width='20%' align='center' valign='middle'>ÉÌÆ·Ãû³Æ</td>");
-				// out.println("<td width='10%' align='center' valign='middle'>ÉÌÆ·Àà±ğ</td>");
-				// out.println("<td width='5%' align='center' valign='middle'>ÉÌÆ·ÊıÁ¿</td>");
-				// out.println("<td width='5%' align='center' valign='middle'>µ¥¼Û</td>");
-				// out.println("<td width='5%' align='center' valign='middle'>ÕÛ¿ÛÂÊ</td>");
-				// out.println("<td width='30%' align='center' valign='middle'>ÉÌÆ·ÃèÊö</td>");
-				// out.println("<td width='10%' align='center' valign='middle'>ÉÌÆ·±¸×¢</td>");
-				// out.println("<td width='10%' align='center' valign='middle'>Éú²úÈÕÆÚ</td>");
+				// out.println("<td width='5%' height='24' align='center' valign='middle'>å•†å“id</td>");
+				// out.println("<td width='20%' align='center' valign='middle'>å•†å“åç§°</td>");
+				// out.println("<td width='10%' align='center' valign='middle'>å•†å“ç±»åˆ«</td>");
+				// out.println("<td width='5%' align='center' valign='middle'>å•†å“æ•°é‡</td>");
+				// out.println("<td width='5%' align='center' valign='middle'>å•ä»·</td>");
+				// out.println("<td width='5%' align='center' valign='middle'>æŠ˜æ‰£ç‡</td>");
+				// out.println("<td width='30%' align='center' valign='middle'>å•†å“æè¿°</td>");
+				// out.println("<td width='10%' align='center' valign='middle'>å•†å“å¤‡æ³¨</td>");
+				// out.println("<td width='10%' align='center' valign='middle'>ç”Ÿäº§æ—¥æœŸ</td>");
 				// out.println("</tr>");
 				out.println("<div style='overflow:scroll;height:300px;'>");
 				out.println("<table>");
 				if (totalResult == 0)
-					out.println("<tr><td height='20' align='center' valign='middle'>ÔİÎŞ·ûºÏÄú²éÑ¯µÄÉÌÆ·!</td></tr>");
+					out.println("<tr><td height='20' align='center' valign='middle'>æš‚æ— ç¬¦åˆæ‚¨æŸ¥è¯¢çš„å•†å“!</td></tr>");
 				while (rs.next())
 				{
 					int id = rs.getInt("pid");
-					// pid-->ÉÌÆ·ID//pname-->ÉÌÆ·Ãû³Æ//pdescription-->ÉÌÆ·ÃèÊö//pdate-->ÉÌÆ·Éú²úÈÕÆÚ//pprice-->ÉÌÆ·¼Û¸ñ
-					// pamount-->ÉÌÆ·ÊıÁ¿//pnotes-->ÉÌÆ·±¸×¢//pdiscount-->ÕÛ¿ÛÂÊ 0-100//ptypeid-->ÉÌÆ·Àà±ğ
+					// pid-->å•†å“ID//pname-->å•†å“åç§°//pdescription-->å•†å“æè¿°//pdate-->å•†å“ç”Ÿäº§æ—¥æœŸ//pprice-->å•†å“ä»·æ ¼
+					// pamount-->å•†å“æ•°é‡//pnotes-->å•†å“å¤‡æ³¨//pdiscount-->æŠ˜æ‰£ç‡ 0-100//ptypeid-->å•†å“ç±»åˆ«
 					// out.println("<tr>");
 					// out.println("<td height='20' align='center' valign='middle'>"+rs.getString(TableInfo.PROT_pid)+"</td>");
 					// out.println("<td align='center' valign='middle'>"+rs.getString(TableInfo.PROT_pname)+"</td>");
@@ -166,31 +166,31 @@ public class QueryProduct extends HttpServlet
 					out.println("<table width='100%' height='100%' border='0'>");
 					out.println("<tr>");
 					out.println("<td width='156' rowspan='4'><img src='displaypphoto.do?pid=" + rs.getInt(1) + "' width='70' height='90' border='0'/></td>");
-					out.println("<td width='76' height='25'>²úÆ·id£º</td>");
+					out.println("<td width='76' height='25'>äº§å“idï¼š</td>");
 					out.println("<td width='169'>" + id + "</td>");
 					System.out.println(rs.getInt("pid"));
-					out.println("<td width='57'>²úÆ·Ãû£º</td>");
+					out.println("<td width='57'>äº§å“åï¼š</td>");
 					out.println("<td width='192'>" + rs.getString("pname"));
 					out.println("</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td height='25'>³ö³§ÈÕÆÚ£º</td>");
+					out.println("<td height='25'>å‡ºå‚æ—¥æœŸï¼š</td>");
 					out.println("<td>" + date + "</td>");
-					out.println("<td>¿â´æ£º</td>");
+					out.println("<td>åº“å­˜ï¼š</td>");
 					out.println("<td>" + rs.getInt("pamount") + "</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td height='25'>µ¥¼Û£º</td>");
+					out.println("<td height='25'>å•ä»·ï¼š</td>");
 					out.println("<td>" + rs.getDouble("pprice") + "</td>");
-					out.println("<td>ÉÌÆ·±¸×¢:</td>");
+					out.println("<td>å•†å“å¤‡æ³¨:</td>");
 					out.println("<td>" + rs.getString("pnotes") + "</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td>ÏêÏ¸ÃèÊö£º</td>");
+					out.println("<td>è¯¦ç»†æè¿°ï¼š</td>");
 					out.println("<td colspan='2'>" + rs.getString("pdescription") + "</td>");
 					// out.println("</tr>");
 					// out.println("<tr>");
-					out.println("<td><button class='bstyle' onclick=\"ShopCarts(" + id + ",1);\" />¼ÓÈë¹ºÎï³µ</button></td>");
+					out.println("<td><button class='bstyle' onclick=\"ShopCarts(" + id + ",1);\" />åŠ å…¥è´­ç‰©è½¦</button></td>");
 					out.println("</tr>");
 					out.println("<hr color='white' style='width:576px;'>");
 					out.println("</table>");
@@ -199,12 +199,12 @@ public class QueryProduct extends HttpServlet
 				}
 				out.println("</table>");
 				out.println("</div>");
-				// µ÷ÓÃÏÔÊ¾·ÖÒ³
+				// è°ƒç”¨æ˜¾ç¤ºåˆ†é¡µ
 				ShowPage.printPage(out, currPage, totalPage, urlAddress);
 			}
 			else
 			{
-				CommonTools.Error(request, response, session, "·¢Éú´íÎó,ÇëÁªÏµ¹ÜÀíÔ±!");
+				CommonTools.Error(request, response, session, "å‘ç”Ÿé”™è¯¯,è¯·è”ç³»ç®¡ç†å‘˜!");
 				return;
 			}
 
@@ -234,20 +234,20 @@ public class QueryProduct extends HttpServlet
 		{
 			urlAddress += "&querytype=" + queryType;
 
-			// ½»Ò×ÈÕÆÚ
+			// äº¤æ˜“æ—¥æœŸ
 			if (pDate != null)
 			{
 				urlAddress += "&" + TableInfo.PROT_pdate + "=" + pDate;
 				sql += " and " + TableInfo.PROT_pdate + "='" + pDate + "'";
 			}
-			// ¼Û¸ñ·¶Î§,¿¼ÂÇÖ»ÊäÈëÒ»¸öµÄÇé¿öºÍ2¸ö¶¼ÊäÈëµÄÇé¿ö
+			// ä»·æ ¼èŒƒå›´,è€ƒè™‘åªè¾“å…¥ä¸€ä¸ªçš„æƒ…å†µå’Œ2ä¸ªéƒ½è¾“å…¥çš„æƒ…å†µ
 			System.out.println(pPricex1 + "===" + pPricex2);
 			if (pPricex1 != null && pPricex2 != null)
 			{
 				int pPrice1 = CommonTools.StringToInt(pPricex1);
 				int pPrice2 = CommonTools.StringToInt(pPricex2);
 				if (pPrice1 == -1 || pPrice2 == -1)
-					CommonTools.Error(request, response, session, "ÇëÈ·±£ÊäÈëµÄÉÌÆ·½ğ¶îÕıÈ·!");
+					CommonTools.Error(request, response, session, "è¯·ç¡®ä¿è¾“å…¥çš„å•†å“é‡‘é¢æ­£ç¡®!");
 				urlAddress += "&price1=" + pPrice1 + "&price2=" + pPrice2;
 				sql += " and " + TableInfo.PROT_pprice + " between " + pPrice1 + " and " + pPrice2;
 			}
@@ -255,7 +255,7 @@ public class QueryProduct extends HttpServlet
 			{
 				int pPrice1 = CommonTools.StringToInt(pPricex1);
 				if (pPrice1 == -1)
-					CommonTools.Error(request, response, session, "ÇëÈ·±£ÊäÈëµÄÉÌÆ·½ğ¶îÕıÈ·!");
+					CommonTools.Error(request, response, session, "è¯·ç¡®ä¿è¾“å…¥çš„å•†å“é‡‘é¢æ­£ç¡®!");
 				urlAddress += "&price1=" + pPrice1;
 				sql += " and " + TableInfo.PROT_pprice + ">=" + pPrice1;
 			}
@@ -263,28 +263,28 @@ public class QueryProduct extends HttpServlet
 			{
 				int pPrice2 = CommonTools.StringToInt(pPricex2);
 				if (pPrice2 == -1)
-					CommonTools.Error(request, response, session, "ÇëÈ·±£ÊäÈëµÄÉÌÆ·½ğ¶îÕıÈ·!");
+					CommonTools.Error(request, response, session, "è¯·ç¡®ä¿è¾“å…¥çš„å•†å“é‡‘é¢æ­£ç¡®!");
 				urlAddress += "&price2=" + pPrice2;
 				sql += " and " + TableInfo.PROT_pprice + "<=" + pPrice2;
 			}
-			// ÕÛ¿ÛÂÊ
+			// æŠ˜æ‰£ç‡
 			if (pDiscount != null)
 			{
 				int pDiscounts = CommonTools.StringToInt(pDiscount);
 				if (pDiscounts == -1)
-					CommonTools.Error(request, response, session, "ÇëÈ·±£ÊäÈëµÄÕÛ¿ÛÂÊÕıÈ·!");
+					CommonTools.Error(request, response, session, "è¯·ç¡®ä¿è¾“å…¥çš„æŠ˜æ‰£ç‡æ­£ç¡®!");
 				urlAddress += "&" + TableInfo.PROT_pdiscount + "=" + pDiscount;
 				sql += " and " + TableInfo.PROT_pdiscount + "=" + pDiscount;
 			}
 
 		}
-		// ÉÌÆ·Àà±ğ
+		// å•†å“ç±»åˆ«
 		if (productType != null)
 		{
 			int typeid = CommonTools.StringToInt(productType);
 			if (typeid == -1)
-				CommonTools.Error(request, response, session, "ÇëÈ·±£ÊäÈëµÄÉÌÆ·Àà±ğÕıÈ·!");
-			// Ô¼¶¨999ÎªËùÓĞÉÌÆ·ÀàĞÍ
+				CommonTools.Error(request, response, session, "è¯·ç¡®ä¿è¾“å…¥çš„å•†å“ç±»åˆ«æ­£ç¡®!");
+			// çº¦å®š999ä¸ºæ‰€æœ‰å•†å“ç±»å‹
 			if (typeid != 999)
 			{
 				urlAddress += "&productype=" + productType;
@@ -293,7 +293,7 @@ public class QueryProduct extends HttpServlet
 		}
 		if (n == 2)
 			sql += " limit " + ((currPage - 1) * pageResult) + "," + pageResult;
-		System.out.println("²éÑ¯¼ÇÂ¼µÄÓï¾ä\n" + sql);
+		System.out.println("æŸ¥è¯¢è®°å½•çš„è¯­å¥\n" + sql);
 		return new String[] { sql, urlAddress };
 	}
 

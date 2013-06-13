@@ -31,10 +31,10 @@ public class ClearShopCart extends HttpServlet
 		for (Cookie cookie : cookies)
 		{
 			String pidx = cookie.getName();
-			System.out.println("cookieµÄÃû³Æ:" + pidx);
+			System.out.println("cookieçš„åç§°:" + pidx);
 			if (pidx.startsWith("pro_"))
 			{
-				// Çå¿ÕcookieÖĞµÄÊı¾İ
+				// æ¸…ç©ºcookieä¸­çš„æ•°æ®
 				cookie.setMaxAge(0);
 				response.addCookie(cookie);
 			}

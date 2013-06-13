@@ -27,12 +27,12 @@ public class ProductQuery extends BodyTagSupport {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		cond=cond.equals("")?"ÇëÊäÈë²éÑ¯ÄÚÈİ":cond;
+		cond=cond.equals("")?"è¯·è¾“å…¥æŸ¥è¯¢å†…å®¹":cond;
 		try {
 			out.println("<table width='100%' border='0' style='border-bottom:none;' cellspacing='0' cellpadding='0'>");
 			out.println("<tr>");
 			out.println("<td  height='17px' width='16%' background='/shopcart/images/2.gif'>");
-			out.println("<p align='center'>::ÉÌÆ·ËÑË÷::");
+			out.println("<p align='center'>::å•†å“æœç´¢::");
 			out.println("</td>");
 			out.println("<td valign='top' align='right' style='padding-right:15px;' background='/shopcart/images/2.gif'>");
 			out.println("<nobr>&nbsp;&nbsp;<select style='z-index:-1;padding-top:-3px;padding-bottom:-8px;height:17px;width:80px;' name='productype'>");
@@ -49,8 +49,8 @@ public class ProductQuery extends BodyTagSupport {
 			out.println("</select>");
 			out.println("&nbsp;&nbsp;<input id='querycondition'  name='querycondition' type='text' style='width:200px;' onFocus='this.value=\"\";' style='margin-top:-7px;padding-bottom:-3px;height:19px;' value='"+cond+"'/>");
 			out.println("&nbsp;&nbsp;<input id='querytype'  name='querytype' type='hidden' value='0'/>");
-			out.println("<input type='button' onclick='query();' value='ËÑË÷' style='height:19px;'/>");
-			out.println("&nbsp;&nbsp;<input type='button' onclick='location.href(\"query.jsp\");' value='¸ß¼¶ËÑË÷' style='height:19px;'/>");
+			out.println("<input type='button' onclick='query();' value='æœç´¢' style='height:19px;'/>");
+			out.println("&nbsp;&nbsp;<input type='button' onclick='location.href(\"query.jsp\");' value='é«˜çº§æœç´¢' style='height:19px;'/>");
 			out.println("</nobr>");
 			out.println("</td>");
 			out.println("</tr");

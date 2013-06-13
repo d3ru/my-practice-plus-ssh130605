@@ -1,5 +1,5 @@
 /**
- * ËµÃ÷£ºÓÃ»§×¢²áĞÅÏ¢×¢Ïú ÎÄ¼ş£ºuserinfo/UserInfoDelete.java->userinfo/userinfodelete.jsp Ê±¼ä£º08-05-18 ±àĞ´£ºtarena
+ * è¯´æ˜ï¼šç”¨æˆ·æ³¨å†Œä¿¡æ¯æ³¨é”€ æ–‡ä»¶ï¼šuserinfo/UserInfoDelete.java->userinfo/userinfodelete.jsp æ—¶é—´ï¼š08-05-18 ç¼–å†™ï¼štarena
  */
 package businesses.userinfo;
 
@@ -30,8 +30,8 @@ public class UserInfoDelete extends HttpServlet
 	}
 
 	/**
-	 * ËµÃ÷£ºÓÃ»§ĞÅÏ¢×¢Ïú Ê¹ÓÃ£ºuserinfodelete.jsp?uid=uid ·½·¨£º 1.¼ì²âÓÃ»§idÎªuidÊÇ·ñÔÚ±íÖĞ´æÔÚ 2.¼ì²âÓÃ»§idÎªuidµÄ½»Ò×¼ÇÂ¼±íÖĞÊÇ·ñÓĞ¶©µ¥ 3.½«¸ÃÓÃ»§µÄËùÓĞcookieÖÃÎªÎŞĞ§
-	 * 4.´ÓsessionÖĞÉ¾³ıÓÃ»§µÇÂ¼µÄsession 5.É¾³ıÓÃ»§idÎªuidµÄ½»Ò×¼ÇÂ¼±íÖĞµÄËùÓĞ½»Ò×¼ÇÂ¼ 6.´ÓÓÃ»§±íÖĞÉ¾³ıÓÃ»§idÎªuidµÄÓÃ»§
+	 * è¯´æ˜ï¼šç”¨æˆ·ä¿¡æ¯æ³¨é”€ ä½¿ç”¨ï¼šuserinfodelete.jsp?uid=uid æ–¹æ³•ï¼š 1.æ£€æµ‹ç”¨æˆ·idä¸ºuidæ˜¯å¦åœ¨è¡¨ä¸­å­˜åœ¨ 2.æ£€æµ‹ç”¨æˆ·idä¸ºuidçš„äº¤æ˜“è®°å½•è¡¨ä¸­æ˜¯å¦æœ‰è®¢å• 3.å°†è¯¥ç”¨æˆ·çš„æ‰€æœ‰cookieç½®ä¸ºæ— æ•ˆ
+	 * 4.ä»sessionä¸­åˆ é™¤ç”¨æˆ·ç™»å½•çš„session 5.åˆ é™¤ç”¨æˆ·idä¸ºuidçš„äº¤æ˜“è®°å½•è¡¨ä¸­çš„æ‰€æœ‰äº¤æ˜“è®°å½• 6.ä»ç”¨æˆ·è¡¨ä¸­åˆ é™¤ç”¨æˆ·idä¸ºuidçš„ç”¨æˆ·
 	 */
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -43,15 +43,15 @@ public class UserInfoDelete extends HttpServlet
 		String uid = session.getAttribute("sc_user").toString();
 		if (uid == null)
 			CommonTools.Error(request, response, session);
-		// ÅĞ¶ÏÓÃ»§´æÔÚ
+		// åˆ¤æ–­ç”¨æˆ·å­˜åœ¨
 		else if (QueryTools.isExistColumn(dataAccess, TableInfo.USER_uid, TableInfo.TABLE_UserInfo, TableInfo.USER_uid + "=" + uid))
 		{
-			// ÅĞ¶Ï½»Ò×¼ÇÂ¼±íÖĞÊÇ·ñÓĞ¶©µ¥
-			// ½»Ò×¼ÇÂ¼±íÖĞÉÌÆ·±êÖ¾ÎªtshipedÎª0[Î´·¢»õ]»ò1[ÒÑ·¢»õ]Ê±²»ÔÊĞí×¢Ïú
-			// Èç¹û´æÔÚtshipedÎª1Ê±,±ØĞëµÈÆä±êÖ¾Îª2Ê±²ÅÄÜ×¢Ïú,·ñÔòÓÃ»§ÓÀÔ¶²»ÄÜ×¢Ïú
+			// åˆ¤æ–­äº¤æ˜“è®°å½•è¡¨ä¸­æ˜¯å¦æœ‰è®¢å•
+			// äº¤æ˜“è®°å½•è¡¨ä¸­å•†å“æ ‡å¿—ä¸ºtshipedä¸º0[æœªå‘è´§]æˆ–1[å·²å‘è´§]æ—¶ä¸å…è®¸æ³¨é”€
+			// å¦‚æœå­˜åœ¨tshipedä¸º1æ—¶,å¿…é¡»ç­‰å…¶æ ‡å¿—ä¸º2æ—¶æ‰èƒ½æ³¨é”€,å¦åˆ™ç”¨æˆ·æ°¸è¿œä¸èƒ½æ³¨é”€
 			if (QueryTools.isExistColumn(dataAccess, TableInfo.TRAN_tid, TableInfo.TABLE_Transactions, TableInfo.TRAN_tuid + "=" + uid + " and " + TableInfo.TRAN_tshiped + "<2"))
 			{
-				// Çå¿Õcookie
+				// æ¸…ç©ºcookie
 				try
 				{
 					Cookie[] cookies = request.getCookies();
@@ -60,35 +60,35 @@ public class UserInfoDelete extends HttpServlet
 						cookie.setMaxAge(0);
 						response.addCookie(cookie);
 					}
-					// É¾³ıËùÓĞsessionĞÅÏ¢
+					// åˆ é™¤æ‰€æœ‰sessionä¿¡æ¯
 					session.invalidate();
-					// ´Ë´¦²»¿¼ÂÇ·¢ÉúÒì³£Ê±µÄÊÂÎñ»Ø¹ö
-					// ´Ó¶©µ¥±íÖĞÉ¾³ıÓÃ»§ÎªuidµÄËùÓĞ½»Ò×¼ÇÂ¼
+					// æ­¤å¤„ä¸è€ƒè™‘å‘ç”Ÿå¼‚å¸¸æ—¶çš„äº‹åŠ¡å›æ»š
+					// ä»è®¢å•è¡¨ä¸­åˆ é™¤ç”¨æˆ·ä¸ºuidçš„æ‰€æœ‰äº¤æ˜“è®°å½•
 					String sql = "delete from " + TableInfo.TABLE_Transactions + " where ";
 					sql += TableInfo.TRAN_tuid + "=" + uid;
-					// System.out.println("É¾³ıÓÃ»§idÎª"+uid+"½»Ò×¼ÇÂ¼Óï¾ä£º"+sql);
+					// System.out.println("åˆ é™¤ç”¨æˆ·idä¸º"+uid+"äº¤æ˜“è®°å½•è¯­å¥ï¼š"+sql);
 					dataAccess.executeSQL(sql);
 
 					sql = "delete from " + TableInfo.TABLE_UserInfo + " where ";
 					sql += TableInfo.USER_uid + "=" + uid;
-					// System.out.println("É¾³ıÓÃ»§idÎª"+uid+"ÓÃ»§Óï¾ä£º"+sql);
+					// System.out.println("åˆ é™¤ç”¨æˆ·idä¸º"+uid+"ç”¨æˆ·è¯­å¥ï¼š"+sql);
 					dataAccess.executeSQL(sql);
 				}
 				catch (RuntimeException e)
 				{
-					System.out.println("ÓÃ»§idÎª" + uid + "×¢ÏúÊ±·¢Éú´íÎó!");
+					System.out.println("ç”¨æˆ·idä¸º" + uid + "æ³¨é”€æ—¶å‘ç”Ÿé”™è¯¯!");
 					e.printStackTrace();
 				}
 				response.sendRedirect(request.getContextPath() + "/index.jsp");
 			}
 			else
 			{
-				CommonTools.Error(request, response, session, "Çë´ÓÄúµÄ¶©µ¥±íÖĞÉ¾³ı¶©µ¥ºóÔÙ×¢ÏúÄúµÄÓÃ»§!");
+				CommonTools.Error(request, response, session, "è¯·ä»æ‚¨çš„è®¢å•è¡¨ä¸­åˆ é™¤è®¢å•åå†æ³¨é”€æ‚¨çš„ç”¨æˆ·!");
 			}
 		}
 		else
 		{
-			CommonTools.Error(request, response, session, "ÎŞĞ§µÄÓÃ»§id");
+			CommonTools.Error(request, response, session, "æ— æ•ˆçš„ç”¨æˆ·id");
 		}
 	}
 

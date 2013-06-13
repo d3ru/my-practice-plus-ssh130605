@@ -34,12 +34,12 @@ public class ListProductByType extends BodyTagSupport {
 		// TODO Auto-generated method stub
 		JspWriter out=pageContext.getOut();
 		/**
-		 * Ò»Ğ©Ô¼¶¨£º
-		 * pageResult:Ã¿Ò³ÏÔÊ¾µÄ¼ÇÂ¼ÌõÊı,Ä¬ÈÏ10
-		 * currPage:µ±Ç°Ò³,Ä¬ÈÏ1
-		 * totalPage:È«²¿µÄÒ³Êı
-		 * totalResult:×Ü¼ÇÂ¼Êı
-		 * urlAddress:ÏÔÊ¾·ÖÒ³Ê±Á¬½ÓµÄÒ³Ãæ
+		 * ä¸€äº›çº¦å®šï¼š
+		 * pageResult:æ¯é¡µæ˜¾ç¤ºçš„è®°å½•æ¡æ•°,é»˜è®¤10
+		 * currPage:å½“å‰é¡µ,é»˜è®¤1
+		 * totalPage:å…¨éƒ¨çš„é¡µæ•°
+		 * totalResult:æ€»è®°å½•æ•°
+		 * urlAddress:æ˜¾ç¤ºåˆ†é¡µæ—¶è¿æ¥çš„é¡µé¢
 		 */
 		int pageResult=2;
 		int currPage = 1;
@@ -68,7 +68,7 @@ public class ListProductByType extends BodyTagSupport {
 				totalResult=rs3.getInt("total");
 			}
 			totalPage = totalResult%pageResult==0?totalResult/pageResult:totalResult/pageResult+1;
-			//ÊäÈëµÄÒ³Êı´óÓÚ×ÜÒ³ÊıÊ±,ÏÔÊ¾µÚ1Ò³
+			//è¾“å…¥çš„é¡µæ•°å¤§äºæ€»é¡µæ•°æ—¶,æ˜¾ç¤ºç¬¬1é¡µ
 			if(currPage>totalPage)
 				currPage = 1;
 			int i=0;
@@ -77,7 +77,7 @@ public class ListProductByType extends BodyTagSupport {
 				String ptname=rs.getString(2);
 				String sql2="select * from "+TableInfo.TABLE_Products+" where "+TableInfo.PROT_ptypeid+"="+id+" and "+TableInfo.PROT_pname+" like '%"+condition+"%' limit "+((currPage-1)*pageResult)+","+pageResult;;
 				ResultSet rs2=ida.queryBySQL(sql2);
-				out.println("<center>¡¶"+ptname+"¡·ÁĞ±í<center>");
+				out.println("<center>ã€Š"+ptname+"ã€‹åˆ—è¡¨<center>");
 				//showPage.printPage(out, currPage, totalPage, urlAddress);
 				out.println("<div style='overflow:auto;height:300px;'>");
 				
@@ -91,31 +91,31 @@ public class ListProductByType extends BodyTagSupport {
 					out.println("<table width='100%' height='100%' border='0'>");
 					out.println("<tr align='left'>");
 					out.println("<td width='156' rowspan='4'><img src='displaypphoto.do?pid="+rs2.getInt(1)+"' width='70' height='90' border='0'/></td>");
-					out.println("<td width='76' height='25' align='right'>²úÆ·id£º</td>");
+					out.println("<td width='76' height='25' align='right'>äº§å“idï¼š</td>");
 					out.println("<td width='169'>"+rs2.getInt("pid")+"</td>");
-					out.println("<td width='57' align='right'>²úÆ·Ãû£º</td>");
+					out.println("<td width='57' align='right'>äº§å“åï¼š</td>");
 					out.println("<td width='192'>"+rs2.getString("pname")+"</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td height='25' align='right'>³ö³§ÈÕÆÚ£º</td>");
+					out.println("<td height='25' align='right'>å‡ºå‚æ—¥æœŸï¼š</td>");
 					out.println("<td>"+date+"</td>");
-					out.println("<td align='right'>¿â´æ£º</td>");
+					out.println("<td align='right'>åº“å­˜ï¼š</td>");
 					out.println("<td>"+rs2.getInt("pamount")+"</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td height='25' align='right'>µ¥¼Û£º</td>");
+					out.println("<td height='25' align='right'>å•ä»·ï¼š</td>");
 					out.println("<td>"+rs2.getDouble("pprice")+"</td>");
-					out.println("<td align='right'>ÉÌÆ·±¸×¢:</td>");
+					out.println("<td align='right'>å•†å“å¤‡æ³¨:</td>");
 					out.println("<td>"+rs2.getString("pnotes")+"</td>");
 					out.println("</tr>");
 					out.println("<tr>");
-					out.println("<td align='right'>ÏêÏ¸ÃèÊö£º</td>");
+					out.println("<td align='right'>è¯¦ç»†æè¿°ï¼š</td>");
 					out.println("<td colspan='2'>"+rs2.getString("pdescription")+"</td>");
 					//out.println("</tr>");
 					//out.println("<tr>");
-					//ShopCartsº¯Êı£¬°ÑÉÌÆ·ĞÅÏ¢¼ÓÈë¹ºÎï³µ¡£
-					//µÚÒ»¸ö²ÎÊıÊÇÉÌÆ·µÄid£»µÚ¶ş¸ö²ÎÊıÊÇÉÌÆ·ÊıÁ¿£¬Í¨³£³õÊ¼Ìí¼ÓµÄÊ±ºòÊıÁ¿ÊÇ£±¡£
-					out.println("<td ><button class='bstyle' onclick='ShopCarts("+rs2.getInt("pid")+",1);' />¼ÓÈë¹ºÎï³µ</button></td>");
+					//ShopCartså‡½æ•°ï¼ŒæŠŠå•†å“ä¿¡æ¯åŠ å…¥è´­ç‰©è½¦ã€‚
+					//ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯å•†å“çš„idï¼›ç¬¬äºŒä¸ªå‚æ•°æ˜¯å•†å“æ•°é‡ï¼Œé€šå¸¸åˆå§‹æ·»åŠ çš„æ—¶å€™æ•°é‡æ˜¯ï¼‘ã€‚
+					out.println("<td ><button class='bstyle' onclick='ShopCarts("+rs2.getInt("pid")+",1);' />åŠ å…¥è´­ç‰©è½¦</button></td>");
 					out.println("</tr>");
 					out.println("<hr color='white' style='width:576px;'>");
 					out.println("</table>");

@@ -23,11 +23,11 @@ public class QueryProduct extends HttpServlet
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// »ñÈ¡ÀàĞÍ
+		// è·å–ç±»å‹
 		String type = request.getParameter("type");
 		String key = request.getParameter("key");
 		int curPage = (request.getParameter("page") == null) ? 1 : Integer.parseInt(request.getParameter("page"));
-		// ÀàĞÍ²éÑ¯
+		// ç±»å‹æŸ¥è¯¢
 		String sql = "";
 		if (type == null || type.equals("0"))
 		{
@@ -38,7 +38,7 @@ public class QueryProduct extends HttpServlet
 		{
 			sql += "select * from " + TableInfo.TABLE_Products + " where " + TableInfo.PROT_ptypeid + "=" + type;
 		}
-		// ¿¼ÂÇ¹Ø¼ü×Ö
+		// è€ƒè™‘å…³é”®å­—
 		if (key != null)
 		{
 			if (type == null || type.equals("0"))
@@ -56,19 +56,19 @@ public class QueryProduct extends HttpServlet
 		ResultSet rs = ida.queryBySQL(sql);
 		response.setContentType("text/html;charset=gb2312");
 		PrintWriter out = response.getWriter();
-		// ÄÚÈİ
+		// å†…å®¹
 		out.println("<table border='1' cellspacing='0' cellpadding='0'  width='100%'>");
 		out.println("<tr valign='bottom'><td>");
 		// out.println("<iframe style='height:26px;width:400px;' src='test.jsp' frameborder='0' scrolling='no' hspace='0' ></iframe>");
 		out.println("<table border='0' width='100%'  cellspacing='0' cellpadding='0'>");
 		out.println("<tr height='14' valign='buttom' >");
-		out.println("<td width='90' height='10' align='center'  style='border-bottom-style: none; border-bottom-color: #FFFFFF; border-bottom:none; border-bottom-width:0px;' background='images/2.gif'>::ÉÌÆ·ËÑË÷::</td>");
-		out.println("<td width='90' background='images/2.gif'><div align='center'>ÇëÊäÈë¹Ø¼ü×Ö</div></td>");
+		out.println("<td width='90' height='10' align='center'  style='border-bottom-style: none; border-bottom-color: #FFFFFF; border-bottom:none; border-bottom-width:0px;' background='images/2.gif'>::å•†å“æœç´¢::</td>");
+		out.println("<td width='90' background='images/2.gif'><div align='center'>è¯·è¾“å…¥å…³é”®å­—</div></td>");
 		out.println("<td width='220' background='images/2.gif'><div align='center'>");
 		out.println("<input type='text' style='border-style: none;height:15px;' id='key' name='key' style='width:220px'/>");
 		out.println("</div></td>");
 		out.println("<td background='images/2.gif' width='58' valign='middle' align='center'>");
-		out.println("<button onclick=\"showname('" + type + "','" + key + "');\">ËÑË÷</button>");
+		out.println("<button onclick=\"showname('" + type + "','" + key + "');\">æœç´¢</button>");
 		out.println("</td>");
 		out.println("</tr>");
 		out.println("</table>");
@@ -85,29 +85,29 @@ public class QueryProduct extends HttpServlet
 				// out.println("<table width='100%' height='100%' border='0'>");
 				// out.println("<tr>");
 				// out.println("<td width='156' rowspan='3'><img src='displayImg?id="+pro.getPId()+"' /></td>");
-				// out.println("<td width='76' height='40'>²úÆ·id£º</td>");
+				// out.println("<td width='76' height='40'>äº§å“idï¼š</td>");
 				// out.println("<td width='169'>"+pro.getPId()+"</td>");
-				// out.println("<td width='57'>²úÆ·Ãû£º</td>");
+				// out.println("<td width='57'>äº§å“åï¼š</td>");
 				// out.println("<td width='192'>"+tools.Str.isoToGb(pro.getPName())+"</td>");
 				// out.println("</tr>");
 				// out.println("<tr>");
-				// out.println("<td height='41'>³ö³§ÈÕÆÚ£º</td>");
+				// out.println("<td height='41'>å‡ºå‚æ—¥æœŸï¼š</td>");
 				// out.println("<td>"+date+"</td>");
-				// out.println("<td>¿â´æ£º</td>");
+				// out.println("<td>åº“å­˜ï¼š</td>");
 				// out.println("<td>"+pro.getPAmount()+"</td>");
 				// out.println("</tr>");
 				// out.println("<tr>");
-				// out.println("<td height='39'>µ¥¼Û£º</td>");
+				// out.println("<td height='39'>å•ä»·ï¼š</td>");
 				// out.println("<td>"+pro.getPPrice()+"</td>");
-				// out.println("<td>³§ÉÌ:</td>");
+				// out.println("<td>å‚å•†:</td>");
 				// out.println("<td>"+tools.Str.isoToGb(pro.getPFactory())+"</td>");
 				// out.println("</tr>");
 				// out.println("<tr>");
-				// out.println("<td>ÏêÏ¸ÃèÊö£º</td>");
+				// out.println("<td>è¯¦ç»†æè¿°ï¼š</td>");
 				// out.println("<td colspan='4'>"+tools.Str.isoToGb(pro.getPDesc())+"</td>");
 				// out.println("</tr>");
 				// out.println("</table>");
-				out.println("ÏêÇé...");
+				out.println("è¯¦æƒ…...");
 				out.println("</td>");
 				out.println("</tr>");
 
@@ -116,7 +116,7 @@ public class QueryProduct extends HttpServlet
 			{
 				out.println("<tr valign='top'>");
 				out.println("<td>");
-				out.println("Ã»ÓĞÉÌÆ·");
+				out.println("æ²¡æœ‰å•†å“");
 				out.println("</td>");
 				out.println("</tr>");
 			}
@@ -126,27 +126,27 @@ public class QueryProduct extends HttpServlet
 
 		}
 
-		// µ¼º½
+		// å¯¼èˆª
 		out.println("<tr>");
 		out.println("<td colspan=4>");
-		// ¼ÆËã×ÜµÄÒ³Êı
+		// è®¡ç®—æ€»çš„é¡µæ•°
 
 		int pages = totalpage % itemsperpage == 0 ? totalpage / itemsperpage : totalpage / itemsperpage + 1;
 
 		// for(int i=1;i<=pages;i++){
 		// out.println("<label style='text-decoration:underline;' onclick=\"showpagebyper('"+i+"','"+type+"');\">"+i+"</label>");
 		// }
-		out.println("<label onclick=\"showpagebyper(1,'" + type + "');\" onmouseover='this.style.cursor=\"hand\";' >Ê×Ò³</label>");
+		out.println("<label onclick=\"showpagebyper(1,'" + type + "');\" onmouseover='this.style.cursor=\"hand\";' >é¦–é¡µ</label>");
 		if (curPage != 1)
 		{
-			out.println("<label onclick=\"showpagebyper('" + (curPage - 1) + "','" + type + "');\" onmouseover='this.style.cursor=\"hand\";' >ÉÏÒ»Ò³</label>");
+			out.println("<label onclick=\"showpagebyper('" + (curPage - 1) + "','" + type + "');\" onmouseover='this.style.cursor=\"hand\";' >ä¸Šä¸€é¡µ</label>");
 		}
 		if (curPage != pages)
 		{
-			out.println("<label onclick=\"showpagebyper('" + (curPage + 1) + "','" + type + "');\" onmouseover='this.style.cursor=\"hand\";' >ÏÂÒ»Ò³</label>");
+			out.println("<label onclick=\"showpagebyper('" + (curPage + 1) + "','" + type + "');\" onmouseover='this.style.cursor=\"hand\";' >ä¸‹ä¸€é¡µ</label>");
 		}
-		out.println("<label onclick=\"showpagebyper('" + pages + "','" + type + "');\" onmouseover='this.style.cursor=\"hand\";'>Î²Ò³</label>");
-		out.println("¹²<font color='red'>" + totalpage + "</font>¸öÉÌÆ·&nbsp;&nbsp;¹²<font color='red'>" + pages + "</font>Ò³&nbspµ±Ç°µÚ<font color='red'>" + curPage + "</font>Ò³");
+		out.println("<label onclick=\"showpagebyper('" + pages + "','" + type + "');\" onmouseover='this.style.cursor=\"hand\";'>å°¾é¡µ</label>");
+		out.println("å…±<font color='red'>" + totalpage + "</font>ä¸ªå•†å“&nbsp;&nbsp;å…±<font color='red'>" + pages + "</font>é¡µ&nbspå½“å‰ç¬¬<font color='red'>" + curPage + "</font>é¡µ");
 		out.println("</td>");
 		out.println("</tr>");
 		out.println("</table>");

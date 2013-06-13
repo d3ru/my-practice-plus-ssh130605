@@ -1,5 +1,5 @@
 /**
- * ÎÄ¼ş£ºcommonTools.java ËµÃ÷£ºÒ»Ğ©³£ÓÃ¹¤¾ßÀà Ê±¼ä£º08-05-17 ±àĞ´£ºtarena
+ * æ–‡ä»¶ï¼šcommonTools.java è¯´æ˜ï¼šä¸€äº›å¸¸ç”¨å·¥å…·ç±» æ—¶é—´ï¼š08-05-17 ç¼–å†™ï¼štarena
  */
 package businesses.tools;
 
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class CommonTools
 {
 
-	// ×Ö·û´®×ª»»ÎªÕûÊı
+	// å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ•´æ•°
 	public static int StringToInt(String id)
 	{
 		int n = 0;
@@ -24,14 +24,14 @@ public class CommonTools
 		}
 		catch (NumberFormatException e)
 		{
-			// System.out.println(id+"×ª»»Ê±·¢Éú´íÎó");
+			// System.out.println(id+"è½¬æ¢æ—¶å‘ç”Ÿé”™è¯¯");
 			// e.printStackTrace();
 			n = -1;
 		}
 		return n > 0 ? n : -1;
 	}
 
-	// ×Ö·û´®×ª»»ÎªĞ¡Êı
+	// å­—ç¬¦ä¸²è½¬æ¢ä¸ºå°æ•°
 	public static double StringToDouble(String id)
 	{
 		double n = 0;
@@ -41,7 +41,7 @@ public class CommonTools
 		}
 		catch (NumberFormatException e)
 		{
-			// System.out.println(id+"×ª»»Ê±·¢Éú´íÎó");
+			// System.out.println(id+"è½¬æ¢æ—¶å‘ç”Ÿé”™è¯¯");
 			// e.printStackTrace();
 			n = -1;
 		}
@@ -50,10 +50,10 @@ public class CommonTools
 
 	public static void Error(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 	{
-		Error(request, response, session, "ÎŞĞ§µÄ·ÃÎÊ");
+		Error(request, response, session, "æ— æ•ˆçš„è®¿é—®");
 	}
 
-	// ·¢Éú´íÎóÊ±×ªÏòµ½µÄÒ³Ãæ
+	// å‘ç”Ÿé”™è¯¯æ—¶è½¬å‘åˆ°çš„é¡µé¢
 	public static void Error(HttpServletRequest request, HttpServletResponse response, HttpSession session, String error)
 	{
 		try

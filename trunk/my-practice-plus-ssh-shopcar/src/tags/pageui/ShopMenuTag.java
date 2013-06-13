@@ -42,7 +42,7 @@ public class ShopMenuTag extends BodyTagSupport
 		String password = context.getInitParameter("password");
 		try
 		{
-			// out.println("<menu type='¡ï'>");
+			// out.println("<menu type='â˜…'>");
 			out.println("<table  border=0>");
 			String sql = "select * from " + TableInfo.TABLE_ProductType;
 			IDataAccess ida = DataAccessImpl.newInstance(driver, url, user, password);

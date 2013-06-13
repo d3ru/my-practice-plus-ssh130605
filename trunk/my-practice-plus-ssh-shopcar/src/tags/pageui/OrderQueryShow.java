@@ -1,8 +1,8 @@
 /**
- * ÎÄ¼ş£ºorderQueryShow.java
- * ËµÃ÷£º¶©µ¥²éÑ¯µÄÏÔÊ¾ui
- * Ê±¼ä£º08-05-19
- * ±àĞ´£ºtarena
+ * æ–‡ä»¶ï¼šorderQueryShow.java
+ * è¯´æ˜ï¼šè®¢å•æŸ¥è¯¢çš„æ˜¾ç¤ºui
+ * æ—¶é—´ï¼š08-05-19
+ * ç¼–å†™ï¼štarena
  */
 package tags.pageui;
 
@@ -35,13 +35,13 @@ public class OrderQueryShow extends BodyTagSupport {
 		this.queryPage = queryPage;
 	}
 	/**
-	 * ËµÃ÷£º¶©µ¥²éÑ¯
-	 * ¼òµ¥·ÖÒ³¼¼ÊõµÄÊµÏÖ,´Ë´¦ÓÉÓÚÊ±¼ä¹ØÏµ,Ã»ÓĞ½«·ÖÒ³·â×°³ÉÀà
-	 * ÔÚoracleÊı¾İ¿âÖĞ²éÑ¯½á¹ûµÄĞĞºÅÊ¹ÓÃÎ±ÁĞROWNUM±íÊ¾£¨´Ó1¿ªÊ¼£©¡£
-	 * ÀıÈçselect * from employee where rownum<10 ·µ»ØÇ°10Ìõ¼ÇÂ¼¡£µ«×¢ÒârownumÊÇÔÚ²éÑ¯Ö®ºóÅÅĞòÖ®Ç°¸³ÖµµÄ
-	 * mySQL¿ÉÒÔÊ¹ÓÃLIMIT×Ó¾ä£º select name, birthday from employee order by birthday LIMIT 99,20 
-	 * 		limit 99,20 ±íÊ¾²éÑ¯½á¹û´Ó99ĞĞºó¿ªÊ¼,·µ»Ø20ĞĞµÄ½á¹û ¼´·µ»Ø 100-119
-	 * DB2ÓĞrownumber()º¯ÊıÓÃÓÚ»ñÈ¡µ±Ç°ĞĞÊı¡£ 
+	 * è¯´æ˜ï¼šè®¢å•æŸ¥è¯¢
+	 * ç®€å•åˆ†é¡µæŠ€æœ¯çš„å®ç°,æ­¤å¤„ç”±äºæ—¶é—´å…³ç³»,æ²¡æœ‰å°†åˆ†é¡µå°è£…æˆç±»
+	 * åœ¨oracleæ•°æ®åº“ä¸­æŸ¥è¯¢ç»“æœçš„è¡Œå·ä½¿ç”¨ä¼ªåˆ—ROWNUMè¡¨ç¤ºï¼ˆä»1å¼€å§‹ï¼‰ã€‚
+	 * ä¾‹å¦‚select * from employee where rownum<10 è¿”å›å‰10æ¡è®°å½•ã€‚ä½†æ³¨æ„rownumæ˜¯åœ¨æŸ¥è¯¢ä¹‹åæ’åºä¹‹å‰èµ‹å€¼çš„
+	 * mySQLå¯ä»¥ä½¿ç”¨LIMITå­å¥ï¼š select name, birthday from employee order by birthday LIMIT 99,20 
+	 * 		limit 99,20 è¡¨ç¤ºæŸ¥è¯¢ç»“æœä»99è¡Œåå¼€å§‹,è¿”å›20è¡Œçš„ç»“æœ å³è¿”å› 100-119
+	 * DB2æœ‰rownumber()å‡½æ•°ç”¨äºè·å–å½“å‰è¡Œæ•°ã€‚ 
 	 */
 	
 	public int doEndTag() throws JspException {
@@ -51,12 +51,12 @@ public class OrderQueryShow extends BodyTagSupport {
 			ServletResponse response = pageContext.getResponse();
 			response.setContentType("text/html;charset=gb2312");
 			/**
-			 * Ò»Ğ©Ô¼¶¨£º
-			 * pageResult:Ã¿Ò³ÏÔÊ¾µÄ¼ÇÂ¼ÌõÊı,Ä¬ÈÏ10
-			 * currPage:µ±Ç°Ò³,Ä¬ÈÏ1
-			 * totalPage:È«²¿µÄÒ³Êı
-			 * totalResult:×Ü¼ÇÂ¼Êı
-			 * urlAddress:ÏÔÊ¾·ÖÒ³Ê±Á¬½ÓµÄÒ³Ãæ
+			 * ä¸€äº›çº¦å®šï¼š
+			 * pageResult:æ¯é¡µæ˜¾ç¤ºçš„è®°å½•æ¡æ•°,é»˜è®¤10
+			 * currPage:å½“å‰é¡µ,é»˜è®¤1
+			 * totalPage:å…¨éƒ¨çš„é¡µæ•°
+			 * totalResult:æ€»è®°å½•æ•°
+			 * urlAddress:æ˜¾ç¤ºåˆ†é¡µæ—¶è¿æ¥çš„é¡µé¢
 			 */
 			int pageResult=10;
 			int currPage = 1;
@@ -64,7 +64,7 @@ public class OrderQueryShow extends BodyTagSupport {
 			int totalResult = 0;
 			String urlAddress =queryPage;
 			String uid = pageContext.getSession().getAttribute(TableInfo.SC_User).toString();
-			//´ÓsessionÖĞÈ¡µ½ÓÃ»§Ãû,¸ù¾İÓÃ»§Ãû²éÑ¯ÓÃ»§id
+			//ä»sessionä¸­å–åˆ°ç”¨æˆ·å,æ ¹æ®ç”¨æˆ·åæŸ¥è¯¢ç”¨æˆ·id
 			//String uname = pageContext.getSession().getAttribute(TableInfo.SC_User).toString();
 			//String uid = queryTools.getColumnValue(dataAccess, TableInfo.USER_uid, TableInfo.TABLE_UserInfo, TableInfo.USER_uname+"="+uname);
 			
@@ -72,7 +72,7 @@ public class OrderQueryShow extends BodyTagSupport {
 			String pdescription = request.getParameter(TableInfo.PROT_pdescription);
 			String tshipdate = request.getParameter(TableInfo.TRAN_tshipdate);
 			String page = request.getParameter("page");
-			//·ÀÖ¹´«¹ıÀ´¿ÕÖµ
+			//é˜²æ­¢ä¼ è¿‡æ¥ç©ºå€¼
 			if(pname!=null && pname.equals(""))
 				pname = null;
 			if(pdescription!=null && pdescription.equals(""))
@@ -90,7 +90,7 @@ public class OrderQueryShow extends BodyTagSupport {
 			if(tshipdate!=null)
 				urlAddress += (urlAddress.indexOf("?")==-1?"&":"?")+TableInfo.TRAN_tshipdate+"="+tshipdate;
 			
-			//²éÑ¯×Ü¼ÇÂ¼Êı,¼ÆËã×ÜÒ³ÃæÊı
+			//æŸ¥è¯¢æ€»è®°å½•æ•°,è®¡ç®—æ€»é¡µé¢æ•°
 			String c_sql ="select count("+TableInfo.TABLE_Transactions+"."+TableInfo.TRAN_tid+") as total";
 			c_sql +=" from "+TableInfo.TABLE_Products+","+TableInfo.TABLE_Transactions+" where ";
 			c_sql += TableInfo.TABLE_Products+"."+TableInfo.PROT_pid+"="+TableInfo.TABLE_Transactions+"."+TableInfo.TRAN_tpid+" and ";
@@ -102,18 +102,18 @@ public class OrderQueryShow extends BodyTagSupport {
 				c_sql +=" and "+TableInfo.TABLE_Products+"."+TableInfo.PROT_pname+" like '%"+pname+"%'";
 			if(pdescription!=null)
 				c_sql +=" and "+TableInfo.TABLE_Products+"."+TableInfo.PROT_pdescription+" like '%"+pdescription+"%'";
-			System.out.println("²éÑ¯×Ü¼ÇÂ¼ÊıµÄsqlÓï¾ä:\n"+c_sql);
+			System.out.println("æŸ¥è¯¢æ€»è®°å½•æ•°çš„sqlè¯­å¥:\n"+c_sql);
 			ResultSet rs = dataAccess.queryBySQL(c_sql);
 			if(rs.next()){
 				totalResult = rs.getInt("total");
 				System.out.println("come-->"+totalResult);
 				totalPage = totalResult%pageResult==0?totalResult/pageResult:totalResult/pageResult+1;
-				//ÊäÈëµÄÒ³Êı´óÓÚ×ÜÒ³ÊıÊ±,ÏÔÊ¾µÚ1Ò³
+				//è¾“å…¥çš„é¡µæ•°å¤§äºæ€»é¡µæ•°æ—¶,æ˜¾ç¤ºç¬¬1é¡µ
 				if(currPage>totalPage)
 					currPage = 1;
-				//²éÑ¯·ûºÏÌõ¼şµÄ¼ÇÂ¼
-				//²éÑ¯½á¹û£ºÉÌÆ·Ãû³Æ,ÉÌÆ·¼Û¸ñ,ÉÌÆ·ÕÛ¿ÛÂÊ,½»Ò×id,½»Ò×ÉÌÆ·µÄÊıÁ¿
-				String sql ="select "+TableInfo.TABLE_Products+"."+TableInfo.PROT_pname+",";//ÉÌÆ·Ãû³Æ
+				//æŸ¥è¯¢ç¬¦åˆæ¡ä»¶çš„è®°å½•
+				//æŸ¥è¯¢ç»“æœï¼šå•†å“åç§°,å•†å“ä»·æ ¼,å•†å“æŠ˜æ‰£ç‡,äº¤æ˜“id,äº¤æ˜“å•†å“çš„æ•°é‡
+				String sql ="select "+TableInfo.TABLE_Products+"."+TableInfo.PROT_pname+",";//å•†å“åç§°
 				sql += TableInfo.TABLE_Products+"."+TableInfo.PROT_pprice+",";
 				sql += TableInfo.TABLE_Products+"."+TableInfo.PROT_pdiscount+",";
 				sql += TableInfo.TABLE_Transactions+"."+TableInfo.TRAN_tid+",";
@@ -132,23 +132,23 @@ public class OrderQueryShow extends BodyTagSupport {
 					sql +=" and "+TableInfo.TABLE_Products+"."+TableInfo.PROT_pdescription+" like '%"+pdescription+"%'";
 				sql += " order by "+TableInfo.TABLE_Transactions+"."+TableInfo.TRAN_tid+" desc";
 				sql += " limit "+((currPage-1)*pageResult)+","+pageResult;
-				System.out.println("²éÑ¯¼ÇÂ¼µÄÓï¾ä\n"+sql);
+				System.out.println("æŸ¥è¯¢è®°å½•çš„è¯­å¥\n"+sql);
 				rs = dataAccess.queryBySQL(sql);
 				
 				out.println("<table width='90%' border='1' cellspacing='0' cellpadding='0' style='font-size:12px'>");
 				out.println("<tr>");
-				out.println("<td width='5%' height='24' align='center' valign='middle'>¶©µ¥ºÅ</td>");
-				out.println("<td width='30%' align='center' valign='middle'>ÉÌÆ·Ãû³Æ</td>");
-				out.println("<td width='8%' align='center' valign='middle'>ÊıÁ¿</td>");
-				out.println("<td width='8%' align='center' valign='middle'>µ¥¼Û</td>");
-				out.println("<td width='8%' align='center' valign='middle'>ÕÛ¿ÛÂÊ</td>");
-				out.println("<td width='10%' align='center' valign='middle'>½ğ¶î</td>");
-				out.println("<td width='15%' align='center' valign='middle'>½»Ò×ÈÕÆÚ</td>");
-				out.println("<td width='8%' align='center' valign='middle'>¶©µ¥ĞŞ¸Ä</td>");
-				out.println("<td width='8%' align='center' valign='middle'>²»¹ºÂò</td>");
+				out.println("<td width='5%' height='24' align='center' valign='middle'>è®¢å•å·</td>");
+				out.println("<td width='30%' align='center' valign='middle'>å•†å“åç§°</td>");
+				out.println("<td width='8%' align='center' valign='middle'>æ•°é‡</td>");
+				out.println("<td width='8%' align='center' valign='middle'>å•ä»·</td>");
+				out.println("<td width='8%' align='center' valign='middle'>æŠ˜æ‰£ç‡</td>");
+				out.println("<td width='10%' align='center' valign='middle'>é‡‘é¢</td>");
+				out.println("<td width='15%' align='center' valign='middle'>äº¤æ˜“æ—¥æœŸ</td>");
+				out.println("<td width='8%' align='center' valign='middle'>è®¢å•ä¿®æ”¹</td>");
+				out.println("<td width='8%' align='center' valign='middle'>ä¸è´­ä¹°</td>");
 				out.println("</tr>");
 				if(totalResult == 0)
-					out.println("<tr><td height='20' align='center' valign='middle' colspan='9'>ÔİÎŞ¶©µ¥!</td></tr>");
+					out.println("<tr><td height='20' align='center' valign='middle' colspan='9'>æš‚æ— è®¢å•!</td></tr>");
 				while(rs.next()){
 					out.println("<tr>");
 					out.println("<td height='20' align='center' valign='middle'>"+rs.getString(TableInfo.TRAN_tid)+"</td>");
@@ -158,8 +158,8 @@ public class OrderQueryShow extends BodyTagSupport {
 					out.println(" <td align='center' valign='middle'>"+CommonTools.StringToDouble(rs.getString(TableInfo.PROT_pdiscount))/10+"</td>");
 					out.println("<td align='center' valign='middle'>"+CommonTools.StringToDouble(rs.getString(TableInfo.PROT_pprice))*CommonTools.StringToInt(rs.getString(TableInfo.PROT_pdiscount))*CommonTools.StringToInt(rs.getString(TableInfo.TRAN_tamount))/100+"</td>");
 					out.println("<td align='center' valign='middle'>"+rs.getString(TableInfo.TRAN_tdate)+" "+rs.getString(TableInfo.TRAN_ttime)+"</td>");
-					out.println("<td align='center' valign='middle'><a href='ordermodify.jsp?orderid="+rs.getString(TableInfo.TRAN_tid)+"'>ĞŞ¸Ä</a></td>");
-					out.println("<td align='center' valign='middle'><a href='javascript:isDeleteOrder(\"order_manager.jsp?method=delete&orderid="+rs.getString(TableInfo.TRAN_tid)+"\")'>É¾³ı</a></td>");
+					out.println("<td align='center' valign='middle'><a href='ordermodify.jsp?orderid="+rs.getString(TableInfo.TRAN_tid)+"'>ä¿®æ”¹</a></td>");
+					out.println("<td align='center' valign='middle'><a href='javascript:isDeleteOrder(\"order_manager.jsp?method=delete&orderid="+rs.getString(TableInfo.TRAN_tid)+"\")'>åˆ é™¤</a></td>");
 					out.println("</tr>");
 					//javascript:isDeleteOrder(url)
 				} 
@@ -167,7 +167,7 @@ public class OrderQueryShow extends BodyTagSupport {
 				ShowPage.printPage(out, currPage, totalPage, urlAddress);
 					
 			}else
-				out.println("·¢Éú´íÎó,ÇëÁªÏµ¹ÜÀíÔ±!");
+				out.println("å‘ç”Ÿé”™è¯¯,è¯·è”ç³»ç®¡ç†å‘˜!");
 			out.flush();	
 			
 		} catch (NumberFormatException e) {

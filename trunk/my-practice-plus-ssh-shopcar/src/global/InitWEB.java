@@ -1,5 +1,5 @@
 /*
- * ÀàÃû£ºInitWEB ×÷ÓÃ£ºÔÚWEB³õÊ¼»¯µÄÊ±ºò£¬Íê³ÉÊı¾İ¿âµÄÁ¬½Ó¡£ ÈÕÆÚ£º ×÷Õß£º
+ * ç±»åï¼šInitWEB ä½œç”¨ï¼šåœ¨WEBåˆå§‹åŒ–çš„æ—¶å€™ï¼Œå®Œæˆæ•°æ®åº“çš„è¿æ¥ã€‚ æ—¥æœŸï¼š ä½œè€…ï¼š
  */
 package global;
 
@@ -25,7 +25,7 @@ public class InitWEB extends HttpServlet
 	@Override
 	public void init() throws ServletException
 	{
-		// ³õÊ¼»¯Êı¾İ¿âÁ¬½Ó
+		// åˆå§‹åŒ–æ•°æ®åº“è¿æ¥
 		initDB();
 	}
 

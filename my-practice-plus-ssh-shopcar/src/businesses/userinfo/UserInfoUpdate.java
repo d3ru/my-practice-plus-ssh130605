@@ -1,5 +1,5 @@
 /**
- * ÎÄ¼ş£ºuserinfoUpdate.jsp -->userinfo/userinfoupdate.jsp ËµÃ÷£ºÓÃ»§×¢²áĞÅÏ¢ĞŞ¸Ä Ê±¼ä£º08-05-22 ±àĞ´£ºtarena
+ * æ–‡ä»¶ï¼šuserinfoUpdate.jsp -->userinfo/userinfoupdate.jsp è¯´æ˜ï¼šç”¨æˆ·æ³¨å†Œä¿¡æ¯ä¿®æ”¹ æ—¶é—´ï¼š08-05-22 ç¼–å†™ï¼štarena
  */
 package businesses.userinfo;
 
@@ -41,30 +41,30 @@ public class UserInfoUpdate extends HttpServlet
 		String utele = request.getParameter(TableInfo.USER_utele);
 		String umobile = request.getParameter(TableInfo.USER_umobile);
 
-		// ÕâÀïÖ»×ö¼òµ¥µÄÑéÖ¤,¶ÔÓÚ¾«È·ÑéÖ¤ÇëÊ¹ÓÃÕıÔò±í´ïÊ½ÑéÖ¤
+		// è¿™é‡Œåªåšç®€å•çš„éªŒè¯,å¯¹äºç²¾ç¡®éªŒè¯è¯·ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼éªŒè¯
 		if (uname == null || uname.equals(""))
 		{
-			CommonTools.Error(request, response, session, "ÓÃ»§Ãû²»ÔÊĞíÎª¿Õ");
+			CommonTools.Error(request, response, session, "ç”¨æˆ·åä¸å…è®¸ä¸ºç©º");
 			return;
 		}
 		if (uaddress == null || uaddress.equals(""))
 		{
-			CommonTools.Error(request, response, session, "µØÖ·²»ÔÊĞíÎª¿Õ");
+			CommonTools.Error(request, response, session, "åœ°å€ä¸å…è®¸ä¸ºç©º");
 			return;
 		}
 		if (uzip == null || uzip.equals(""))
 		{
-			CommonTools.Error(request, response, session, "ÓÊÕş±àÂë²»ÔÊĞíÎª¿Õ");
+			CommonTools.Error(request, response, session, "é‚®æ”¿ç¼–ç ä¸å…è®¸ä¸ºç©º");
 			return;
 		}
 		if (utele == null || utele.equals(""))
 		{
-			CommonTools.Error(request, response, session, "µç»°ºÅÂë²»ÔÊĞíÎª¿Õ");
+			CommonTools.Error(request, response, session, "ç”µè¯å·ç ä¸å…è®¸ä¸ºç©º");
 			return;
 		}
 		if (umobile == null || umobile.equals(""))
 		{
-			CommonTools.Error(request, response, session, "ÊÖ»úºÅ²»ÔÊĞíÎª¿Õ");
+			CommonTools.Error(request, response, session, "æ‰‹æœºå·ä¸å…è®¸ä¸ºç©º");
 			return;
 		}
 		String sql = "update " + TableInfo.TABLE_UserInfo + " set ";
@@ -78,13 +78,13 @@ public class UserInfoUpdate extends HttpServlet
 		boolean b = dataAccess.executeSQL(sql);
 		if (b)
 		{
-			// ¸Ä±äSessionÖĞµÄuname
+			// æ”¹å˜Sessionä¸­çš„uname
 			request.getSession().setAttribute("uname", uname);
 			response.sendRedirect(request.getContextPath() + "/userinfo/userinfo.jsp");
 		}
 		else
 		{
-			CommonTools.Error(request, response, session, "·¢Éú´íÎó,ÇëÁªÏµ¹ÜÀíÔ±!");
+			CommonTools.Error(request, response, session, "å‘ç”Ÿé”™è¯¯,è¯·è”ç³»ç®¡ç†å‘˜!");
 			return;
 		}
 

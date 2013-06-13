@@ -28,7 +28,7 @@ public class ListProrityProduct extends BodyTagSupport {
 				String ptname=rs.getString(2);
 				String sql2="select * from "+TableInfo.TABLE_Products+" where "+TableInfo.PROT_pprority+"=1 and "+TableInfo.PROT_ptypeid+"='"+id+"'";
 				ResultSet rs2=ida.queryBySQL(sql2);
-				out.println(ptname+"ÍÆ¼öÁĞ±í£º");
+				out.println(ptname+"æ¨èåˆ—è¡¨ï¼š");
 				
 				out.println("<div style='height:92;overflow:auto;width:580;'>");
 				out.println("<table height='80%' cellspacing='0' cellpadding='0'>");
@@ -37,7 +37,7 @@ public class ListProrityProduct extends BodyTagSupport {
 					out.println("<td>");
 					out.println("<img src='displaypphoto.do?pid="+rs2.getInt(1)+"' width='70' height='70' border='0'/>");
 					out.println("</td>");
-					//×î¶àÏÔÊ¾4¸öÉÌÆ·
+					//æœ€å¤šæ˜¾ç¤º4ä¸ªå•†å“
 					int max=0;
 					while(rs2.next() &&  max++<4){
 						out.println("<td>");
@@ -45,11 +45,11 @@ public class ListProrityProduct extends BodyTagSupport {
 						out.println("</td>");
 					}
 					out.println("<td>");
-					out.println("&nbsp;&nbsp;&nbsp;&nbsp;<a href='listproductbytype.jsp?typeid="+id+"'>>>¸ü¶à...</a>");
+					out.println("&nbsp;&nbsp;&nbsp;&nbsp;<a href='listproductbytype.jsp?typeid="+id+"'>>>æ›´å¤š...</a>");
 					out.println("</td>");
 				}else{
 					out.println("<td>");
-					out.println("<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span align='center' height='92' style='color:red;'>´ËÀàÖĞÔİÎŞÉÌÆ·</span>");
+					out.println("<br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span align='center' height='92' style='color:red;'>æ­¤ç±»ä¸­æš‚æ— å•†å“</span>");
 					out.println("</td>");
 				}
 				out.println("</tr>");

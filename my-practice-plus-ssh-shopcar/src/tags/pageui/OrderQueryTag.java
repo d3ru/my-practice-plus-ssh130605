@@ -19,10 +19,10 @@ public class OrderQueryTag extends BodyTagSupport {
 		JspWriter out=pageContext.getOut();
 		try {
 			out.println("<form id='form2' name='form2' method='post' action='orderquery.do'>");
-			out.println("<label style='text-align:center; font-weight:bold'>个人订单查询</label><br/>");
-			out.println("<label>商品名称:&nbsp;&nbsp;<input name='querycondition' style='width:110px;' type='text' />");  
+			out.println("<label style='text-align:center; font-weight:bold'>涓汉璁㈠崟鏌ヨ</label><br/>");
+			out.println("<label>鍟嗗搧鍚嶇О:&nbsp;&nbsp;<input name='querycondition' style='width:110px;' type='text' />");  
 			out.println("</label><br>");
-			out.println("<label>商品类型:");
+			out.println("<label>鍟嗗搧绫诲瀷:");
 			out.println("&nbsp;<select name='productype' style='width:110px;'>");
 			String sql="select * from producttype";
 			IDataAccess ida=DataAccessImpl.newInstance();
@@ -36,10 +36,10 @@ public class OrderQueryTag extends BodyTagSupport {
 			}
 			out.println("</select>");
 			out.println("</label><br>");
-			out.println("<label>交易日期:&nbsp;&nbsp;<input name='pdate' type='text' style='width:110px;' />");
+			out.println("<label>浜ゆ槗鏃ユ湡:&nbsp;&nbsp;<input name='pdate' type='text' style='width:110px;' />");
 			out.println("</label><br>");
-			out.println("<label>&nbsp;&nbsp;&nbsp;<input type='submit' name='Submit2' value='提交' />");
-			out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='reset' name='Submit3' value='重置' /></label>");
+			out.println("<label>&nbsp;&nbsp;&nbsp;<input type='submit' name='Submit2' value='鎻愪氦' />");
+			out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='reset' name='Submit3' value='閲嶇疆' /></label>");
 			out.println("<input type='hidden' name='querytype'  value='1'/>");
 			out.println("</form>");
 			

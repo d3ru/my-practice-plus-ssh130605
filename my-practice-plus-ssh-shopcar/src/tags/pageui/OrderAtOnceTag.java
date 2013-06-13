@@ -30,7 +30,7 @@ public class OrderAtOnceTag extends BodyTagSupport
 		try
 		{
 			IDataAccess ida = DataAccessImpl.newInstance();
-			Cookie cartproducts[] = request.getCookies();// Í¨¹ı£Ãookie´Ó¿Í»§»ñÈ¡Ñ¡¹ºÉÌÆ·ĞÅÏ¢.
+			Cookie cartproducts[] = request.getCookies();// é€šè¿‡ï¼£ookieä»å®¢æˆ·è·å–é€‰è´­å•†å“ä¿¡æ¯.
 			String cpid = "";
 			int pid;
 			int pronum;
@@ -38,22 +38,22 @@ public class OrderAtOnceTag extends BodyTagSupport
 			out.print("<p>&nbsp;</p>");
 			out.print("<table border='1' width='80%' cellspacing='0' cellpadding='0'>");
 			out.print("<tr style='background-color:#333333;color:blue;'>");
-			out.print("<td>ÉÌÆ·Ãû³Æ</td>");
-			out.print("<td>ÉÌÆ·¼Û¸ñ</td>");
-			out.print("<td>ÉÌÆ·ËµÃ÷</td>");
-			out.print("<td>Ñ¡¹ºÊıÁ¿</td>");
-			out.print("<td>¼Û¸ñĞ¡¼Ç</td>");
+			out.print("<td>å•†å“åç§°</td>");
+			out.print("<td>å•†å“ä»·æ ¼</td>");
+			out.print("<td>å•†å“è¯´æ˜</td>");
+			out.print("<td>é€‰è´­æ•°é‡</td>");
+			out.print("<td>ä»·æ ¼å°è®°</td>");
 			out.print("</tr>");
 			//
 			for (Cookie cook : cartproducts)
-			{// Ñ­»·½âÎöCookieÖĞµÄÑ¡¹ºÉÌÆ·ĞÅÏ¢¡£
-				cpid = cook.getName();// £ÃookieÃû£¬Ñ¡¹ºÉÌÆ·ÒÔpro¿ªÍ·¡£
+			{// å¾ªç¯è§£æCookieä¸­çš„é€‰è´­å•†å“ä¿¡æ¯ã€‚
+				cpid = cook.getName();// ï¼£ookieåï¼Œé€‰è´­å•†å“ä»¥proå¼€å¤´ã€‚
 				if (cpid.startsWith("pro_"))
 				{
 					try
 					{
-						pid = Integer.parseInt(cpid.substring(4));// ÉÌÆ·£É£Ä
-						pronum = Integer.parseInt(cook.getValue());// ÉÌÆ·ÊıÁ¿
+						pid = Integer.parseInt(cpid.substring(4));// å•†å“ï¼©ï¼¤
+						pronum = Integer.parseInt(cook.getValue());// å•†å“æ•°é‡
 						String sql = "select * from " + TableInfo.TABLE_Products + " where " + TableInfo.PROT_pid + "=" + pid;
 						ResultSet rs = ida.queryBySQL(sql);
 						while (rs.next())
@@ -63,9 +63,9 @@ public class OrderAtOnceTag extends BodyTagSupport
 							String pdescription = rs.getString("pdescription");
 							double pprice = rs.getDouble("pprice");
 
-							out.println("<td>" + pname + "</td>");// ÉÌÆ·Ãû³Æ
-							out.println("<td>" + pprice + "</td>");// ÏúÊÛ¼Û
-							out.println("<td>" + pdescription + "</td>");// ¿â´æÁ¿
+							out.println("<td>" + pname + "</td>");// å•†å“åç§°
+							out.println("<td>" + pprice + "</td>");// é”€å”®ä»·
+							out.println("<td>" + pdescription + "</td>");// åº“å­˜é‡
 							out.print("<td>" + pronum + "</td>");
 							out.println("<td>" + pronum * pprice + "</td>");
 							totalmoney += pronum * pprice;
@@ -76,18 +76,18 @@ public class OrderAtOnceTag extends BodyTagSupport
 					{
 						e.printStackTrace();
 					}
-					// Çå¿ÕCookie
-					cook.setMaxAge(0);// Õı:ÔÚÖ¸¶¨ÃëÊıºóÉ¾³ı,0:ÂíÉÏÉ¾³ı,¸º:ä¯ÀÀÆ÷¹Ø±ÕºóÉ¾³ı.
+					// æ¸…ç©ºCookie
+					cook.setMaxAge(0);// æ­£:åœ¨æŒ‡å®šç§’æ•°ååˆ é™¤,0:é©¬ä¸Šåˆ é™¤,è´Ÿ:æµè§ˆå™¨å…³é—­ååˆ é™¤.
 					// cook.setValue("");
 					response.addCookie(cook);
 					// response.setHeader("refresh", "0;url='"+request.getContextPath()+"/index.jsp'");
 				}
 			}
-			// out.print("<tr  align='center'><td colspan='5' align='center'><B>×Ü½ğ¶î:</b><font color=red>"+totalmoney+"</font></td></tr>");
-			out.print("<tr  align='center'><td colspan='5' align='center'><B>×Ü½ğ¶î:</b><font color=red>" + totalmoney + "</font></td></tr>");
+			// out.print("<tr  align='center'><td colspan='5' align='center'><B>æ€»é‡‘é¢:</b><font color=red>"+totalmoney+"</font></td></tr>");
+			out.print("<tr  align='center'><td colspan='5' align='center'><B>æ€»é‡‘é¢:</b><font color=red>" + totalmoney + "</font></td></tr>");
 			out.print("</table>");
 			out.print("<p>&nbsp;</p>");
-			out.print("<a href='" + request.getContextPath() + "/index.jsp'><u>·µ»Ø</u></a>");
+			out.print("<a href='" + request.getContextPath() + "/index.jsp'><u>è¿”å›</u></a>");
 			response.flushBuffer();
 
 		}

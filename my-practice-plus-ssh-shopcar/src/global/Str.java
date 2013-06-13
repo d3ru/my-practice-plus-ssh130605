@@ -1,32 +1,46 @@
 package global;
 
-public class Str {
+public class Str
+{
 	/**
-     * ½«iso¸ñÊ½µÄ×Ö·û´®×ª»»³É¹ú±êÂë
-     * @param str String
-     * @return String
-     */
-    public static String isoToGb(String str){
-        String s=null;
-        try{
-            s= new String(str.getBytes("iso8859-1"),"GBK");
-        }catch(Exception e){
-            return s;
-        }
-        return s;
-    }
-    /**
-     * ½«¹ú±êÂë¸ñÊ½×Ö·û´®×ª»»³Éiso¸ñÊ½×Ö·û´®
-     * @param str String   ¹ú±ê¸ñÊ½×Ö·û´®
-     * @return String
-     */
-    public static String gbToIso(String str){
-        String s=null;
-        try{
-            s=new String(str.getBytes("GBK"),"iso8859-1");
-        }catch(Exception e){
-            return s;
-        }
-        return s;
-    }
+	 * å°†isoæ ¼å¼çš„å­—ç¬¦ä¸²è½¬æ¢æˆå›½æ ‡ç 
+	 * 
+	 * @param str
+	 *            String
+	 * @return String
+	 */
+	public static String isoToGb(String str)
+	{
+		String s = null;
+		try
+		{
+			s = new String(str.getBytes("iso8859-1"), "GBK");
+		}
+		catch (Exception e)
+		{
+			return s;
+		}
+		return s;
+	}
+
+	/**
+	 * å°†å›½æ ‡ç æ ¼å¼å­—ç¬¦ä¸²è½¬æ¢æˆisoæ ¼å¼å­—ç¬¦ä¸²
+	 * 
+	 * @param str
+	 *            String å›½æ ‡æ ¼å¼å­—ç¬¦ä¸²
+	 * @return String
+	 */
+	public static String gbToIso(String str)
+	{
+		String s = null;
+		try
+		{
+			s = new String(str.getBytes("GBK"), "iso8859-1");
+		}
+		catch (Exception e)
+		{
+			return s;
+		}
+		return s;
+	}
 }

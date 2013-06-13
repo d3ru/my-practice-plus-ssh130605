@@ -1,5 +1,5 @@
 /*
- * ÀàÃû£ºDataAccessImpl ×÷ÓÃ£ºÊı¾İ·ÃÎÊµÄÊµÏÖÀà¡£ ÈÕÆÚ£º ×÷Õß£º
+ * ç±»åï¼šDataAccessImpl ä½œç”¨ï¼šæ•°æ®è®¿é—®çš„å®ç°ç±»ã€‚ æ—¥æœŸï¼š ä½œè€…ï¼š
  */
 package global;
 
@@ -54,13 +54,13 @@ public class DataAccessImpl implements IDataAccess, Serializable
 		}
 		catch (ClassNotFoundException e)
 		{
-			System.out.println("Êı¾İ¿âÇı¶¯¼ÓÔØÊ§°Ü!");
+			System.out.println("æ•°æ®åº“é©±åŠ¨åŠ è½½å¤±è´¥!");
 		}
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-			System.out.println("´ò¿ªÊı¾İ¿âÊ±·¢Éú´íÎó!");
+			System.out.println("æ‰“å¼€æ•°æ®åº“æ—¶å‘ç”Ÿé”™è¯¯!");
 		}
 	}
 
@@ -74,7 +74,7 @@ public class DataAccessImpl implements IDataAccess, Serializable
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Ö´ĞĞÓï¾ä:\n" + sql + "\nÊ±·¢Éú´íÎó,Çë¼ì²é!" + e.getMessage());
+			System.out.println("æ‰§è¡Œè¯­å¥:\n" + sql + "\næ—¶å‘ç”Ÿé”™è¯¯,è¯·æ£€æŸ¥!" + e.getMessage());
 			return false;
 		}
 	}
@@ -88,7 +88,7 @@ public class DataAccessImpl implements IDataAccess, Serializable
 		}
 		catch (SQLException e)
 		{
-			System.out.println("Ö´ĞĞÓï¾ä:\n" + sql + "\nÊ±·¢Éú´íÎó,Çë¼ì²é!" + e.getMessage());
+			System.out.println("æ‰§è¡Œè¯­å¥:\n" + sql + "\næ—¶å‘ç”Ÿé”™è¯¯,è¯·æ£€æŸ¥!" + e.getMessage());
 			return null;
 		}
 

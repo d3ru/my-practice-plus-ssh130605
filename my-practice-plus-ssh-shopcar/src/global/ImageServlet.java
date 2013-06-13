@@ -1,5 +1,5 @@
 /*
- * ÀàÃû£ºImageServlet ×÷ÓÃ£ºÍê³É¸½¼ÓÂëÍ¼ÏóµÄÊä³ö¡£ ÈÕÆÚ£º ×÷Õß£º
+ * ç±»åï¼šImageServlet ä½œç”¨ï¼šå®Œæˆé™„åŠ ç å›¾è±¡çš„è¾“å‡ºã€‚ æ—¥æœŸï¼š ä½œè€…ï¼š
  */
 package global;
 
@@ -22,8 +22,8 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 public class ImageServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1925469807858069817L;
-	private final int width = 57;// Í¼Ïñ¿í¶È
-	private final int height = 21;// Í¼Ïñ¸ß¶È
+	private final int width = 57;// å›¾åƒå®½åº¦
+	private final int height = 21;// å›¾åƒé«˜åº¦
 
 	/**
 	 * Constructor of the object.
@@ -47,20 +47,20 @@ public class ImageServlet extends HttpServlet
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		// TODO Auto-generated method stub
-		// ¶¨ÒåÊä³ö¸ñÊ½
+		// å®šä¹‰è¾“å‡ºæ ¼å¼
 		response.setContentType("image/jpeg");
 		ServletOutputStream out = response.getOutputStream();
-		// ×¼±¸»º³åÍ¼Ïñ,²»Ö§³Ö±íµ¥
+		// å‡†å¤‡ç¼“å†²å›¾åƒ,ä¸æ”¯æŒè¡¨å•
 		BufferedImage bimg = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
 		Random r = new Random();
-		// »ñÈ¡Í¼ĞÎÉÏÏÂÎÄ»·¾³
+		// è·å–å›¾å½¢ä¸Šä¸‹æ–‡ç¯å¢ƒ
 		Graphics gc = bimg.getGraphics();
-		// Éè¶¨±³¾°É«²¢½øĞĞÌî³ä
+		// è®¾å®šèƒŒæ™¯è‰²å¹¶è¿›è¡Œå¡«å……
 		gc.setColor(getRandColor(200, 250));
 		gc.fillRect(0, 0, width, height);
-		// ÉèÖÃÍ¼ĞÎÉÏÏÂÎÄ»·¾³×ÖÌå
+		// è®¾ç½®å›¾å½¢ä¸Šä¸‹æ–‡ç¯å¢ƒå­—ä½“
 		gc.setFont(new Font("Times New Roman", Font.PLAIN, 18));
-		// Ëæ»ú²úÉú200Ìõ¸ÉÈÅÏßÌõ£¬Ê¹Í¼ÏñÖĞµÄÈÏÖ¤Âë²»Ò×±»ÆäËû·ÖÎö³ÌĞòÌ½²âµ½
+		// éšæœºäº§ç”Ÿ200æ¡å¹²æ‰°çº¿æ¡ï¼Œä½¿å›¾åƒä¸­çš„è®¤è¯ç ä¸æ˜“è¢«å…¶ä»–åˆ†æç¨‹åºæ¢æµ‹åˆ°
 		gc.setColor(getRandColor(160, 200));
 		for (int i = 0; i < 200; i++)
 		{
@@ -70,7 +70,7 @@ public class ImageServlet extends HttpServlet
 			int y2 = r.nextInt(15);
 			gc.drawLine(x1, y1, x1 + x2, y1 + y2);
 		}
-		// Ëæ»ú²úÉú100¸ö¸ÉÈÅµã£¬Ê¹Í¼ÏñÖĞµÄÑéÖ¤Âë²»Ò×±»ÆäËû·ÖÎö³ÌĞòÌ½²âµ½
+		// éšæœºäº§ç”Ÿ100ä¸ªå¹²æ‰°ç‚¹ï¼Œä½¿å›¾åƒä¸­çš„éªŒè¯ç ä¸æ˜“è¢«å…¶ä»–åˆ†æç¨‹åºæ¢æµ‹åˆ°
 		gc.setColor(getRandColor(120, 240));
 		for (int i = 0; i < 100; i++)
 		{
@@ -79,7 +79,7 @@ public class ImageServlet extends HttpServlet
 			gc.drawOval(x, y, 0, 0);
 		}
 
-		// Ëæ»ú²úÉú4¸öÊı×ÖµÄÑéÖ¤Âë
+		// éšæœºäº§ç”Ÿ4ä¸ªæ•°å­—çš„éªŒè¯ç 
 		String rs = "";
 		String rn = "";
 		for (int i = 0; i < 4; i++)
@@ -89,7 +89,7 @@ public class ImageServlet extends HttpServlet
 			gc.setColor(new Color(20 + r.nextInt(110), 20 + r.nextInt(110), 20 + r.nextInt(110)));
 			gc.drawString(rn, 13 * i + 1, 16);
 		}
-		// ÊÍ·ÅÍ¼ĞÎÉÏÏÂÎÄ»·¾³
+		// é‡Šæ”¾å›¾å½¢ä¸Šä¸‹æ–‡ç¯å¢ƒ
 		gc.dispose();
 
 		// if(request.getSession().getAttribute("hk_verify")!=null || request.getSession().getAttribute("hk_verify")!=""){
@@ -110,9 +110,9 @@ public class ImageServlet extends HttpServlet
 			fc = 255;
 		if (bc > 255)
 			bc = 255;
-		int red = fc + r.nextInt(bc - fc);// ºì
-		int green = fc + r.nextInt(bc - fc);// ÂÌ
-		int blue = fc + r.nextInt(bc - fc);// À¶
+		int red = fc + r.nextInt(bc - fc);// çº¢
+		int green = fc + r.nextInt(bc - fc);// ç»¿
+		int blue = fc + r.nextInt(bc - fc);// è“
 		return new Color(red, green, blue);
 	}
 

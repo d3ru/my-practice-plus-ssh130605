@@ -30,13 +30,13 @@ public class TopProductsTag extends BodyTagSupport {
 			out.println("<tr valign='bottom'><td>");
 			out.println("<table border='0' width='100%'  cellspacing='0' cellpadding='0'>");
 			out.println("<tr height='14' valign='buttom' >");
-			out.println("<td width='90' height='10' align='center'  style='border-bottom-style: none; border-bottom-color: #FFFFFF; border-bottom:none; border-bottom-width:0px;' background='images/2.gif'>::ÉÌÆ·ËÑË÷::</td>");
-			out.println("<td width='90' background='images/2.gif'><div align='center'>ÇëÊäÈë¹Ø¼ü×Ö</div></td>");
+			out.println("<td width='90' height='10' align='center'  style='border-bottom-style: none; border-bottom-color: #FFFFFF; border-bottom:none; border-bottom-width:0px;' background='images/2.gif'>::å•†å“æœç´¢::</td>");
+			out.println("<td width='90' background='images/2.gif'><div align='center'>è¯·è¾“å…¥å…³é”®å­—</div></td>");
 			out.println("<td width='220' background='images/2.gif'><div align='center'>");
 			out.println("<input type='text' style='border-style: none;height:15px;' id='key' name='key' style='width:220px'/>");
 			out.println("</div></td>");
 			out.println("<td background='images/2.gif' width='58' valign='middle' align='center'>");
-			out.println("<input type='button' style='height:16px;border:1px;border-color: black;border-style: groove;border-width: 1px;' onclick=\"showname('"+null+"','"+null+"');\"   value='ËÑË÷'/>");
+			out.println("<input type='button' style='height:16px;border:1px;border-color: black;border-style: groove;border-width: 1px;' onclick=\"showname('"+null+"','"+null+"');\"   value='æœç´¢'/>");
 			out.println("</td>");
 			out.println("</tr>");
 			out.println("</table>");

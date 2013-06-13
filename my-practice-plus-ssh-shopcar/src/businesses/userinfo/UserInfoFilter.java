@@ -1,5 +1,5 @@
 /**
- * ÎÄ¼ş£ºUserInfoFilter.java ËµÃ÷£ºÓÃ»§·ÃÎÊÓÃ»§ĞÅÏ¢×ÔÎ¬»¤µÄ¹ıÂËÆ÷ Ê±¼ä£º08-05-21 ±àĞ´£ºtarena
+ * æ–‡ä»¶ï¼šUserInfoFilter.java è¯´æ˜ï¼šç”¨æˆ·è®¿é—®ç”¨æˆ·ä¿¡æ¯è‡ªç»´æŠ¤çš„è¿‡æ»¤å™¨ æ—¶é—´ï¼š08-05-21 ç¼–å†™ï¼štarena
  */
 package businesses.userinfo;
 
@@ -28,7 +28,7 @@ public class UserInfoFilter implements Filter
 		HttpServletRequest request = (HttpServletRequest) res;
 		HttpServletResponse reponse = (HttpServletResponse) rep;
 		HttpSession session = request.getSession();
-		// Ã»ÓĞµÇÂ¼µÄÓÃ»§Ó¦¸Ã±»À¹½Ø¡£
+		// æ²¡æœ‰ç™»å½•çš„ç”¨æˆ·åº”è¯¥è¢«æ‹¦æˆªã€‚
 		// System.out.println(request.getRequestURI());
 		// System.out.println(request.getRequestURL());
 		// System.out.println(request.getServletPath());
@@ -37,10 +37,10 @@ public class UserInfoFilter implements Filter
 		querystring = querystring == null ? "" : querystring;
 		if (session == null || session.getAttribute("uname") == null)
 		{
-			// ±£´æ¸ÃĞÅÏ¢¾ÍÊÇ±ãÓÚµÇÂ¼ºóÔÙ¶¨Ïòµ½¸ÃÒ³Ãæ´¦Àí¡£´¦ÀíÍê±Ïºó£¬Çå¿Õ¸ÃsessionÖµ
+			// ä¿å­˜è¯¥ä¿¡æ¯å°±æ˜¯ä¾¿äºç™»å½•åå†å®šå‘åˆ°è¯¥é¡µé¢å¤„ç†ã€‚å¤„ç†å®Œæ¯•åï¼Œæ¸…ç©ºè¯¥sessionå€¼
 			session.setAttribute("urlstr", url + "?" + querystring);
-			// System.out.println("±»À¹½ØµÄURL£º"+url+"?"+querystring);
-			request.setAttribute("notlogin", "ÄúµÇÂ¼ºóÊ¹ÓÃ²Å¿ÉÒÔÊ¹ÓÃ¸Ã¹¦ÄÜ£¡£¡");
+			// System.out.println("è¢«æ‹¦æˆªçš„URLï¼š"+url+"?"+querystring);
+			request.setAttribute("notlogin", "æ‚¨ç™»å½•åä½¿ç”¨æ‰å¯ä»¥ä½¿ç”¨è¯¥åŠŸèƒ½ï¼ï¼");
 			RequestDispatcher rd = res.getRequestDispatcher("/login/userlogin.jsp");
 			rd.forward(res, rep);
 

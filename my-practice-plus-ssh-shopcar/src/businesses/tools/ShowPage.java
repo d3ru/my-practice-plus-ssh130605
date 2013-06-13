@@ -1,5 +1,5 @@
 /**
- * ÎÄ¼ş£ºshowPagev.java ËµÃ÷£ºÏÔÊ¾·ÖÒ³µÄ¹«¹²´úÂë Ê±¼ä£º08-05-16 ±àĞ´£ºtarena
+ * æ–‡ä»¶ï¼šshowPagev.java è¯´æ˜ï¼šæ˜¾ç¤ºåˆ†é¡µçš„å…¬å…±ä»£ç  æ—¶é—´ï¼š08-05-16 ç¼–å†™ï¼štarena
  */
 package businesses.tools;
 
@@ -11,24 +11,24 @@ import javax.servlet.jsp.JspWriter;
 public class ShowPage
 {
 
-	// currPage:µ±Ç°Ò³;totalPage:×Ü¹²µÄÒ³Ãæ;urlAddress£ºÁ´½Óµ½µÄµØÖ·
+	// currPage:å½“å‰é¡µ;totalPage:æ€»å…±çš„é¡µé¢;urlAddressï¼šé“¾æ¥åˆ°çš„åœ°å€
 	public static void printPage(PrintWriter out, int currPage, int totalPage, String urlAddress)
 	{
 		if (totalPage > 1)
 		{
 			out.println("<table width='90%' border='0' cellspacing='0' cellpadding='0' style='font-size:12px'><tr>");
 			out.println("<td align=center'>");
-			out.println("µ±Ç°µÚ " + currPage + " Ò³/¹² " + totalPage + " Ò³&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-			out.print(returnLink(urlAddress, 1, "&lt;&lt;µÚÒ»Ò³", "µÚÒ»Ò³") + "&nbsp;&nbsp;");
-			out.print((currPage - 1 > 0 ? returnLink(urlAddress, currPage - 1, "&lt;ÉÏÒ»Ò³", "ÉÏÒ»Ò³") : "&lt;ÉÏÒ»Ò³") + "&nbsp;&nbsp;");
-			out.print((currPage + 1 <= totalPage ? returnLink(urlAddress, currPage + 1, "ÏÂÒ»&gt;", "ÏÂÒ»Ò³") : "ÏÂÒ»&gt;") + "&nbsp;&nbsp;");
-			out.print(returnLink(urlAddress, totalPage, "×îºóÒ³&gt;&gt;", "×îºóÒ³") + "&nbsp;&nbsp;&nbsp;");
+			out.println("å½“å‰ç¬¬ " + currPage + " é¡µ/å…± " + totalPage + " é¡µ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+			out.print(returnLink(urlAddress, 1, "&lt;&lt;ç¬¬ä¸€é¡µ", "ç¬¬ä¸€é¡µ") + "&nbsp;&nbsp;");
+			out.print((currPage - 1 > 0 ? returnLink(urlAddress, currPage - 1, "&lt;ä¸Šä¸€é¡µ", "ä¸Šä¸€é¡µ") : "&lt;ä¸Šä¸€é¡µ") + "&nbsp;&nbsp;");
+			out.print((currPage + 1 <= totalPage ? returnLink(urlAddress, currPage + 1, "ä¸‹ä¸€&gt;", "ä¸‹ä¸€é¡µ") : "ä¸‹ä¸€&gt;") + "&nbsp;&nbsp;");
+			out.print(returnLink(urlAddress, totalPage, "æœ€åé¡µ&gt;&gt;", "æœ€åé¡µ") + "&nbsp;&nbsp;&nbsp;");
 			out.println("<input type='text' style='width:20;height:15;'  onkeydown='if(event.keyCode==13){showPage(\"" + urlAddress + "\",this.value);}' size='3' maxlength='5'/>");
 			out.println("</td></tr></table>");
 		}
 	}
 
-	// currPage:µ±Ç°Ò³;totalPage:×Ü¹²µÄÒ³Ãæ;urlAddress£ºÁ´½Óµ½µÄµØÖ·\"
+	// currPage:å½“å‰é¡µ;totalPage:æ€»å…±çš„é¡µé¢;urlAddressï¼šé“¾æ¥åˆ°çš„åœ°å€\"
 	public static void printPage(JspWriter out, int currPage, int totalPage, String urlAddress)
 	{
 		try
@@ -37,11 +37,11 @@ public class ShowPage
 			{
 				out.println("<table width='90%' border='0' cellspacing='0' cellpadding='0' style='font-size:12px'><tr>");
 				out.println("<td align=center'>");
-				out.println("µ±Ç°µÚ " + currPage + " Ò³/¹² " + totalPage + " Ò³&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-				out.print(returnLink(urlAddress, 1, "&lt;&lt;µÚÒ»Ò³", "µÚÒ»Ò³") + "&nbsp;&nbsp;");
-				out.print((currPage - 1 > 0 ? returnLink(urlAddress, currPage - 1, "&lt;ÉÏÒ»Ò³", "ÉÏÒ»Ò³") : "&lt;ÉÏÒ»Ò³") + "&nbsp;&nbsp;");
-				out.print((currPage + 1 <= totalPage ? returnLink(urlAddress, currPage + 1, "ÏÂÒ»Ò³&gt;", "ÏÂÒ»Ò³") : "ÏÂÒ»Ò³&gt;") + "&nbsp;&nbsp;");
-				out.print(returnLink(urlAddress, totalPage, "×îºóÒ³&gt;&gt;", "×îºóÒ³") + "&nbsp;&nbsp;&nbsp;");
+				out.println("å½“å‰ç¬¬ " + currPage + " é¡µ/å…± " + totalPage + " é¡µ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+				out.print(returnLink(urlAddress, 1, "&lt;&lt;ç¬¬ä¸€é¡µ", "ç¬¬ä¸€é¡µ") + "&nbsp;&nbsp;");
+				out.print((currPage - 1 > 0 ? returnLink(urlAddress, currPage - 1, "&lt;ä¸Šä¸€é¡µ", "ä¸Šä¸€é¡µ") : "&lt;ä¸Šä¸€é¡µ") + "&nbsp;&nbsp;");
+				out.print((currPage + 1 <= totalPage ? returnLink(urlAddress, currPage + 1, "ä¸‹ä¸€é¡µ&gt;", "ä¸‹ä¸€é¡µ") : "ä¸‹ä¸€é¡µ&gt;") + "&nbsp;&nbsp;");
+				out.print(returnLink(urlAddress, totalPage, "æœ€åé¡µ&gt;&gt;", "æœ€åé¡µ") + "&nbsp;&nbsp;&nbsp;");
 				out.println("<input type='text' style='width:20;height:15;' onkeydown='if(event.keyCode==13){showPage(\"" + urlAddress + "\",this.value);}' size='3' maxlength='5'/>");
 				out.println("</td></tr></table>");
 			}

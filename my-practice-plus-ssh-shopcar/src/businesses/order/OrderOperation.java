@@ -1,8 +1,8 @@
 /**
- * ÎÄ¼ş£ºorder.OrderOperation.java URL£ºorder/order_manager.jsp?orderid=xx <br/>
- * ËµÃ÷£ºÊµÏÖ¶Ô¶©µ¥µÄÔöÉ¾ĞŞ²é ¶©µ¥µÄÔö£º¼´¹ºÎï³µÖĞÉÌÆ·µÄ½áËã <br/>
- * ·½·¨£ºÍ¨¹ıÅĞ¶¨method=add/delete/update/query,·Ö±ğ¶ÔÓ¦¶©µ¥µÄÔö/É¾/ĞŞ/²é <br/>
- * Ê±¼ä£º08-05-16
+ * æ–‡ä»¶ï¼šorder.OrderOperation.java URLï¼šorder/order_manager.jsp?orderid=xx <br/>
+ * è¯´æ˜ï¼šå®ç°å¯¹è®¢å•çš„å¢åˆ ä¿®æŸ¥ è®¢å•çš„å¢ï¼šå³è´­ç‰©è½¦ä¸­å•†å“çš„ç»“ç®— <br/>
+ * æ–¹æ³•ï¼šé€šè¿‡åˆ¤å®šmethod=add/delete/update/query,åˆ†åˆ«å¯¹åº”è®¢å•çš„å¢/åˆ /ä¿®/æŸ¥ <br/>
+ * æ—¶é—´ï¼š08-05-16
  */
 package businesses.order;
 
@@ -54,13 +54,13 @@ public class OrderOperation extends HttpServlet
 			CommonTools.Error(request, response, session);
 			return;
 		}
-		// ¹ºÎï³µ½áËã
+		// è´­ç‰©è½¦ç»“ç®—
 		else if (method.equals("add"))
 			orderAccount();
-		// ¶©µ¥É¾³ı
+		// è®¢å•åˆ é™¤
 		else if (method.equals("delete"))
 			orderDelete();
-		// ¶©µ¥ĞŞ¸Ä
+		// è®¢å•ä¿®æ”¹
 		else if (method.equals("update"))
 			orderUpdate();
 		else
@@ -69,13 +69,13 @@ public class OrderOperation extends HttpServlet
 	}
 
 	/**
-	 * ËµÃ÷:¶©µ¥½áËã ·½·¨£º´ÓcookieÖĞ¶ÁÈ¡´æ·ÅµÄpidºÍÉÌÆ·ÊıÁ¿ ±íÊ¾£ºcookieÒÔpro_¿ªÍ·µÄ¼´ÎªÓÃ»§ÏÂµÄ¶©µ¥£¬ÄÚÈİÎªÓû¹ºÂòµÄÊıÁ¿
+	 * è¯´æ˜:è®¢å•ç»“ç®— æ–¹æ³•ï¼šä»cookieä¸­è¯»å–å­˜æ”¾çš„pidå’Œå•†å“æ•°é‡ è¡¨ç¤ºï¼šcookieä»¥pro_å¼€å¤´çš„å³ä¸ºç”¨æˆ·ä¸‹çš„è®¢å•ï¼Œå†…å®¹ä¸ºæ¬²è´­ä¹°çš„æ•°é‡
 	 */
 	private void orderAccount()
 	{
 		boolean isCreateOrder = false;
 		Cookie[] cookies = request.getCookies();
-		// ´ÓCookieÖĞ»ñÈ¡Ñ¡¹ºÉÌÆ·£¬²¢Éú³É¶©µ¥¡£
+		// ä»Cookieä¸­è·å–é€‰è´­å•†å“ï¼Œå¹¶ç”Ÿæˆè®¢å•ã€‚
 		for (Cookie cookie : cookies)
 		{
 			String pidx = cookie.getName();
@@ -85,45 +85,45 @@ public class OrderOperation extends HttpServlet
 				String amountx = cookie.getValue();
 				int pid = CommonTools.StringToInt(pidx);
 				int amount = CommonTools.StringToInt(amountx);
-				// ·ÀÖ¹cookieÖĞ´æÔÚ·Ç·¨µÄpid¡¢ÊıÁ¿ÇÒÉÌÆ·±íÖĞ²»´æÔÚ¸ÃÉÌÆ·Ê±
-				// ¶ÔÓÚ´æÔÚ·Ç·¨pid»òÉÌÆ·ÊıÁ¿Ğ¡ÓÚµÈÓÚ0µÄ´Ë´¦²»×ö´¦Àí
+				// é˜²æ­¢cookieä¸­å­˜åœ¨éæ³•çš„pidã€æ•°é‡ä¸”å•†å“è¡¨ä¸­ä¸å­˜åœ¨è¯¥å•†å“æ—¶
+				// å¯¹äºå­˜åœ¨éæ³•pidæˆ–å•†å“æ•°é‡å°äºç­‰äº0çš„æ­¤å¤„ä¸åšå¤„ç†
 				if (pid > 0 && amount > 0 && QueryTools.isExistColumn(dataAccess, TableInfo.PROT_pid, TableInfo.TABLE_Products, TableInfo.PROT_pid + "=" + pid))
 				{
-					// ²Ù×÷¼ÇÂ¼±í±£´æ¶©µ¥
-					// µÃµ½ÓÃ»§µÄid
-					String uid = session.getAttribute("sc_user").toString();// ´æ·ÅµÄ¾ÍÊÇÓÃ»§ID
+					// æ“ä½œè®°å½•è¡¨ä¿å­˜è®¢å•
+					// å¾—åˆ°ç”¨æˆ·çš„id
+					String uid = session.getAttribute("sc_user").toString();// å­˜æ”¾çš„å°±æ˜¯ç”¨æˆ·ID
 
-					// ½«µ±Ç°µÄÊ±¼ä×ª»»ÎªJDBCµÄÊ±¼ä¸ñÊ½yyyy-mm-dd hh:mm:ss.fffffffff
+					// å°†å½“å‰çš„æ—¶é—´è½¬æ¢ä¸ºJDBCçš„æ—¶é—´æ ¼å¼yyyy-mm-dd hh:mm:ss.fffffffff
 					String currTime = new Timestamp(System.currentTimeMillis()).toString();
 					String date = currTime.substring(0, 11);
 					String time = currTime.substring(11, 19);
-					// mysqlÖĞDATEµÄ¸ñÊ½£º'YYYY-MM-DD'
-					// mysqlÖĞTIMEµÄ¸ñÊ½£º'HH:MM:SS'
+					// mysqlä¸­DATEçš„æ ¼å¼ï¼š'YYYY-MM-DD'
+					// mysqlä¸­TIMEçš„æ ¼å¼ï¼š'HH:MM:SS'
 					String sql = "insert into " + TableInfo.TABLE_Transactions + " (";
-					// ½»Ò×id,ÓÃ»§id,ÉÌÆ·id,½»Ò×ÈÕÆÚ,½»Ò×Ê±¼ä,½»Ò×ÊıÁ¿
-					// ½»Ò×idÎª×ÔÔö³¤×Ö¶Î,¸³0¼´¿É
-					// tshiped±ê¼ÇÄ¬ÈÏÎª0£¬±íÊ¾Î´·¢»õ¡£
+					// äº¤æ˜“id,ç”¨æˆ·id,å•†å“id,äº¤æ˜“æ—¥æœŸ,äº¤æ˜“æ—¶é—´,äº¤æ˜“æ•°é‡
+					// äº¤æ˜“idä¸ºè‡ªå¢é•¿å­—æ®µ,èµ‹0å³å¯
+					// tshipedæ ‡è®°é»˜è®¤ä¸º0ï¼Œè¡¨ç¤ºæœªå‘è´§ã€‚
 					sql += TableInfo.TRAN_tid + "," + TableInfo.TRAN_tuid + "," + TableInfo.TRAN_tpid + "," + TableInfo.TRAN_tdate + "," + TableInfo.TRAN_ttime + "," + TableInfo.TRAN_tamount + "," + TableInfo.TRAN_tshiped + ")";
 					sql += " values(0," + uid + "," + pid + ",'" + date + "','" + time + "'," + amount + ",0)";
-					// Ôö¼Ó½»Ò×¼ÇÂ¼
+					// å¢åŠ äº¤æ˜“è®°å½•
 					dataAccess.executeSQL(sql);
 					isCreateOrder = true;
 				}
 				else
 				{
-					// System.out.println("ÓÃ»§ipÎª"+request.getLocalAddr()+" cookieÖĞ´æÔÚ·Ç·¨id");
+					// System.out.println("ç”¨æˆ·ipä¸º"+request.getLocalAddr()+" cookieä¸­å­˜åœ¨éæ³•id");
 				}
 
 			}
 
-			// Éú³ÉÁÙÊ±¶¨µ¥ĞÅÏ¢
+			// ç”Ÿæˆä¸´æ—¶å®šå•ä¿¡æ¯
 		}
 		try
 		{
-			// ¶¨Î»µ½¶¨µ¥ĞÅÏ¢Ò³Ãæ.
-			// ´òÓ¡¶¨µ¥ĞÅÏ¢
+			// å®šä½åˆ°å®šå•ä¿¡æ¯é¡µé¢.
+			// æ‰“å°å®šå•ä¿¡æ¯
 			// response.sendRedirect("../index.jsp");
-			// out.println("¶©µ¥Éú³É£¬ÏÂÃæÏÔÊ¾¶©µ¥");
+			// out.println("è®¢å•ç”Ÿæˆï¼Œä¸‹é¢æ˜¾ç¤ºè®¢å•");
 			// response.sendRedirect(request.getContextPath()+"/userinfo/orderquery.jsp");
 			// response.sendRedirect(request.getContextPath()+"/order/orderatonce.jsp");
 			if (isCreateOrder)
@@ -133,7 +133,7 @@ public class OrderOperation extends HttpServlet
 			}
 			else
 			{
-				request.getSession().setAttribute("order", "Ã»ÓĞ²úÉú¶¨µ¥");
+				request.getSession().setAttribute("order", "æ²¡æœ‰äº§ç”Ÿå®šå•");
 			}
 
 			// RequestDispatcher rd=request.getRequestDispatcher("/order/orderatonce.jsp");
@@ -155,7 +155,7 @@ public class OrderOperation extends HttpServlet
 		try
 		{
 			IDataAccess ida = DataAccessImpl.newInstance();
-			Cookie cartproducts[] = request.getCookies();// Í¨¹ı£Ãookie´Ó¿Í»§»ñÈ¡Ñ¡¹ºÉÌÆ·ĞÅÏ¢.
+			Cookie cartproducts[] = request.getCookies();// é€šè¿‡ï¼£ookieä»å®¢æˆ·è·å–é€‰è´­å•†å“ä¿¡æ¯.
 			String cpid = "";
 			int pid;
 			int pronum;
@@ -163,22 +163,22 @@ public class OrderOperation extends HttpServlet
 			tmp += "<p>&nbsp;</p>";
 			tmp += "<table border='1' width='80%' cellspacing='0' cellpadding='0'>";
 			tmp += "<tr style='background-color:#333333;color:blue;'>";
-			tmp += "<td>ÉÌÆ·Ãû³Æ</td>";
-			tmp += "<td>ÉÌÆ·¼Û¸ñ</td>";
-			tmp += "<td>ÉÌÆ·ËµÃ÷</td>";
-			tmp += "<td>Ñ¡¹ºÊıÁ¿</td>";
-			tmp += "<td>¼Û¸ñĞ¡¼Ç</td>";
+			tmp += "<td>å•†å“åç§°</td>";
+			tmp += "<td>å•†å“ä»·æ ¼</td>";
+			tmp += "<td>å•†å“è¯´æ˜</td>";
+			tmp += "<td>é€‰è´­æ•°é‡</td>";
+			tmp += "<td>ä»·æ ¼å°è®°</td>";
 			tmp += "</tr>";
 			//
 			for (Cookie cook : cartproducts)
-			{// Ñ­»·½âÎöCookieÖĞµÄÑ¡¹ºÉÌÆ·ĞÅÏ¢¡£
-				cpid = cook.getName();// £ÃookieÃû£¬Ñ¡¹ºÉÌÆ·ÒÔpro¿ªÍ·¡£
+			{// å¾ªç¯è§£æCookieä¸­çš„é€‰è´­å•†å“ä¿¡æ¯ã€‚
+				cpid = cook.getName();// ï¼£ookieåï¼Œé€‰è´­å•†å“ä»¥proå¼€å¤´ã€‚
 				if (cpid.startsWith("pro_"))
 				{
 					try
 					{
-						pid = Integer.parseInt(cpid.substring(4));// ÉÌÆ·£É£Ä
-						pronum = Integer.parseInt(cook.getValue());// ÉÌÆ·ÊıÁ¿
+						pid = Integer.parseInt(cpid.substring(4));// å•†å“ï¼©ï¼¤
+						pronum = Integer.parseInt(cook.getValue());// å•†å“æ•°é‡
 						String sql = "select * from " + TableInfo.TABLE_Products + " where pid=" + pid;
 						ResultSet rs = ida.queryBySQL(sql);
 						while (rs.next())
@@ -188,9 +188,9 @@ public class OrderOperation extends HttpServlet
 							String pdescription = rs.getString("pdescription");
 							double pprice = rs.getDouble("pprice");
 
-							tmp += "<td>" + pname + "</td>";// ÉÌÆ·Ãû³Æ
-							tmp += "<td>" + pprice + "</td>";// ÏúÊÛ¼Û
-							tmp += "<td>" + pdescription + "</td>";// ¿â´æÁ¿
+							tmp += "<td>" + pname + "</td>";// å•†å“åç§°
+							tmp += "<td>" + pprice + "</td>";// é”€å”®ä»·
+							tmp += "<td>" + pdescription + "</td>";// åº“å­˜é‡
 							tmp += "<td>" + pronum + "</td>";
 							tmp += "<td>" + pronum * pprice + "</td>";
 							totalmoney += pronum * pprice;
@@ -202,20 +202,20 @@ public class OrderOperation extends HttpServlet
 						e.printStackTrace();
 						// System.tmp+=e.getMessage());
 					}
-					// Çå¿ÕCookie
-					cook.setMaxAge(0);// Õı:ÔÚÖ¸¶¨ÃëÊıºóÉ¾³ı,0:ÂíÉÏÉ¾³ı,¸º:ä¯ÀÀÆ÷¹Ø±ÕºóÉ¾³ı.
+					// æ¸…ç©ºCookie
+					cook.setMaxAge(0);// æ­£:åœ¨æŒ‡å®šç§’æ•°ååˆ é™¤,0:é©¬ä¸Šåˆ é™¤,è´Ÿ:æµè§ˆå™¨å…³é—­ååˆ é™¤.
 					// cook.setValue("");
 					response.addCookie(cook);
 					// response.setHeader("refresh", "0;url='"+request.getContextPath()+"/index.jsp'");
 
-					// System.out.println("Cookie¹ıÆÚ");
+					// System.out.println("Cookieè¿‡æœŸ");
 				}
 			}
-			// tmp+="<tr  align='center'><td colspan='5' align='center'><B>×Ü½ğ¶î:</b><font color=red>"+totalmoney+"</font></td></tr>");
-			tmp += "<tr  align='center'><td colspan='5' align='center'><B>×Ü½ğ¶î:</b><font color=red>" + totalmoney + "</font></td></tr>";
+			// tmp+="<tr  align='center'><td colspan='5' align='center'><B>æ€»é‡‘é¢:</b><font color=red>"+totalmoney+"</font></td></tr>");
+			tmp += "<tr  align='center'><td colspan='5' align='center'><B>æ€»é‡‘é¢:</b><font color=red>" + totalmoney + "</font></td></tr>";
 			tmp += "</table>";
 			tmp += "<p>&nbsp;</p>";
-			tmp += "<a href='" + request.getContextPath() + "/index.jsp'><u>·µ»Ø</u></a>";
+			tmp += "<a href='" + request.getContextPath() + "/index.jsp'><u>è¿”å›</u></a>";
 		}
 		catch (Exception err)
 		{
@@ -225,7 +225,7 @@ public class OrderOperation extends HttpServlet
 	}
 
 	/**
-	 * ËµÃ÷£º¶©µ¥É¾³ı ·½·¨£º´Ó¶©µ¥±íÖĞ°ÑtidÎªorderidµÄ¼ÇÂ¼É¾³ı
+	 * è¯´æ˜ï¼šè®¢å•åˆ é™¤ æ–¹æ³•ï¼šä»è®¢å•è¡¨ä¸­æŠŠtidä¸ºorderidçš„è®°å½•åˆ é™¤
 	 */
 	private void orderDelete()
 	{
@@ -233,18 +233,18 @@ public class OrderOperation extends HttpServlet
 		{
 			String tidx = request.getParameter("orderid");
 			int tid = CommonTools.StringToInt(tidx);
-			// ·ÀÖ¹·Ç·¨µÄtidÇÒ¶©µ¥ÖĞ´æÔÚ¸Ãtid
+			// é˜²æ­¢éæ³•çš„tidä¸”è®¢å•ä¸­å­˜åœ¨è¯¥tid
 			if (tid > 0 && QueryTools.isExistColumn(dataAccess, TableInfo.TRAN_tid, TableInfo.TABLE_Transactions, TableInfo.TRAN_tid + "=" + tid))
 			{
 				String sql = "delete from " + TableInfo.TABLE_Transactions + " where ";
 				sql += TableInfo.TRAN_tid + "=" + tid;
-				System.out.println("É¾³ı¶©µ¥Óï¾ä£º" + sql);
+				System.out.println("åˆ é™¤è®¢å•è¯­å¥ï¼š" + sql);
 				boolean b = dataAccess.executeSQL(sql);
-				System.out.println("É¾³ı¶©µ¥£º" + b);
+				System.out.println("åˆ é™¤è®¢å•ï¼š" + b);
 				response.sendRedirect("orderquery.jsp");
 			}
 			else
-				CommonTools.Error(request, response, session, "orderid·Ç·¨»ò¸Ã¶©µ¥²»´æÔÚ!");
+				CommonTools.Error(request, response, session, "orderidéæ³•æˆ–è¯¥è®¢å•ä¸å­˜åœ¨!");
 		}
 		catch (IOException e)
 		{
@@ -254,7 +254,7 @@ public class OrderOperation extends HttpServlet
 	}
 
 	/*
-	 * ËµÃ÷£º¶©µ¥¸üĞÂ ·½·¨£º´Ó¶©µ¥±íÖĞ°ÑtidÎªorderidµÄ¼ÇÂ¼µÄ¶©µ¥ÊıÁ¿tamountĞŞ¸ÄÎª´«À´µÄÊıÁ¿
+	 * è¯´æ˜ï¼šè®¢å•æ›´æ–° æ–¹æ³•ï¼šä»è®¢å•è¡¨ä¸­æŠŠtidä¸ºorderidçš„è®°å½•çš„è®¢å•æ•°é‡tamountä¿®æ”¹ä¸ºä¼ æ¥çš„æ•°é‡
 	 */
 	private void orderUpdate()
 	{
@@ -262,44 +262,44 @@ public class OrderOperation extends HttpServlet
 		{
 			String tidx = request.getParameter("orderid");
 			int tid = CommonTools.StringToInt(tidx);
-			// ·ÀÖ¹·Ç·¨µÄtidÇÒ¶©µ¥ÖĞ´æÔÚ¸Ãtid
+			// é˜²æ­¢éæ³•çš„tidä¸”è®¢å•ä¸­å­˜åœ¨è¯¥tid
 			if (tid > 0 && QueryTools.isExistColumn(dataAccess, TableInfo.TRAN_tid, TableInfo.TABLE_Transactions, TableInfo.TRAN_tid + "=" + tid))
 			{
 				String tamountx = request.getParameter(TableInfo.TRAN_tamount);
 				int tamount = CommonTools.StringToInt(tamountx);
 
-				// ´Ó½»Ò×¼ÇÂ¼±íÖĞ²éÑ¯idÎªtidµÄÉÌÆ·pid
+				// ä»äº¤æ˜“è®°å½•è¡¨ä¸­æŸ¥è¯¢idä¸ºtidçš„å•†å“pid
 				String pid = QueryTools.getColumnValue(dataAccess, TableInfo.TRAN_tpid, TableInfo.TABLE_Transactions, TableInfo.TRAN_tid + "=" + tid);
 
-				// ´ÓÉÌÆ·±íÖĞ²éÑ¯idÎªpidµÄÉÌÆ·¿â´æÁ¿
+				// ä»å•†å“è¡¨ä¸­æŸ¥è¯¢idä¸ºpidçš„å•†å“åº“å­˜é‡
 				String pamountx = QueryTools.getColumnValue(dataAccess, TableInfo.PROT_pamount, TableInfo.TABLE_Products, TableInfo.PROT_pid + "=" + pid);
 				int pamout = CommonTools.StringToInt(pamountx);
-				// È·±£ÊäÈëµÄÉÌÆ·ÊıÁ¿Ğ¡ÓÚµ±Ç°ÉÌÆ·µÄ¿â´æÁ¿
+				// ç¡®ä¿è¾“å…¥çš„å•†å“æ•°é‡å°äºå½“å‰å•†å“çš„åº“å­˜é‡
 				if (tamount <= pamout)
 				{
 					String sql = "update " + TableInfo.TABLE_Transactions + " set ";
 					sql += TableInfo.TRAN_tamount + "=" + tamount;
 					sql += " where " + TableInfo.TRAN_tid + "=" + tid;
-					System.out.println("ĞŞ¸Ä¶©µ¥Óï¾ä£º" + sql);
+					System.out.println("ä¿®æ”¹è®¢å•è¯­å¥ï¼š" + sql);
 					boolean b = dataAccess.executeSQL(sql);
-					System.out.println("ĞŞ¸Ä¶©µ¥£º" + b);
+					System.out.println("ä¿®æ”¹è®¢å•ï¼š" + b);
 					response.sendRedirect("orderquery.jsp");
 				}
 				else
-					CommonTools.Error(request, response, session, "ÊäÈëµÄÉÌÆ·ÊıÁ¿:" + tamount + "³¬¹ıÁËµ±Ç°ÉÌÆ·¿â´æÁ¿£º" + pamout);
+					CommonTools.Error(request, response, session, "è¾“å…¥çš„å•†å“æ•°é‡:" + tamount + "è¶…è¿‡äº†å½“å‰å•†å“åº“å­˜é‡ï¼š" + pamout);
 			}
 			else
-				CommonTools.Error(request, response, session, "orderid·Ç·¨»ò¸Ã¶©µ¥²»´æÔÚ!");
+				CommonTools.Error(request, response, session, "orderidéæ³•æˆ–è¯¥è®¢å•ä¸å­˜åœ¨!");
 		}
 		catch (IOException e)
 		{
-			// TODO ×Ô¶¯Éú³É catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆ catch å—
 			e.printStackTrace();
 		}
 	}
 
-	// //ËµÃ÷£º·µ»Ø·ûºÏÄ³¸öÌõ¼şÄ³±íÖĞÄ³¸ö×Ö¶ÎµÄÖµ
-	// //Ìõ¼ş£ºÖ»ÄÜ·µ»Ø²éÑ¯µÄµÚÒ»¸ö×Ö¶ÎÖµ
+	// //è¯´æ˜ï¼šè¿”å›ç¬¦åˆæŸä¸ªæ¡ä»¶æŸè¡¨ä¸­æŸä¸ªå­—æ®µçš„å€¼
+	// //æ¡ä»¶ï¼šåªèƒ½è¿”å›æŸ¥è¯¢çš„ç¬¬ä¸€ä¸ªå­—æ®µå€¼
 	// private String getColumnValue(String columnName,String tableName,String queryFactor){
 	// String sql ="select "+columnName +" from "+tableName+" where "+queryFactor;
 	// System.out.println(sql);
@@ -310,13 +310,13 @@ public class OrderOperation extends HttpServlet
 	// else
 	// return null;
 	// } catch (SQLException e) {
-	// System.out.println("Ö´ĞĞÓï¾ä:\n"+sql+"\nÊ±·¢Éú´íÎó,Çë¼ì²é!");
+	// System.out.println("æ‰§è¡Œè¯­å¥:\n"+sql+"\næ—¶å‘ç”Ÿé”™è¯¯,è¯·æ£€æŸ¥!");
 	// e.printStackTrace();
 	// return null;
 	// }
 	// }
 	//
-	// //ËµÃ÷£º²éÑ¯·ûºÏÄ³¸öÌõ¼şµÄÄ³±íÖĞµÄÄ³Ğ©×Ö¶ÎÊÇ·ñÓĞ¼ÇÂ¼¼¯
+	// //è¯´æ˜ï¼šæŸ¥è¯¢ç¬¦åˆæŸä¸ªæ¡ä»¶çš„æŸè¡¨ä¸­çš„æŸäº›å­—æ®µæ˜¯å¦æœ‰è®°å½•é›†
 	// private boolean isExistProduct(String columnName,String tableName,String queryFactor){
 	// String sql ="select "+columnName +" from "+tableName+" where "+queryFactor;
 	// //System.out.println(sql);
@@ -324,7 +324,7 @@ public class OrderOperation extends HttpServlet
 	// ResultSet rst = dataAccess.queryBySQL(sql);
 	// return rst.next();
 	// } catch (SQLException e) {
-	// System.out.println("Ö´ĞĞÓï¾ä:\n"+sql+"\nÊ±·¢Éú´íÎó,Çë¼ì²é!");
+	// System.out.println("æ‰§è¡Œè¯­å¥:\n"+sql+"\næ—¶å‘ç”Ÿé”™è¯¯,è¯·æ£€æŸ¥!");
 	// e.printStackTrace();
 	// return false;
 	// }

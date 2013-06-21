@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="otherBean" class="class01.ioc5.OtherBean">
+		<property name="name" value="其他bean"/>
+	</bean>
+	
+	<!-- 自动装配：让容器依据某种规则，自动地对组件实施装配.
+			autowire=""
+				byName：匹配属性名与bean的名字
+				byType：寻找配置文件，匹配属性的类型与bean 的类型，成功就设置如果匹配的个数超过一个，报错。
+				constructor：匹配构造器，看构造器的参数类型与bean的类型是否一致，成功就设置,如果匹配的个数超过一个，报错。
+				autodetect：先按照constructor，然后byType -->
+	<bean id="someBean" class="class01.ioc5.SomeBean" autowire="autodetect"/>
+
+</beans>

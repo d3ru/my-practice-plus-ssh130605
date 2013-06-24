@@ -78,7 +78,7 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 	@Override
 	public M get(pk id)
 	{
-		return getHibernateTemplate().get(this.entityClass, id);
+		return (M) getHibernateTemplate().get(this.entityClass, id);
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 	@SuppressWarnings("unchecked")
 	protected <T> List<T> list(final String hQL_LIST_ALL, final int pn, final int pageSize, final Object... params)
 	{
-		return getHibernateTemplate().executeFind(new HibernateCallback<List<T>>()
+		return getHibernateTemplate().executeFind(new HibernateCallback()
 		{
 
 			@Override
@@ -140,7 +140,7 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 	@SuppressWarnings("unchecked")
 	protected <T> T unique(final String hQL_COUNT_ALL, final Object... params)
 	{
-		return getHibernateTemplate().execute(new HibernateCallback<T>()
+		return (T) getHibernateTemplate().execute(new HibernateCallback()
 		{
 
 			@Override

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="customer" class="ioc.ioc11.Customer">
+		<property name="birthday" value="1980-1-1" />
+	</bean>
+	<!-- 通过CustomEditorConfigurer注册自己的编辑器 -->
+	<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<!-- 转换类型是Key，编辑器是Value -->
+				<entry key="java.util.Date">
+					<bean id="dateEditor" class="ioc.ioc11.DateEditor"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

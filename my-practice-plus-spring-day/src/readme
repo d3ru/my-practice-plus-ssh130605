@@ -1,0 +1,13 @@
+@readme 内容梳理
+@author Jert
+@date 	2013-06-24
+
+每个大包里都有Test.java，实现了对所有子包的测试。
+
+01：ioc
+02：aop
+03：jdbc
+04: hibernate
+05: struts
+07: transaction
+08: security

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- 
+		配置过程：
+		（1）配置目标对象
+		（2）配置通知
+		（3）利用ProxyFactoryBean将通知织入到目标对象，形成一个动态代理对象
+		（4）客户端使用动态代理来访问目标对象的方法。
+	 -->
+	
+	<!-- (1) 配置目标对象 -->
+	<bean id="someServerTarget" class="aop.aop3.SomeServerImpl" />
+	
+	<!-- (2) 配置切面[通知] -->
+	<!-- 配置切面 : 实现了MethodBeforeAdvice -->
+	<bean id="logAdvice" class="aop.aop3.LogAdvice" />
+	<!-- 配置切面 : 实现了AfterReturningAdvice -->
+	<bean id="welcomeAdvice" class="aop.aop3.WelcomeAdvice"/>
+	<!-- 配置切面 : 实现了ThrowsAdvice -->
+	<bean id="exceptionHandler" class="aop.aop3.SomeServerExceptionHandler"/>
+	
+	<!-- 配置切面 : 实现了MethodInterceptor -->
+	<bean id="transactionInterceptor" class="aop.aop3.TransactionInterceptor"/>
+	<!-- 配置切面 : 实现了MethodInterceptor -->
+	<bean id="timeoutInterceptor" class="aop.aop3.TimeoutInterceptor">
+		<property name="timeout" value="2000"/>
+	</bean>
+	
+	<!-- (3) 将切面织入到目标对象:利用ProxyFactoryBean将通知织入到目标对象，形成一个动态代理对象 -->
+	<bean id="someServer" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces" value="aop.aop3.SomeServer"/>
+		<property name="target" ref="someServerTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<!--
+				-->
+				<value>welcomeAdvice</value>
+				<value>logAdvice</value>
+				<value>exceptionHandler</value>
+				<value>transactionInterceptor</value>
+				<value>timeoutInterceptor</value>
+			</list>
+		</property>
+		<property name="proxyTargetClass" value="true"/>
+	</bean>
+</beans>

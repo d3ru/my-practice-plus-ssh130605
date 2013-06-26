@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="someServerTarget" class="aop.aop4.SomeServerImpl" />
+	<bean id="logAdvice" class="aop.aop4.LogAdvice" />
+	<bean id="someServerPointcut" class="aop.aop4.SomeServerPointcut" />
+	<bean id="someServerPointcutAdvisor" class="aop.aop4.SomeServerPointcutAdvisor" >
+		<property name="pointcut" ref="someServerPointcut" />
+		<property name="advice" ref="logAdvice"/>
+	</bean>
+	<bean id="someServer" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces" value="aop.aop4.SomeServer"/>
+		<property name="target" ref="someServerTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>someServerPointcutAdvisor</value>
+			</list>
+		</property>
+		<property name="proxyTargetClass" value="true"/>
+	</bean>
+</beans>

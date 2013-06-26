@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="someServerTarget" class="aop.aop6.SomeServerImpl" />
+	<bean id="introduction" class="aop.aop6.SomeServerIntroductionInterceptor"/>
+	<!-- 通知者，只能以构造器方法注入--> 
+	<bean id="introductionAdvisor" class="org.springframework.aop.support.DefaultIntroductionAdvisor">
+		<constructor-arg ref="introduction"/>
+		<constructor-arg value="aop.aop6.OtherServer"/>
+	</bean>
+	<bean id="someServer" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces" value="aop.aop6.SomeServer"/>
+		<property name="target" ref="someServerTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>introductionAdvisor</value>
+			</list>
+		</property>
+		<property name="proxyTargetClass" value="true"/>
+	</bean>
+</beans>

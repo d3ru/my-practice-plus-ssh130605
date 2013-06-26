@@ -11,3 +11,36 @@
 05: struts
 07: transaction
 08: security
+
+== aop3设计的内容 =======================================================================================
+
+Advice：
+	切面的实现
+	类型：
+	(1)org.springframework.aop.MethodBeforeAdvice
+		在方法调用之前，做处理。
+		不能够改变返回值
+		不能够改变目标方法的流程，也不能中断流程的处理过程（除非抛出异常）
+	(2)org.springframework.aop.AfterReturningAdvice
+		在方法调用之后，做处理。
+		不能够改变返回值
+		不能够改变目标方法的流程，也不能中断流程的处理过程（除非抛出异常）
+	(3)org.aopalliance.intercept.MethodInterceptor
+		在方法调用之前以及之后，做处理。
+		可以改变返回值，也可以改变流程。
+	(4)org.springframework.aop.ThrowsAdvice
+		在方法抛出异常后，做处理。
+		当该通知处理完异常后，会简单地将异常再次抛出给目标调用方法。
+	内置的创建代理类：
+	org.springframework.aop.framework.ProxyFactoryBean ppt55
+	proxyInterfaces,interceptorNames
+	
+	配置过程：
+		（1）配置目标对象
+		（2）配置通知
+		（3）利用ProxyFactoryBean将通知织入到目标对象，形成一个动态代理对象
+		（4）客户端使用动态代理来访问目标对象的方法。
+	
+	在默认情况下，通知会应用到所有的方法之上。
+	
+=========================================================================================================

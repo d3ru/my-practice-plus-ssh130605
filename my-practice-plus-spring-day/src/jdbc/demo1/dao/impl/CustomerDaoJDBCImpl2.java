@@ -29,8 +29,8 @@ public class CustomerDaoJDBCImpl2 extends JdbcDaoSupport implements CustomerDao
 	@Override
 	public void modify(Customer c)
 	{
-		String sql = "update customer set id=? , name=? , age=?";
-		Object[] params = { c.getId(), c.getName(), c.getAge() };
+		String sql = "update customer set name=? , age=? where id=?";
+		Object[] params = { c.getName(), c.getAge(), c.getId() };
 		getJdbcTemplate().update(sql, params);
 	}
 

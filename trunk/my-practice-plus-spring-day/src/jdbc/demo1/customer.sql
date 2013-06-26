@@ -25,8 +25,3 @@ CREATE TABLE `customer` (
   `age` int(8) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of customer
--- ----------------------------
-INSERT INTO `customer` VALUES ('3', 'zhanghua', '20');

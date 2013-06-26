@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- 配置DataSource -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/myssh" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	<!-- 配置SessionFactory -->
+	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>hibernate\demo1\bo\Account.hbm.xml</value>
+				<value>hibernate\demo1\bo\Stock.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean id="myTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>
+	<!-- 配置Dao -->
+	<bean id="abstractDAO" abstract="true">
+		<property name="sessionFactory" ref="mySessionFactory"/>
+	</bean>
+	<bean id="accountDAO" class="hibernate.demo1.dao.impl.AccountDAOHibernateImpl" parent="abstractDAO"/>
+	<bean id="stockDAO" class="hibernate.demo1.dao.impl.StockDAOHibernateImpl" parent="abstractDAO"/>
+	<!-- 配置service -->
+	<bean id="stockServiceTarget" class="hibernate.demo1.service.impl.StockServiceSpringImpl">
+		<property name="accountDao" ref="accountDAO"/>
+		<property name="stockDao" ref="stockDAO"/>
+	</bean>
+	<!-- 配置事务代理 -->
+	<bean id="stockService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="target" ref="stockServiceTarget"/>
+		<property name="transactionManager" ref="myTransactionManager"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="open*">PROPAGATION_REQUIRED</prop>
+				<prop key="buyStock">PROPAGATION_REQUIRED,-StockServiceAppException</prop>
+				<prop key="get*">	PROPAGATION_SUPPORTS,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>

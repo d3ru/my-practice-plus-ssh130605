@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.pan.evms.domain">
+	<class name="OperationFlow" table="operationflow">
+		<id name="id" column="id" type="long">
+			<generator class="native"/>
+		</id>
+		<property name="branchid" />
+		<property name="counterid" />
+		<property name="staffid" />
+	</class>
+</hibernate-mapping>

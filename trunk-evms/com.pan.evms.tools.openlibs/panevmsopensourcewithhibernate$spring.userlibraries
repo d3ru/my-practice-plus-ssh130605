@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<eclipse-userlibraries version="2">
+    <library name="panevmsopensource" systemlibrary="false">
+        <archive path="/com.pan.evms.tools.openlibs/bonecp-0.7.1.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/mysql-connector-java-5.1.13-bin.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/guava-14.0.1.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/log4j-api-2.0-beta9.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/log4j-core-2.0-beta9.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/log4j-slf4j-impl-2.0-beta9.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/slf4j-api-1.7.5.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/slf4j-ext-1.7.5.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/commons-beanutils-1.8.3.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/commons-codec-1.7.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/commons-dbutils-1.5.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/commons-io-2.4.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/commons-lang3-3.1.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/commons-logging-1.1.1.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/commons-math3-3.0.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/antlr-2.7.7.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/dom4j-1.6.1.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/hibernate-commons-annotations-4.0.2.Final.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/hibernate-core-4.2.6.Final.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/hibernate-entitymanager-4.2.6.Final.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/hibernate-envers-4.2.6.Final.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/javassist-3.15.0-GA.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/jboss-logging-3.1.0.GA.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/jboss-logging-3.1.1.GA.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-aop-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-aspects-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-beans-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-context-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-core-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-expression-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-jdbc-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-orm-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-webmvc-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-webmvc-portlet-3.2.4.RELEASE.jar"/>
+        <archive path="/com.pan.evms.tools.openlibs/spring-tx-3.2.4.RELEASE.jar"/>
+    </library>
+</eclipse-userlibraries>

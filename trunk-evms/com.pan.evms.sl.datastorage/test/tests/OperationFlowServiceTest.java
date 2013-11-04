@@ -7,6 +7,13 @@ import com.pan.evms.domain.OperationFlow;
 import com.pan.evms.sl.datastorage.ServiceManager;
 import com.pan.evms.sl.datastorage.interfaces.IOperationFlowService;
 
+/**
+ * 
+ * @author 杨俊涛 yangjuntao@p-an.com
+ * 
+ * @date 2013-10-24
+ * @time 上午8:57:20
+ */
 public class OperationFlowServiceTest
 {
 	private static IOperationFlowService service;

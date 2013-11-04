@@ -2,6 +2,13 @@ package com.pan.evms.domain;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author 杨俊涛 yangjuntao@p-an.com
+ * 
+ * @date 2013-10-24
+ * @time 上午8:58:48
+ */
 public class OperationFlow implements Serializable
 {
 

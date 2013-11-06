@@ -14,7 +14,8 @@ public class GoodsCodehibernateDao extends BaseHibernageDao<GoodsCodeModel, Inte
 	public int countAllByGoodsId(int goodsid)
 	{
 		String hql = getCountAllHql() + " where goods.id=?";
-		Number result = unique(hql, goodsid);
+		GoodsCodeModel gcm = unique(hql, goodsid);
+		Number result = gcm == null ? 0 : 1;
 		return result.intValue();
 	}
 

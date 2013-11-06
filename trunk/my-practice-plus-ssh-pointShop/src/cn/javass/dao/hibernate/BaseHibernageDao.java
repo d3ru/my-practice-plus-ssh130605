@@ -75,6 +75,7 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 		getHibernateTemplate().delete(m);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public M get(pk id)
 	{
@@ -84,14 +85,14 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 	@Override
 	public int countAll()
 	{
-		Number number = unique(HQL_COUNT_ALL);
+		Number number = (Number) unique(HQL_COUNT_ALL);
 		return number.intValue();
 	}
 
 	@Override
 	public List<M> listAll()
 	{
-		return list(getListAllHql());
+		return list(getListAllHql(), 1, -1);
 	}
 
 	@Override
@@ -100,19 +101,19 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 		return list(getListAllHql(), pn, pageSize);
 	}
 
-	protected <T> List<T> list(final String hQL, final Object... params)
-	{
-		return list(hQL, -1, -1, params);
-	}
+	// protected List<M> list(final String hQL, Object... params)
+	// {
+	// return list(hQL, -1, -1, params);
+	// }
 
 	@SuppressWarnings("unchecked")
-	protected <T> List<T> list(final String hQL_LIST_ALL, final int pn, final int pageSize, final Object... params)
+	protected List<M> list(final String hQL_LIST_ALL, final int pn, final int pageSize, final Object... params)
 	{
 		return getHibernateTemplate().executeFind(new HibernateCallback()
 		{
 
 			@Override
-			public List<T> doInHibernate(Session session) throws HibernateException, SQLException
+			public List<M> doInHibernate(Session session) throws HibernateException, SQLException
 			{
 				Query query = session.createQuery(hQL_LIST_ALL);
 				if (params != null)
@@ -138,13 +139,13 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 	}
 
 	@SuppressWarnings("unchecked")
-	protected <T> T unique(final String hQL_COUNT_ALL, final Object... params)
+	protected M unique(final String hQL_COUNT_ALL, final Object... params)
 	{
-		return (T) getHibernateTemplate().execute(new HibernateCallback()
+		return (M) getHibernateTemplate().execute(new HibernateCallback()
 		{
 
 			@Override
-			public T doInHibernate(Session session) throws HibernateException, SQLException
+			public M doInHibernate(Session session) throws HibernateException, SQLException
 			{
 				Query query = session.createQuery(hQL_COUNT_ALL);
 				if (params != null)
@@ -154,7 +155,7 @@ public class BaseHibernageDao<M extends Serializable, pk extends Serializable> e
 						query.setParameter(i, params[i]);
 					}
 				}
-				return (T) query.setMaxResults(1).uniqueResult();
+				return (M) query.setMaxResults(1).uniqueResult();
 			}
 		});
 	}

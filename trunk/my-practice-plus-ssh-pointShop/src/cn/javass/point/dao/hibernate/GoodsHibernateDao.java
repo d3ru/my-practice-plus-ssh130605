@@ -43,7 +43,8 @@ public class GoodsHibernateDao extends BaseHibernageDao<GoodsModel, Integer> imp
 	public int countAllPublished()
 	{
 		String hql = getCountAllHql() + " and published=true";
-		Number result = unique(hql);
+		GoodsModel gm = unique(hql);
+		Number result = gm == null ? 0 : 1;
 		return result.intValue();
 	}
 
